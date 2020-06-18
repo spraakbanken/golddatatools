@@ -12,7 +12,7 @@ corpus: Corpus = ColumnCorpus(data_folder, columns,
                               test_file='talbanken_test.col2',
                               dev_file='talbanken_dev.col2')
 
-tagger = SequenceTagger.load("model1/final-model.pt")
+tagger = SequenceTagger.load("flair_full/final-model.pt")
 
 f2 = open('talbanken_test_tagged_by_flair.col2', 'w', encoding="utf-8")
 
