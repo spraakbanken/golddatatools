@@ -33,9 +33,11 @@ convert_upos = ARGV[1]
 #kl and kl. are AB in SUC, but does it make sense? I'm making them NOUN in UD
 
 #TO-DO:
-#VB: create heuristics for AUX (if there is an infinitive dependent?)
+#go through UD github
+#AB: lemmas, some misannotations where they should in fact be JJ
+#VB: create heuristics for AUX (if there is an infinitive dependent?). No, give up.
 #PL: reda (asked); ADP-ADV (in principle, all PL should be ADVs, but many of them seem rather ADPs. Bakom-ADV is meaningless, av and efter should be ADV; emot ???)
-#PC: keep as ADJ, but change lemmas: ange, nämna
+#PC: keep as ADJ, but change lemmas: ange, nämna (or give up?). UD principle seems to be: if they are amods, make them ADJs
 
 
 @msds = {"UTR" => "Gender=Com", "NEU" => "Gender=Neut", "MAS" => "Gender=Masc", "UTR+NEU" => "Gender=Com,Neut",    "SIN" => "Number=Sing", "PLU" => "Number=Plur", "SIN+PLU" => "Number=Plur,Sing", "IND" => "Definite=Ind", "DEF" => "Definite=Def", "IND+DEF" => "Definite=Def,Ind", "NOM" => "Case=Nom", "GEN" => "Case=Gen", "POS" => "Degree=Pos", "KOM" => "Degree=Cmp", "SUV" => "Degree=Sup", "PRS" => "Tense=Pres", "PRT" => "Tense=Past", "INF" => "VerbForm=Inf", "SUP" => "VerbForm=Sup", "IMP" => "Mood=Imp", "AKT" => "Voice=Act", "SFO" => "Voice=Pass", "KON" => "Mood=Sub", "PRF" => "Tense=Past", "AN" => "Abbr=Yes", "SMS" => "Compound=Yes", "SUB" => "Case=Nom", "OBJ" => "Case=Acc", "SUB+OBJ" => "Case=Acc,Nom"}
