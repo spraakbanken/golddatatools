@@ -142,6 +142,11 @@ texts.each do |text|
                         else
                             upos = "PUNCT"
                         end
+                    elsif word["pos"] == "PL"
+                        if word["lemma"] == "reda"
+                            upos = "NOUN"
+                        end
+ 
                     end
                 else
                     upos = @upos_mappings[word["pos"]]
