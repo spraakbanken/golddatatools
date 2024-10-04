@@ -170,6 +170,7 @@ texts.each do |text|
                 deps = "_"
             end
             output.puts "#{id}\t#{form}\t#{lemma}\t#{upos}\t#{xpos}\t#{feats}\t#{head}\t#{rel}\t#{deps}\t_"
+            
         end
         output.puts ""
     end
