@@ -1,4 +1,4 @@
-#ROOT ISSUES!
+#ROOT ISSUES! #check? reroute punctuation to root rather than 0? Can be done later.
 #OUTPUT TO PSEUDO conll
 #headless phrases etc.
 #secondary tree
@@ -16,33 +16,42 @@ def process_primary_tree(primary_tree, primary_labels, current_id, term_ids,phra
         next_level = primary_tree[current_id]
         labels = primary_labels[current_id]
         head_label_index = labels.index("HD")
+        if !head_label_index.nil?
+            head = next_level[head_label_index]
+        else
+            head = nil
+        end
+
         next_level.each.with_index do |node,nodeindex|
             STDERR.puts "node", node
             if term_ids.include?(node)
                 STDERR.puts "Terminal node"
-                if root == 0
+                if head.nil?#root == 0
                     STDERR.puts "Terminal under 0"
                     @reversed_tree[node] = root
                     @reversed_labels[node] = primary_labels[current_id][nodeindex]
                 else
                     STDERR.puts "Terminal not under 0"
-                    if nodeindex == head_label_index
+                    if node == head #nodeindex == head_label_index
                         STDERR.puts "Phrase head"
                         @reversed_tree[node] = root
                         #root = node.gsub("#{sent_id}.","").to_i
                         @reversed_labels[node] = "#{primary_labels[current_id][nodeindex]}-#{cat}"
                     else
                         STDERR.puts "Not a head"
-                        @reversed_tree[node] = next_level[head_label_index]
+                        @reversed_tree[node] = head #next_level[head_label_index]
                         @reversed_labels[node] = primary_labels[current_id][nodeindex]
                     end
                 end
             else
                 STDERR.puts "Nonterminal node"
-                root = current_id.gsub("#{sent_id}.","").to_i
-                if root != 0
-                    root = next_level[head_label_index].gsub("#{sent_id}.","").to_i
+                #root = current_id.gsub("#{sent_id}.","").to_i
+                if !head.nil?
+                    root = head.gsub("#{sent_id}.","").to_i
                 end
+                #if root != 0
+                #    root = next_level[head_label_index].gsub("#{sent_id}.","").to_i
+                #end
                 process_primary_tree(primary_tree, primary_labels, node, term_ids, phrases, root, sent_id)
             end
         end
@@ -52,7 +61,8 @@ def process_primary_tree(primary_tree, primary_labels, current_id, term_ids,phra
 end
 
 
-PATH = "C:\\Sasha\\D\\DGU\\SBX_resources\\Eukalyptus-1.0.0\\Annotations\\"
+#PATH = "C:\\Sasha\\D\\DGU\\SBX_resources\\Eukalyptus-1.0.0\\Annotations\\"
+PATH = "D:\\DGU\\SBX_resources\\Eukalyptus\\Eukalyptus-1.0.0\\Annotations\\"
 filename = "Eukalyptus_Romaner.xml"
 STDERR.puts "Parsing xml..."
 file = Nokogiri::XML(File.read("#{PATH}#{filename}"))
