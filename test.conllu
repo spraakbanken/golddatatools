@@ -1,0 +1,7 @@
+# corpus = test
+# subcorpus = Romn_Lundqvist-Ingentobak
+# sent_id = Romn_Lundqvist-Ingentobak.32
+1	Bakom	bakom	PE	-.-.-	PE.-	-994	HD-PP-RA		
+2	det	den	PO	-.-.-	PO.DEF.SIN.NEU.SUB/OBJ.-	4	DT		
+3	smala	smal	AJ	-.-.-	AJ.POS.SIN.DEF.UTR/NEU.-	4	MD		
+4	palmstråket	palm|stråk	NN	-.-.-	NN.NEU.SIN.DEF	1	HD-NP-OO		

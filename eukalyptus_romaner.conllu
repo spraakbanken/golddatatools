@@ -1,0 +1,332 @@
+# corpus = eukalyptus_romaner
+# subcorpus = Romn_Lundqvist-Ingentobak
+# sent_id = Romn_Lundqvist-Ingentobak.14
+1	Kaimana	Kaimana	EN	-.-.-	EN.-	2	SB		
+2	var	vara	VB	-.-.-	VB.IND.AKT.PRT	0	HD-S---		
+3	utom	utom	PE	-.-.-	PE.-	2	HD-PP-MD		
+4	all	all	PO	-.-.-	PO.IND.SIN.UTR.-.-	5	DT		
+5	fråga	fråga	NN	-.-.-	NN.UTR.SIN.IND	3	HD-NP-OO		
+6	en	en	PO	-.-.-	PO.IND.SIN.UTR.-.-	7	DT		
+7	söderhavsidyll	Söderhavs|idyll	NN	-.-.-	NN.UTR.SIN.IND	2	HD-NP-SP		
+8	.	_	SY	-.-.-	SY.DEL	2	--		
+# corpus = eukalyptus_romaner
+# subcorpus = Romn_Lundqvist-Ingentobak
+# sent_id = Romn_Lundqvist-Ingentobak.15
+1	Det	den	PO	-.-.-	PO.DEF.SIN.NEU.SUB/OBJ.-	2	OO		
+2	konstaterade	konstatera	VB	-.-.-	VB.IND.AKT.PRT	0	HD-S---		
+3	Barthel	Barthel	EN	-.-.-	EN.-	2	SB		
+3	mycket	mycket	PO	-.-.-	PO.IND.SIN.NEU.-.-	3	MD		
+3	energiskt	energisk	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	2	HD-AjP-MD		
+4	första	första	AJ	-.-.-	AJ.SUV.SIN/PLU.DEF.UTR/NEU.-	5	MD		
+5	dagen	dag	NN	-.-.-	NN.UTR.SIN.DEF	2	HD-NP-MD		
+6	han	han	PO	-.-.-	PO.DEF.SIN.UTR.SUB.-	7	SB		
+7	kom	komma	VB	-.-.-	VB.IND.AKT.PRT	5	HD-S-MD		
+8	dit	dit	AB	-.-.-	AB.-.-	7	MD		
+11	.	_	SY	-.-.-	SY.DEL	2	--		
+# corpus = eukalyptus_romaner
+# subcorpus = Romn_Lundqvist-Ingentobak
+# sent_id = Romn_Lundqvist-Ingentobak.16
+1	Kanske	kanske	AB	-.-.-	AB.-.-	3	MD		
+2	mera	mer	AJ	-.-.-	AJ.KOM.SIN/PLU.IND/DEF.UTR/NEU.-	3	HD-AjP-MD		
+3	energiskt	energisk	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	0	HD-AjP---		
+4	än	än	SU	-.-.-	SU.-	2	HD-SuP-JF		
+5	uppriktigt	uppriktig	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	4	OO		
+6	.	_	SY	-.-.-	SY.DEL	3	--		
+# corpus = eukalyptus_romaner
+# subcorpus = Romn_Lundqvist-Ingentobak
+# sent_id = Romn_Lundqvist-Ingentobak.17
+1	Barthel	Barthel	EN	-.-.-	EN.-	2	SB		
+2	var	vara	VB	-.-.-	VB.IND.AKT.PRT	0	HD-S---		
+3	nämligen	nämligen	AB	-.-.-	AB.-.-	2	MD		
+4	inte	inte	AB	-.-.-	AB.-.-	2	MD		
+5	alls	alls	AB	-.-.-	AB.-.-	2	MD		
+6	någon	någon	PO	-.-.-	PO.IND.SIN.UTR.-.-	7	DT		
+7	söderhavs-entusiast	Söderhavs|entusiast	NN	-.-.-	NN.UTR.SIN.IND	2	HD-NP-OO		
+8	,	_	SY	-.-.-	SY.DEL	2	--		
+9	han	han	PO	-.-.-	PO.DEF.SIN.UTR.SUB.-	10	SB		
+10	var	vara	VB	-.-.-	VB.IND.AKT.PRT	15	HD-S-KL		
+11	en	en	PO	-.-.-	PO.IND.SIN.UTR.-.-	14	DT		
+12	civiliserad	civiliserad	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	14	MD		
+13	holländsk	holländsk	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	14	MD		
+14	tjänsteman	tjänsteman	NN	-.-.-	NN.UTR.SIN.IND	10	HD-NP-SP		
+15	och	och	KO	-.-.-	KO.-	2	PH-KoP---		
+16	föredrog	föredra	VB	-.-.-	VB.IND.AKT.PRT	15	HD-S-KL		
+17	kanalernas	kanal	NN	-.GEN.-	NN.UTR.PLU.DEF	18	DT		
+18	Amsterdam	Amsterdam	EN	-.-.-	EN.-	16	HD-NP-OO		
+19	framför	framför	PE	-.-.-	PE.-	16	HD-PP-MD		
+20	allt	all	PO	-.-.-	PO.IND.SIN.NEU.-.-	21	DT		
+21	annat	annan	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	19	PH-NP-OO		
+22	,	_	SY	-.-.-	SY.DEL	2	--		
+23	särskilt	särskild	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	24	MD		
+24	före	före	PE	-.-.-	PE.-	19	HD-PP-AN		
+25	Kaimana	Kaimana	EN	-.-.-	EN.-	24	OO		
+26	.	_	SY	-.-.-	SY.DEL	2	--		
+# corpus = eukalyptus_romaner
+# subcorpus = Romn_Lundqvist-Ingentobak
+# sent_id = Romn_Lundqvist-Ingentobak.18
+1	Men	men	KO	-.-.-	KO.-	27	DF		
+2	eftersom	eftersom	SU	-.-.-	SU.-	27	HD-SuP-MD		
+3	Barthel	Barthel	EN	-.-.-	EN.-	4	SB		
+4	skulle	skola	VB	-.-.-	VB.IND.AKT.PRT	2	HD-S-OO		
+5	komma	komma	VB	-.-.-	VB.INF.AKT.-	4	HD-VP-IV		
+6	att	att	SU	-.-.-	SU.-	5	HD-SuP-OO		
+7	vistas	vistas	VB	-.-.-	VB.INF.SFO.-	6	HD-VP-OO		
+8	Gud	gud	NN	-.-.-	NN.UTR.SIN.IND	9	SB		
+9	vet	veta	VB	-.-.-	VB.IND.AKT.PRS	7	HD-S-MD		
+10	hur	hur	AB	-.-.-	AB.-.FRL	11	MD		
+11	många	mången	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	12	HD-AjP-DT		
+12	år	år	NN	-.-.-	NN.NEU.PLU.IND	9	HD-NP-OO		
+13	som	som	SU	-.-.-	SU.-	7	HD-SuP-MD		
+14	ensam	ensam	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	16	MD		
+15	vit	vit	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	16	MD		
+16	man	man	NN	-.-.-	NN.UTR.SIN.IND	13	HD-NP-OO		
+17	,	_	SY	-.-.-	SY.DEL	27	--		
+18	som	som	SU	-.-.-	SU.-	7	HD-SuP-MD		
+19	holländska	holländsk	AJ	-.-.-	AJ.POS.SIN.DEF.UTR/NEU.-	20	MD		
+20	regeringens	regering	NN	-.GEN.-	NN.UTR.SIN.DEF	21	HD-NP-DT		
+21	representant	representant	NN	-.-.-	NN.UTR.SIN.IND	18	HD-NP-OO		
+22	,	_	SY	-.-.-	SY.DEL	27	--		
+23	i	i	PE	-.-.-	PE.-	7	HD-PP-RA		
+24	Kaimana	Kaimana	EN	-.-.-	EN.-	23	OO		
+25	,	_	SY	-.-.-	SY.DEL	27	--		
+26	så	så	AB	-.-.-	AB.-.-	27	MD		
+27	var	vara	VB	-.-.-	VB.IND.AKT.PRT	0	HD-S---		
+28	det	den	PO	-.-.-	PO.DEF.SIN.NEU.SUB/OBJ.-	27	SB		
+29	bäst	bra	AJ	-.-.-	AJ.SUV.SIN/PLU.IND.UTR/NEU.-	27	HD-AjP-SP		
+30	att	att	SU	-.-.-	SU.-	29	HD-SuP-OO		
+31	försöka	försöka	VB	-.-.-	VB.INF.AKT.-	30	HD-VP-OO		
+32	se	se	VB	-.-.-	VB.INF.AKT.-	31	HD-VP-IV		
+33	dess	den	PO	-.-.-	PO.DEF.SIN/PLU.UTR/NEU.PSS.-	34	DT		
+34	fördelar	fördel	NN	-.-.-	NN.UTR.PLU.IND	32	HD-NP-OO		
+35	.	_	SY	-.-.-	SY.DEL	27	--		
+# corpus = eukalyptus_romaner
+# subcorpus = Romn_Lundqvist-Ingentobak
+# sent_id = Romn_Lundqvist-Ingentobak.20
+1	Barthel	Barthel	EN	-.-.-	EN.-	2	SB		
+2	var	vara	VB	-.-.-	VB.IND.AKT.PRT	0	HD-S---		
+3	en	en	PO	-.-.-	PO.IND.SIN.UTR.-.-	6	DT		
+4	mycket	mycket	PO	-.-.-	PO.IND.SIN.NEU.-.-	5	MD		
+5	klok	klok	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	6	HD-AjP-MD		
+6	man	man	NN	-.-.-	NN.UTR.SIN.IND	2	HD-NP-SP		
+8	både	både	KO	-.-.-	KO.-	2	ME		
+8	i	i	PE	-.-.-	PE.-	6	HD-PP-MD		
+9	egna	egen	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	2	MD		
+10	och	och	KO	-.-.-	KO.-	2	ME		
+11	andras	andra	AJ	-.GEN.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	12	MD		
+12	ögon	öga	NN	-.-.-	NN.NEU.PLU.IND	-992	HD-NP-KL		
+13	.	_	SY	-.-.-	SY.DEL	2	--		
+# corpus = eukalyptus_romaner
+# subcorpus = Romn_Lundqvist-Ingentobak
+# sent_id = Romn_Lundqvist-Ingentobak.21
+1	Redan	redan	AB	-.-.-	AB.-.-	2	MD		
+2	tidigare	tidig	AJ	-.-.-	AJ.KOM.SIN/PLU.IND/DEF.UTR/NEU.-	3	HD-AjP-MD		
+3	hade	ha	VB	-.-.-	VB.IND.AKT.PRT	0	HD-S---		
+4	han	han	PO	-.-.-	PO.DEF.SIN.UTR.SUB.-	3	SB		
+5	odlat	odla	VB	-.-.-	VB.SPM.AKT.-	3	HD-VP-IV		
+6	konsten	konst	NN	-.-.-	NN.UTR.SIN.DEF	5	HD-NP-OO		
+7	att	att	SU	-.-.-	SU.-	6	HD-SuP-MD		
+8	umgås	umgås	VB	-.-.-	VB.INF.SFO.-	7	HD-VP-OO		
+9	med	med	PE	-.-.-	PE.-	8	HD-PP-MD		
+10	sig	sig	PO	-.-.-	PO.DEF.SIN/PLU.UTR/NEU.OBJ.-	9	HD-NP-OO		
+11	själv	själv	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	10	MD		
+12	.	_	SY	-.-.-	SY.DEL	3	--		
+# corpus = eukalyptus_romaner
+# subcorpus = Romn_Lundqvist-Ingentobak
+# sent_id = Romn_Lundqvist-Ingentobak.22
+1	I	i	PE	-.-.-	PE.-	3	HD-PP-RA		
+2	Kaimana	Kaimana	EN	-.-.-	EN.-	1	OO		
+3	fulländade	fullända	VB	-.-.-	VB.IND.AKT.PRT	0	HD-S---		
+4	han	han	PO	-.-.-	PO.DEF.SIN.UTR.SUB.-	3	SB		
+5	denna	denna	PO	-.-.-	PO.DEF.SIN.UTR.SUB/OBJ.-	6	DT		
+6	konst	konst	NN	-.-.-	NN.UTR.SIN.IND	3	HD-NP-OO		
+7	i	i	PE	-.-.-	PE.-	3	ME		
+8	sådan	sådan	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	9	HD-AjP-MD		
+9	grad	grad	NN	-.-.-	NN.UTR.SIN.IND	-977	HD-NP-OO		
+10	att	att	SU	-.-.-	SU.-	8	HD-SuP-JF		
+11	han	han	PO	-.-.-	PO.DEF.SIN.UTR.SUB.-	13	SB		
+12	ofta	ofta	AB	-.-.-	AB.-.-	13	MD		
+13	njöt	njuta	VB	-.-.-	VB.IND.AKT.PRT	10	HD-S-OO		
+14	av	av	PE	-.-.-	PE.-	13	HD-PP-MD		
+15	att	att	SU	-.-.-	SU.-	14	HD-SuP-OO		
+16	ha	ha	VB	-.-.-	VB.INF.AKT.-	15	HD-VP-OO		
+17	en	en	PO	-.-.-	PO.IND.SIN.UTR.-.-	20	DT		
+18	så	så	AB	-.-.-	AB.-.-	19	HD-AbP-MD		
+19	vettig	vettig	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	20	HD-AjP-MD		
+20	människa	människa	NN	-.-.-	NN.UTR.SIN.IND	16	HD-NP-OO		
+21	som	som	SU	-.-.-	SU.-	18	HD-SuP-JF		
+22	sig	sig	PO	-.-.-	PO.DEF.SIN/PLU.UTR/NEU.OBJ.-	3	MD		
+23	själv	själv	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	3	MD		
+24	att	att	SU	-.-.-	SU.-	20	HD-SuP-MD		
+25	umgås	umgås	VB	-.-.-	VB.INF.SFO.-	24	HD-VP-OO		
+26	med	med	PE	-.-.-	PE.-	25	MD		
+27	,	_	SY	-.-.-	SY.DEL	3	--		
+28	en	en	PO	-.-.-	PO.IND.SIN.UTR.-.-	29	DT		
+29	människa	människa	NN	-.-.-	NN.UTR.SIN.IND	20	HD-NP-AN		
+30	som	som	SU	-.-.-	SU.-	29	HD-SuP-MD		
+31	överallt	överallt	AB	-.-.-	AB.-.-	-983	RA		
+32	fann	finna	VB	-.-.-	VB.IND.AKT.PRT	3	ME		
+33	sig	sig	PO	-.-.-	PO.DEF.SIN/PLU.UTR/NEU.OBJ.-	-983	OO		
+34	tillrätta	tillrätta	AB	-.-.-	AB.-.-	-983	OA		
+35	och	och	KO	-.-.-	KO.-	30	PH-KoP-OO		
+36	gjorde	göra	VB	-.-.-	VB.IND.AKT.PRT	35	HD-S-KL		
+37	det	den	PO	-.-.-	PO.DEF.SIN.NEU.SUB/OBJ.-	38	DT		
+38	bästa	bra	AJ	-.-.-	AJ.SUV.SIN/PLU.DEF.UTR/NEU.-	36	PH-NP-OO		
+39	av	av	PE	-.-.-	PE.-	38	HD-PP-MD		
+40	varje	varje	PO	-.-.-	PO.IND.SIN.UTR.-.-	41	DT		
+41	situation	situation	NN	-.-.-	NN.UTR.SIN.IND	39	HD-NP-OO		
+42	både	både	KO	-.-.-	KO.-	3	ME		
+43	för	för	PE	-.-.-	PE.-	-988	HD-PP-KL		
+44	sig	sig	PO	-.-.-	PO.DEF.SIN/PLU.UTR/NEU.OBJ.-	43	HD-NP-OO		
+45	själv	själv	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	44	MD		
+46	och	och	KO	-.-.-	KO.-	3	ME		
+47	för	för	PE	-.-.-	PE.-	-988	HD-PP-KL		
+48	andra	andra	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	47	OO		
+49	.	_	SY	-.-.-	SY.DEL	3	--		
+# corpus = eukalyptus_romaner
+# subcorpus = Romn_Lundqvist-Ingentobak
+# sent_id = Romn_Lundqvist-Ingentobak.23
+1	En	en	PO	-.-.-	PO.IND.SIN.UTR.-.-	4	DT		
+2	ganska	ganska	AB	-.-.-	AB.-.-	3	MD		
+3	liten	liten	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	4	HD-AjP-MD		
+4	människa	människa	NN	-.-.-	NN.UTR.SIN.IND	0	HD-NP---		
+5	i	i	PE	-.-.-	PE.-	7	HD-PP-MD		
+6	centimeter	centimeter	NN	-.-.-	NN.UTR.PLU.IND	5	OO		
+7	mätt	mätt	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	3	HD-AjP-MD		
+8	,	_	SY	-.-.-	SY.DEL	4	--		
+9	ganska	ganska	AB	-.-.-	AB.-.-	10	MD		
+10	korpulent	korpulent	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	16	HD-AjP-KL		
+11	,	_	SY	-.-.-	SY.DEL	4	--		
+12	litet	litet	PO	-.-.-	PO.IND.SIN.NEU.-.-	14	MD		
+13	alldagligt	alldaglig	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	14	MD		
+14	rödlätt	rödlätt	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	16	HD-AjP-KL		
+15	,	_	SY	-.-.-	SY.DEL	4	--		
+16	men	men	KO	-.-.-	KO.-	4	PH-KoP-MD		
+17	till	till	PE	-.-.-	PE.-	20	HD-PP-MD		
+18	anden	ande	NN	-.-.-	NN.UTR.SIN.DEF	17	OO		
+19	en	en	PO	-.-.-	PO.IND.SIN.UTR.-.-	20	DT		
+20	jätte	jätte	NN	-.-.-	NN.UTR.SIN.IND	16	HD-NP-KL		
+21	.	_	SY	-.-.-	SY.DEL	4	--		
+# corpus = eukalyptus_romaner
+# subcorpus = Romn_Lundqvist-Ingentobak
+# sent_id = Romn_Lundqvist-Ingentobak.24
+1	En	en	PO	-.-.-	PO.IND.SIN.UTR.-.-	3	DT		
+2	ensam	ensam	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	3	MD		
+3	jätte	jätte	NN	-.-.-	NN.UTR.SIN.IND	0	HD-NP---		
+4	som	som	SU	-.-.-	SU.-	3	HD-SuP-MD		
+5	var	vara	VB	-.-.-	VB.IND.AKT.PRT	4	HD-S-OO		
+6	kung	kung	NN	-.-.-	NN.UTR.SIN.IND	5	HD-NP-SP		
+7	i	i	PE	-.-.-	PE.-	6	HD-PP-MD		
+8	Kaimana	Kaimana	EN	-.-.-	EN.-	7	OO		
+9	,	_	SY	-.-.-	SY.DEL	3	--		
+10	kung	kung	NN	-.-.-	NN.UTR.SIN.IND	6	HD-NP-AN		
+11	för	för	PE	-.-.-	PE.-	10	HD-PP-MD		
+12	ett	en	PO	-.-.-	PO.IND.SIN.NEU.-.-	13	DT		
+13	folk	folk	NN	-.-.-	NN.NEU.SIN.IND	11	HD-NP-OO		
+14	som	som	SU	-.-.-	SU.-	13	HD-SuP-MD		
+15	naturligtvis	naturligtvis	AB	-.-.-	AB.-.-	17	MD		
+16	inte	inte	AB	-.-.-	AB.-.-	17	MD		
+17	hade	ha	VB	-.-.-	VB.IND.AKT.PRT	14	HD-S-OO		
+18	en	en	PO	-.-.-	PO.IND.SIN.UTR.-.-	3	ME		
+19	aning	aning	NN	-.-.-	NN.UTR.SIN.IND	17	HD-NP-OO		
+20	om	om	PE	-.-.-	PE.-	19	HD-PP-MD		
+21	hur	hur	AB	-.-.-	AB.-.FRL	22	MD		
+22	ensam	ensam	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	-999	HD-AjP-PH		
+23	han	han	PO	-.-.-	PO.DEF.SIN.UTR.SUB.-	24	SB		
+24	var	vara	VB	-.-.-	VB.IND.AKT.PRT	-999	HD-S-OO		
+25	.	_	SY	-.-.-	SY.DEL	3	--		
+# corpus = eukalyptus_romaner
+# subcorpus = Romn_Lundqvist-Ingentobak
+# sent_id = Romn_Lundqvist-Ingentobak.26
+1	I	i	PE	-.-.-	PE.-	4	HD-PP-OA		
+2	Barthels	Barthel	EN	-.GEN.-	EN.-	3	DT		
+3	levnadskonst	levnadskonst	NN	-.-.-	NN.UTR.SIN.IND	1	HD-NP-OO		
+4	ingick	ingå	VB	-.-.-	VB.IND.AKT.PRT	0	HD-S---		
+5	att	att	SU	-.-.-	SU.-	4	HD-SuP-SB		
+6	varje	varje	PO	-.-.-	PO.IND.SIN.UTR.-.-	7	DT		
+7	gång	gång	NN	-.-.-	NN.UTR.SIN.IND	-991	HD-NP-PH		
+8	han	han	PO	-.-.-	PO.DEF.SIN.UTR.SUB.-	9	SB		
+9	återvände	återvända	VB	-.-.-	VB.IND.AKT.PRT	-991	HD-S-OO		
+10	till	till	PE	-.-.-	PE.-	9	HD-PP-RA		
+11	Kaimana	Kaimana	EN	-.-.-	EN.-	10	OO		
+12	från	från	PE	-.-.-	PE.-	9	HD-PP-RA		
+13	någon	någon	PO	-.-.-	PO.IND.SIN.UTR.-.-	14	DT		
+14	inspektionsresa	inspektions|resa	NN	-.-.-	NN.UTR.SIN.IND	12	HD-NP-OO		
+15	längs	längs	PE	-.-.-	PE.-	14	HD-PP-MD		
+16	kusten	kust	NN	-.-.-	NN.UTR.SIN.DEF	15	OO		
+17	lägga	lägga	VB	-.-.-	VB.INF.AKT.-	4	ME		
+18	märke	märke	NN	-.-.-	NN.NEU.SIN.IND	-988	OO		
+19	till	till	PE	-.-.-	PE.-	-988	HD-PP-OA		
+20	dess	den	PO	-.-.-	PO.DEF.SIN/PLU.UTR/NEU.PSS.-	21	DT		
+21	skönhetsvärden	skönhetsvärde	NN	-.-.-	NN.NEU.PLU.IND	19	HD-NP-OO		
+22	och	och	KO	-.-.-	KO.-	5	PH-KoP-OO		
+23	pliktskyldigast	pliktskyldig	AJ	-.-.-	AJ.SUV.SIN/PLU.IND.UTR/NEU.-	24	MD		
+24	njuta	njuta	VB	-.-.-	VB.INF.AKT.-	22	HD-VP-KL		
+25	av	av	PE	-.-.-	PE.-	24	HD-PP-OA		
+26	dem	de	PO	-.-.-	PO.DEF.PLU.UTR/NEU.OBJ.-	25	OO		
+27	.	_	SY	-.-.-	SY.DEL	4	--		
+# corpus = eukalyptus_romaner
+# subcorpus = Romn_Lundqvist-Ingentobak
+# sent_id = Romn_Lundqvist-Ingentobak.28
+1	Längst	lång	AJ	-.-.-	AJ.SUV.SIN/PLU.IND.UTR/NEU.-	2	MD		
+2	in	in	AB	-.-.-	AB.-.-	3	HD-AbP-MD		
+3	i	i	PE	-.-.-	PE.-	7	HD-PP-RA		
+4	den	den	PO	-.-.-	PO.DEF.SIN.UTR.SUB/OBJ.-	6	DT		
+5	blånande	blånande	AJ	-.-.-	AJ.POS.SIN.DEF.UTR/NEU.-	6	MD		
+6	viken	vik	NN	-.-.-	NN.UTR.SIN.DEF	3	HD-NP-OO		
+7	låg	ligga	VB	-.-.-	VB.IND.AKT.PRT	0	HD-S---		
+8	byn	by	NN	-.-.-	NN.UTR.SIN.DEF	7	SB		
+9	.	_	SY	-.-.-	SY.DEL	7	--		
+# corpus = eukalyptus_romaner
+# subcorpus = Romn_Lundqvist-Ingentobak
+# sent_id = Romn_Lundqvist-Ingentobak.29
+1	Ett	en	PO	-.-.-	PO.IND.SIN.NEU.-.-	2	DT		
+2	korallrev	korallrev	NN	-.-.-	NN.NEU.SIN.IND	3	HD-NP-SB		
+3	bröt	bryta	VB	-.-.-	VB.IND.AKT.PRT	0	HD-S---		
+4	dyningen	dyning	NN	-.-.-	NN.UTR.SIN.DEF	3	OO		
+5	innan	innan	SU	-.-.-	SU.-	3	HD-SuP-MD		
+6	den	den	PO	-.-.-	PO.DEF.SIN.UTR.SUB/OBJ.-	7	SB		
+7	rullade	rulla	VB	-.-.-	VB.IND.AKT.PRT	5	HD-S-OO		
+8	in	in	AB	-.-.-	AB.-.-	7	PL		
+9	mot	mot	PE	-.-.-	PE.-	7	HD-PP-RA		
+10	strandens	strand	NN	-.GEN.-	NN.UTR.SIN.DEF	11	DT		
+11	korallsand	korall|sand	NN	-.-.-	NN.UTR.SIN.IND	9	HD-NP-OO		
+12	.	_	SY	-.-.-	SY.DEL	3	--		
+# corpus = eukalyptus_romaner
+# subcorpus = Romn_Lundqvist-Ingentobak
+# sent_id = Romn_Lundqvist-Ingentobak.30
+1	Palmerna	palm	NN	-.-.-	NN.UTR.PLU.DEF	2	SB		
+2	stod	stå	VB	-.-.-	VB.IND.AKT.PRT	0	HD-S---		
+3	tätt	tät	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	2	MD		
+4	med	med	PE	-.-.-	PE.-	2	HD-PP-MD		
+5	yviga	yvig	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	6	MD		
+6	kronor	krona	NN	-.-.-	NN.UTR.PLU.IND	4	HD-NP-OO		
+7	över	över	PE	-.-.-	PE.-	6	HD-PP-MD		
+8	den	den	PO	-.-.-	PO.DEF.SIN.UTR.SUB/OBJ.-	10	DT		
+9	skära	skär	AJ	-.-.-	AJ.POS.SIN.DEF.UTR/NEU.-	10	MD		
+10	sanden	sand	NN	-.-.-	NN.UTR.SIN.DEF	7	HD-NP-OO		
+11	.	_	SY	-.-.-	SY.DEL	2	--		
+# corpus = eukalyptus_romaner
+# subcorpus = Romn_Lundqvist-Ingentobak
+# sent_id = Romn_Lundqvist-Ingentobak.31
+1	De	de	PO	-.-.-	PO.DEF.PLU.UTR/NEU.SUB.-	2	SB		
+2	stod	stå	VB	-.-.-	VB.IND.AKT.PRT	0	HD-S---		
+3	så	så	AB	-.-.-	AB.-.-	4	HD-AbP-MD		
+4	tätt	tät	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	2	HD-AjP-MD		
+5	att	att	SU	-.-.-	SU.-	3	HD-SuP-JF		
+6	man	man	PO	-.-.-	PO.DEF.SIN.UTR.SUB.-	8	SB		
+7	inte	inte	AB	-.-.-	AB.-.-	8	MD		
+8	såg	se	VB	-.-.-	VB.IND.AKT.PRT	5	HD-S-OO		
+9	något	någon	PO	-.-.-	PO.IND.SIN.NEU.-.-	8	HD-NP-OO		
+10	annat	annan	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	2	MD		
+11	än	än	SU	-.-.-	SU.-	9	HD-SuP-JF		
+12	palmer	palm	NN	-.-.-	NN.UTR.PLU.IND	11	OO		
+13	från	från	PE	-.-.-	PE.-	8	HD-PP-RA		
+14	havet	hav	NN	-.-.-	NN.NEU.SIN.DEF	13	OO		
+15	.	_	SY	-.-.-	SY.DEL	2	--		
+# corpus = eukalyptus_romaner
+# subcorpus = Romn_Lundqvist-Ingentobak
+# sent_id = Romn_Lundqvist-Ingentobak.32
+1	Bakom	bakom	PE	-.-.-	PE.-	-994	HD-PP-RA		
+2	det	den	PO	-.-.-	PO.DEF.SIN.NEU.SUB/OBJ.-	4	DT		
+3	smala	smal	AJ	-.-.-	AJ.POS.SIN.DEF.UTR/NEU.-	4	MD		
+4	palmstråket	palm|stråk	NN	-.-.-	NN.NEU.SIN.DEF	1	HD-NP-OO		
