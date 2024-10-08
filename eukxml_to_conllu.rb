@@ -14,7 +14,7 @@ require "Nokogiri"
 def nodeid_to_integer(sent_id,node_id)
     if node_id != 0
         id = node_id.gsub("#{sent_id}.","")
-        id = id.to_i - 1000
+        #id = id.to_i - 1000
     else
         id = node_id
     end
@@ -40,14 +40,23 @@ def process_primary_tree(primary_tree, primary_labels, current_id, term_ids,phra
         if !head_label_index.nil?
             head = next_level[head_label_index]
         else
-            head = nil
+            if cat == "Top"
+                head = nil 
+            else
+                next_level.each.with_index do |node|
+                    if term_ids.include?(node)
+                        head = node
+                        break
+                    end
+                end
+            end
         end
 
         next_level.each.with_index do |node,nodeindex|
             if verbose then STDERR.puts "  Terminal run. Node: #{node}" end
             if term_ids.include?(node)
                 if verbose then STDERR.puts "    Terminal node" end
-                if head.nil?#root == 0
+                if cat == "Top" #head.nil?#root == 0
                     if verbose then STDERR.puts "    Terminal under 0" end
                     #@reversed_tree[node] = root
                     @reversed_labels[node] = labels[nodeindex]
@@ -81,7 +90,7 @@ def process_primary_tree(primary_tree, primary_labels, current_id, term_ids,phra
             if !term_ids.include?(node)
                 if verbose then STDERR.puts "    Nonterminal node" end
                 #root = current_id.gsub("#{sent_id}.","").to_i
-                if !head.nil?
+                if cat != "Top" #!head.nil?
                     root = head.clone#.gsub("#{sent_id}.","").to_i
                 end
                 phraselabel = labels[nodeindex]
@@ -183,7 +192,7 @@ subcorpora.each do |subcorpus|
 #STDERR.puts @reversed_tree
         #STDERR.puts @reversed_labels
         #abort
-        
+        outputfile.puts ""
     end
 
 
