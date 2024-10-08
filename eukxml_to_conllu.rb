@@ -1,5 +1,7 @@
-#Nonsense with 20. Replace head tests with Cat test and deal with headless by assigning a dummy head?
-#multiple roots: currently dealing through forbidding coordination. Find better solution? Multiword units?
+#17 and 34 fixed by dispreferring PH-roots: but it is reliable?
+#316?
+#MWEs like "reste sig" in 32 and "höll kvar" in 34: change order
+#convert ids
 #headless phrases etc.
 #secondary tree
 #conversion
@@ -12,6 +14,7 @@ end
 require "Nokogiri"
 
 def nodeid_to_integer(sent_id,node_id)
+    STDERR.puts "..#{node_id}"
     if node_id != 0
         id = node_id.gsub("#{sent_id}.","")
         #id = id.to_i - 1000
@@ -29,48 +32,83 @@ def process_primary_tree(primary_tree, primary_labels, current_id, term_ids,phra
     #STDERR.puts "current_id", current_id
     #gets
     if verbose then STDERR.puts "Current_id: #{current_id}" end
+    #STDERR.puts "*** #{primary_tree["Romn_Lundqvist-Ingentobak.20.5"]} ***"
+
     until false == true do
         next_level = primary_tree[current_id]
+        if verbose then STDERR.puts "Current_id: #{current_id} Next level: #{next_level}" end
         labels = primary_labels[current_id]
-        head_label_index = labels.index("HD")
-        if head_label_index.nil?
-            head_label_index = labels.index("PH")
-        end
+        head_label_index = labels.index("HD") 
 
-        if !head_label_index.nil?
-            head = next_level[head_label_index]
+        
+  
+        
+        if cat == "Top"
+            #root = 0
+            if verbose then STDERR.puts "Current_id: #{current_id} Cat: #{cat}" end
         else
-            if cat == "Top"
-                head = nil 
+            if verbose then STDERR.puts "Current_id: #{current_id} Cat: #{cat}" end
+            head_label_index = labels.index("HD") 
+            
+            if head_label_index.nil?
+                head_label_index = labels.index("PH")
             else
-                next_level.each.with_index do |node|
+                if verbose then STDERR.puts "Current_id: #{current_id} HD found: #{next_level[head_label_index]}" end
+            end
+            if !head_label_index.nil?
+                if verbose then STDERR.puts "Current_id: #{current_id} HD or PH found: #{next_level[head_label_index]}" end
+                temphead = next_level[head_label_index].clone
+                if term_ids.include?(temphead)
+                    head = temphead.clone
+                    if verbose then STDERR.puts "Current_id: #{current_id} HD or PH confirmed as terminal: #{next_level[head_label_index]}" end
+                else
+                    if verbose then STDERR.puts "Current_id: #{current_id} HD or PH erased: non-terminal" end
+                    head_label_index = nil
+                end
+            else
+                if verbose then STDERR.puts "Current_id: #{current_id} No HD or PH found" end
+            end
+            if head_label_index.nil?
+                if verbose then STDERR.puts "Current_id: #{current_id} Assigning first node as a head" end
+                next_level.each.with_index do |node, nodeindex|
                     if term_ids.include?(node)
-                        head = node
+                        head = node.clone
+                        head_label_index = nodeindex
+                        if verbose then STDERR.puts "Current_id: #{current_id} Assigned first node as a head: #{head}" end
                         break
                     end
                 end
+                if head_label_index.nil?
+                    if verbose then STDERR.puts "Current_id: #{current_id} No first node found. Assigning root #{root} as head" end
+                    head = root.clone
+                end
             end
         end
+        if verbose then STDERR.puts "  Current_id: #{current_id} Root: #{root}" end
+        if verbose then STDERR.puts "  Current_id: #{current_id} Head: #{head}" end
+        #if verbose then STDERR.puts "Next level: #{next_level}" end
 
         next_level.each.with_index do |node,nodeindex|
-            if verbose then STDERR.puts "  Terminal run. Node: #{node}" end
+            if verbose then STDERR.puts "  Current_id: #{current_id}. Terminal run. Node: #{node}" end
             if term_ids.include?(node)
-                if verbose then STDERR.puts "    Terminal node" end
+                if verbose then STDERR.puts "    Current_id: #{current_id}. Node: #{node}. Terminal node" end
                 if cat == "Top" #head.nil?#root == 0
-                    if verbose then STDERR.puts "    Terminal under 0" end
+                    if verbose then STDERR.puts "    Current_id: #{current_id}. Terminal under 0" end
                     #@reversed_tree[node] = root
                     @reversed_labels[node] = labels[nodeindex]
                     @underoldroot[node] = true
                 else
-                    if verbose then STDERR.puts "    Terminal not under 0" end
-                    if verbose then STDERR.puts "    Root #{root}" end
+                    #if verbose then STDERR.puts "    Current_id: #{current_id}. Terminal not under 0" end
+                    
 
                     if node == head #nodeindex == head_label_index
-                        if root == 0 and @newroot.nil? and cat != "KoP"
-                            if verbose then STDERR.puts "    New root!" end
+                        
+                        if root == 0 and @newroot.nil? #and cat != "KoP"
+                            if verbose then STDERR.puts "    Current_id: #{current_id}. New root!" end
                             @newroot = node.clone#.gsub("#{sent_id}.","").to_i
                         end
-                        if verbose then STDERR.puts "    Phrase head" end
+                        if verbose then STDERR.puts "    Current_id: #{current_id}. Phrase head" end
+                        if verbose then STDERR.puts "    Current_id: #{current_id}. Ends up under ('root') #{root}" end
                         @reversed_tree[node] = root
                         if root == 0
                             @under0 << node
@@ -78,17 +116,20 @@ def process_primary_tree(primary_tree, primary_labels, current_id, term_ids,phra
                         #root = node.gsub("#{sent_id}.","").to_i
                         @reversed_labels[node] = "#{labels[nodeindex]}-#{cat}-#{phraselabel}"
                     else
-                        if verbose then STDERR.puts "    Not a head" end
+                        if verbose then STDERR.puts "    Current_id: #{current_id}. Not a head" end
+                        if verbose then STDERR.puts "    Current_id: #{current_id}. Ends up under ('head') #{head}" end
                         @reversed_tree[node] = head #next_level[head_label_index]
                         @reversed_labels[node] = labels[nodeindex]
                     end
                 end
             end
         end
+        #if verbose then STDERR.puts "Next level: #{next_level}" end
+       
         next_level.each.with_index do |node,nodeindex|
-            if verbose then STDERR.puts "  Nonterminal run. Node: #{node}" end
+            if verbose then STDERR.puts "  Current_id: #{current_id}. Nonterminal run. Node: #{node}" end
             if !term_ids.include?(node)
-                if verbose then STDERR.puts "    Nonterminal node" end
+                if verbose then STDERR.puts "    Current_id: #{current_id}. Node: #{node}. Nonterminal node" end
                 #root = current_id.gsub("#{sent_id}.","").to_i
                 if cat != "Top" #!head.nil?
                     root = head.clone#.gsub("#{sent_id}.","").to_i
@@ -98,22 +139,33 @@ def process_primary_tree(primary_tree, primary_labels, current_id, term_ids,phra
                 #if root != 0
                 #    root = next_level[head_label_index].gsub("#{sent_id}.","").to_i
                 #end
-                if verbose then STDERR.puts "    Root #{root}" end
+                if verbose then STDERR.puts "    Current_id: #{current_id}. Going down. Root #{root}" end
                 process_primary_tree(primary_tree, primary_labels, node, term_ids, phrases, root, sent_id, phraselabel,verbose)
             end
         end
+        if verbose then STDERR.puts "    Current_id: #{current_id}. Going up" end
         break
     end 
-    @underoldroot.keys.each do |node|
-        @reversed_tree[node] = @newroot
-    end
+    mainroot = 0
     if @under0.length > 1
         @under0.each do |node|
-            if node != @newroot
-                @reversed_tree[node] = @newroot
+            if !@reversed_labels[node].include?("PH")
+                mainroot = node.clone
+                break
             end
         end
+        @under0.each do |node|
+            if node != mainroot
+                @reversed_tree[node] = mainroot
+            end
+        end
+    else
+        mainroot = @newroot.clone
     end
+    @underoldroot.keys.each do |node|
+        @reversed_tree[node] = mainroot
+    end
+    
     #return [reversed_tree,reversed_labels]
 end
 
@@ -173,7 +225,8 @@ subcorpora.each do |subcorpus|
             end
             
         end
-        #STDERR.puts primary_tree
+        #STDERR.puts "*** #{primary_tree["Romn_Lundqvist-Ingentobak.20.5"]} ***"
+        #abort
         @underoldroot = {}
         @reversed_tree = {}
         @reversed_labels = {}
@@ -184,7 +237,7 @@ subcorpora.each do |subcorpus|
         outputfile.puts "# subcorpus = #{subcorpus_id}"
         outputfile.puts "# sent_id = #{sent_id}"
         term_ids.sort.each do |term_id|
-            #STDERR.puts term_id
+            STDERR.puts term_id
             info = words[term_id]
             
             outputfile.puts "#{nodeid_to_integer(sent_id,term_id)}\t#{info["word"]}\t#{info["lemma"]}\t#{info["pos"]}\t#{info["msd2"]}\t#{info["msd"]}\t#{nodeid_to_integer(sent_id,@reversed_tree[term_id])}\t#{@reversed_labels[term_id]}\t\t"

@@ -1,7 +1,49 @@
 # corpus = test
 # subcorpus = Romn_Lundqvist-Ingentobak
-# sent_id = Romn_Lundqvist-Ingentobak.32
-1	Bakom	bakom	PE	-.-.-	PE.-	-994	HD-PP-RA		
-2	det	den	PO	-.-.-	PO.DEF.SIN.NEU.SUB/OBJ.-	4	DT		
-3	smala	smal	AJ	-.-.-	AJ.POS.SIN.DEF.UTR/NEU.-	4	MD		
-4	palmstråket	palm|stråk	NN	-.-.-	NN.NEU.SIN.DEF	1	HD-NP-OO		
+# sent_id = Romn_Lundqvist-Ingentobak.34
+1001	Längre	lång	AJ	-.-.-	AJ.KOM.SIN/PLU.IND/DEF.UTR/NEU.-	1002	MD		
+1002	in	in	AB	-.-.-	AB.-.-	1003	HD-AbP-MD		
+1003	i	i	PE	-.-.-	PE.-	1022	HD-PP-RA		
+1004	landet	land	NN	-.-.-	NN.NEU.SIN.DEF	1003	OO		
+1005	till	till	PE	-.-.-	PE.-	1022	HD-PP-RA		
+1006	flera	flera	AJ	-.-.-	AJ.KOM.SIN/PLU.IND/DEF.UTR/NEU.-	1007	MD		
+1007	tusen	tusen	NU	-.-.-	NU.-	1008	HD-NuP-DT		
+1008	meters	meter	NN	-.GEN.-	NN.UTR.SIN.IND	1009	HD-NP-DT		
+1009	höjd	höjd	NN	-.-.-	NN.UTR.SIN.IND	1005	HD-NP-OO		
+1010	,	_	SY	-.-.-	SY.DEL	1026	--		
+1011	jättar	jätte	NN	-.-.-	NN.UTR.PLU.IND	1022	HD-NP-SB		
+1012	som	som	SU	-.-.-	SU.-	1011	HD-SuP-MD		
+1013	samlade	samla	VB	-.-.-	VB.IND.AKT.PRT	1012	HD-S-OO		
+1014	den	den	PO	-.-.-	PO.DEF.SIN.UTR.SUB/OBJ.-	1020	DT		
+1015	ur	ur	PE	-.-.-	PE.-	1017	HD-PP-RA		
+1016	haven	hav	NN	-.-.-	NN.NEU.PLU.DEF	1015	OO		
+1017	stigna	stigen	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1020	HD-AjP-MD		
+1018	,	_	SY	-.-.-	SY.DEL	1026	--		
+1019	monsun-burna	monsun|buren	AJ	-.-.-	AJ.POS.SIN.DEF.UTR/NEU.-	1020	MD		
+1020	fukten	fukt	NN	-.-.-	NN.UTR.SIN.DEF	1013	HD-NP-OO		
+1021	,	_	SY	-.-.-	SY.DEL	1026	--		
+1022	gjorde	göra	VB	-.-.-	VB.IND.AKT.PRT	1026	HD-S-KL		
+1023	moln	moln	NN	-.-.-	NN.NEU.PLU.IND	1022	OO		
+1024	av	av	PE	-.-.-	PE.-	1022	HD-PP-MD		
+1025	den	den	PO	-.-.-	PO.DEF.SIN.UTR.SUB/OBJ.-	1024	OO		
+1026	och	och	KO	-.-.-	KO.-	0	PH-KoP---		
+1027	höll	hålla	VB	-.-.-	VB.IND.AKT.PRT	1028	ME-VBM-HD		
+1028	kvar	kvar	AB	-.-.-	AB.-.-	1026	PL-S-KL		
+1029	molnen	moln	NN	-.-.-	NN.NEU.PLU.DEF	1028	OO		
+1030	tills	tills	SU	-.-.-	SU.-	1028	HD-SuP-MD		
+1031	de	de	PO	-.-.-	PO.DEF.PLU.UTR/NEU.SUB.-	1032	SB		
+1032	blev	bli	VB	-.-.-	VB.IND.AKT.PRT	1030	HD-S-OO		
+1033	så	så	AB	-.-.-	AB.-.-	1034	HD-AbP-MD		
+1034	tjocka	tjock	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1032	HD-AjP-SP		
+1035	att	att	SU	-.-.-	SU.-	1033	HD-SuP-JF		
+1036	de	de	PO	-.-.-	PO.DEF.PLU.UTR/NEU.SUB.-	1037	SB		
+1037	brast	brista	VB	-.-.-	VB.IND.AKT.PRT	1038	HD-S-KL		
+1038	och	och	KO	-.-.-	KO.-	1035	PH-KoP-OO		
+1039	gav	ge	VB	-.-.-	VB.IND.AKT.PRT	1038	HD-S-KL		
+1040	sitt	sin	PO	-.-.-	PO.DEF.SIN.NEU.PSS.-	1041	DT		
+1041	vatten	vatten	NN	-.-.-	NN.NEU.SIN.IND	1039	HD-NP-OO		
+1042	åter	åter	AB	-.-.-	AB.-.-	1039	MD		
+1043	till	till	PE	-.-.-	PE.-	1039	HD-PP-OA		
+1044	jorden	jord	NN	-.-.-	NN.UTR.SIN.DEF	1043	OO		
+1045	.	_	SY	-.-.-	SY.DEL	1026	--		
+
