@@ -1,10 +1,21 @@
-#17 and 34 fixed by dispreferring PH-roots: but it is reliable?
-#316?
-#MWEs like "reste sig" in 32 and "höll kvar" in 34: change order
+#ask YG: något annat än palmer?
+#17 and 34 fixed by dispreferring PH-roots: but is it reliable?
+#463: OO to "det där" förlorad
+#headless: treat more systematically depending on type?
+## use sec_edge when possible (coordination?) (både i och in 20)
+## "full" MWE: merge in advance, treat as a unit
+## "partial" MWE: (see ###): go down a phrase if it's a ??M, take its head
+###MWEs like "reste sig" in 32 and "höll kvar" in 34: change order: if an NT is a head, take its head
+## headless NPs?
+## other stragegies: use first, use root, go down? Maybe not needed?
+## multiple heads in coordination?
+
+
+
+
 #convert ids
-#headless phrases etc.
+
 #secondary tree
-#conversion
 #tokenization, MWE etc.
 verbose = ARGV[1]
 if verbose.nil?
@@ -14,7 +25,7 @@ end
 require "Nokogiri"
 
 def nodeid_to_integer(sent_id,node_id)
-    STDERR.puts "..#{node_id}"
+    #STDERR.puts "..#{node_id}"
     if node_id != 0
         id = node_id.gsub("#{sent_id}.","")
         #id = id.to_i - 1000
@@ -75,12 +86,15 @@ def process_primary_tree(primary_tree, primary_labels, current_id, term_ids,phra
                         head = node.clone
                         head_label_index = nodeindex
                         if verbose then STDERR.puts "Current_id: #{current_id} Assigned first node as a head: #{head}" end
+                        STDERR.puts "Current_id: #{current_id} FIRST NODE AS HEAD #{head}"
                         break
                     end
                 end
                 if head_label_index.nil?
                     if verbose then STDERR.puts "Current_id: #{current_id} No first node found. Assigning root #{root} as head" end
                     head = root.clone
+                    STDERR.puts "Current_id: #{current_id} ROOT AS HEAD #{head}"
+                    #abort
                 end
             end
         end
@@ -162,6 +176,9 @@ def process_primary_tree(primary_tree, primary_labels, current_id, term_ids,phra
     else
         mainroot = @newroot.clone
     end
+    if @newroot.nil?
+        mainroot = root.clone
+    end
     @underoldroot.keys.each do |node|
         @reversed_tree[node] = mainroot
     end
@@ -190,7 +207,7 @@ subcorpora.each do |subcorpus|
         primary_labels = Hash.new{|hash, key| hash[key] = Array.new}
         secondary_tree = Hash.new{|hash, key| hash[key] = Array.new}
         sent_id = sentence["id"]
-        STDERR.puts sent_id
+        #STDERR.puts sent_id
         words = Hash.new{|hash, key| hash[key] = Hash.new}
         phrases = {}
         
@@ -237,7 +254,7 @@ subcorpora.each do |subcorpus|
         outputfile.puts "# subcorpus = #{subcorpus_id}"
         outputfile.puts "# sent_id = #{sent_id}"
         term_ids.sort.each do |term_id|
-            STDERR.puts term_id
+            #STDERR.puts term_id
             info = words[term_id]
             
             outputfile.puts "#{nodeid_to_integer(sent_id,term_id)}\t#{info["word"]}\t#{info["lemma"]}\t#{info["pos"]}\t#{info["msd2"]}\t#{info["msd"]}\t#{nodeid_to_integer(sent_id,@reversed_tree[term_id])}\t#{@reversed_labels[term_id]}\t\t"
