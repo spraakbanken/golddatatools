@@ -17,6 +17,13 @@
 
 #secondary tree
 #tokenization, MWE etc.
+
+#proper names: restore info
+#verbal particles
+#adjectives: adverbs? masc, fem?
+#graphical connection
+
+
 verbose = ARGV[1]
 if verbose.nil?
     verbose = false
