@@ -52,7 +52,7 @@ def deal_with_mwes(primary_tree, current_id, phrases, term_ids, words, verbose)
         if verbose then STDERR.puts "Current_id: #{current_id}" end
         if verbose then STDERR.puts "Current_id: #{current_id} Next level: #{next_level}" end
         #STDIN.getch
-        next_level.each do |node|
+        next_level.each.with_index do |node,nodeindex|
             if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node}" end
             if !term_ids.include?(node)
                 if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal" end
@@ -81,9 +81,11 @@ def deal_with_mwes(primary_tree, current_id, phrases, term_ids, words, verbose)
                         
                         if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal MWE Restructuring the tree" end
                                 
-                        @primary_tree[current_id].delete(node)
-                        @primary_tree[current_id] << head
+                        @primary_tree[current_id][nodeindex] = head.clone
+                        #@primary_tree[current_id] << head
+                        #@primary_labels[current_id][nodeindex] = @primary_labels[node].clone
                         @primary_tree.delete(node)
+                        #@reversed_labels[head] = @primary_labels[node].clone
                         #@primary_tree[head] = []
                         #change labels, too
                         mwe.each do |mwenode|
@@ -325,20 +327,24 @@ subcorpora.each do |subcorpus|
         @newroot = nil
         @under0 = []
         @primary_tree = primary_tree.clone
-        #@primary_tree.each_pair do |key,value|
-        #    STDERR.puts "#{key},#{value}"
-        #end
-        #STDERR.puts ""
+        @primary_labels = primary_labels.clone
+        @primary_tree.each_pair do |key,value|
+            STDERR.puts "#{key},#{value},#{@primary_labels[key]}"
+            
+        end
+        STDERR.puts ""
         deal_with_mwes(primary_tree, "#{sent_id}.0", phrases, term_ids, words, verbose)
-        #@primary_tree.each_pair do |key,value|
-        #    STDERR.puts "#{key},#{value}"
-        #end
+        @primary_tree.each_pair do |key,value|
+            STDERR.puts "#{key},#{value},#{@primary_labels[key]}"
+            
+        end
         #STDERR.puts ""
         #STDERR.puts @reversed_tree
         #STDERR.puts ""
         #STDERR.puts @reversed_labels
         #STDERR.puts ""
         primary_tree = @primary_tree.clone
+        primary_labels = @primary_labels.clone
         #abort
         process_primary_tree(primary_tree, primary_labels, "#{sent_id}.0", term_ids, phrases, 0, sent_id,"",verbose)
         outputfile.puts "# corpus = #{filename}"

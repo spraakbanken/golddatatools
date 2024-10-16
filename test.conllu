@@ -1,18 +1,25 @@
 # corpus = test
 # subcorpus = Romn_Lundqvist-Ingentobak
-# sent_id = Romn_Lundqvist-Ingentobak.33
-1001	Först	först	AJ	-.-.-	AJ.SUV.SIN/PLU.IND.UTR/NEU.-	1002	MD		
-1002	till	till	PE	-.-.-	PE.-	0	HD-PP---		
-1003	några	någon	PO	-.-.-	PO.IND.PLU.UTR/NEU.-.-	1004	MD		
-1004	hundra	hundra	NU	-.-.-	NU.-	1005	HD-NuP-DT		
-1005	meters	meter	NN	-.GEN.-	NN.UTR.SIN.IND	1006	HD-NP-DT		
-1006	höjd	höjd	NN	-.-.-	NN.UTR.SIN.IND	1002	HD-NP-OO		
-1007	,	_	SY	-.-.-	SY.DEL	1002	--		
-1008	med	med	PE	-.-.-	PE.-	1006	HD-PP-MD		
-1009	så	så	AB	-.-.-	AB.-.-	1013	HD-AjP-MD		
-1010	gott	god	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	1009	HD-ABM		
-1011	som	som	SU	-.-.-	SU.-	1009	HD-ABM		
-1012	lodräta	lodrät	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1009	MD		
-1013	väggar	vägg	NN	-.-.-	NN.UTR.PLU.IND	1008	HD-NP-OO		
-1014	.	_	SY	-.-.-	SY.DEL	1002	--		
+# sent_id = Romn_Lundqvist-Ingentobak.58
+1001	Han	han	PO	-.-.-	PO.DEF.SIN.UTR.SUB.-	1002	SB		
+1002	har	ha	VB	-.-.-	VB.IND.AKT.PRS	0	HD-S---		
+1003	fått	få	VB	-.-.-	VB.SPM.AKT.-	1002	HD-VP-IV		
+1004	meddelande	meddelande	NN	-.-.-	NN.NEU.SIN.IND	1003	HD-NP-OO		
+1005	om	om	PE	-.-.-	PE.-	1004	HD-PP-MD		
+1006	den	den	PO	-.-.-	PO.DEF.SIN.UTR.SUB/OBJ.-	1007	DT		
+1007	saken	sak	NN	-.-.-	NN.UTR.SIN.DEF	1005	HD-NP-OO		
+1008	redan	redan	AB	-.-.-	AB.-.-	1009	MD		
+1009	för	för	PE	-.-.-	PE.-	1003	HD-PP-MD		
+1010	ett	en	PO	-.-.-	PO.IND.SIN.NEU.-.-	1011	ME-POM-DT		
+1011	par	par	NN	-.-.-	NN.NEU.SIN.IND	1009	HD-NP-OO		
+1012	månader	månad	NN	-.-.-	NN.UTR.PLU.IND	1011	MD		
+1013	sedan	sedan	PE	-.-.-	PE.-	1009	HD-PEM		
+1014	från	från	PE	-.-.-	PE.-	1003	HD-PP-MD		
+1015	sin	sin	PO	-.-.-	PO.DEF.SIN.UTR.PSS.-	1016	DT		
+1016	chef	chef	NN	-.-.-	NN.UTR.SIN.IND	1014	HD-NP-OO		
+1017	,	_	SY	-.-.-	SY.DEL	1002	--		
+1018	residenten	resident	NN	-.-.-	NN.UTR.SIN.DEF	1016	HD-NP-AN		
+1019	i	i	PE	-.-.-	PE.-	1018	HD-PP-MD		
+1020	Ambon	Ambon	EN	-.-.-	EN.-	1019	OO		
+1021	.	_	SY	-.-.-	SY.DEL	1002	--		
 
