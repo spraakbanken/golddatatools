@@ -1,0 +1,18 @@
+# corpus = test
+# subcorpus = Romn_Lundqvist-Ingentobak
+# sent_id = Romn_Lundqvist-Ingentobak.33
+1001	Först	först	AJ	-.-.-	AJ.SUV.SIN/PLU.IND.UTR/NEU.-	1002	MD		
+1002	till	till	PE	-.-.-	PE.-	0	HD-PP---		
+1003	några	någon	PO	-.-.-	PO.IND.PLU.UTR/NEU.-.-	1004	MD		
+1004	hundra	hundra	NU	-.-.-	NU.-	1005	HD-NuP-DT		
+1005	meters	meter	NN	-.GEN.-	NN.UTR.SIN.IND	1006	HD-NP-DT		
+1006	höjd	höjd	NN	-.-.-	NN.UTR.SIN.IND	1002	HD-NP-OO		
+1007	,	_	SY	-.-.-	SY.DEL	1002	--		
+1008	med	med	PE	-.-.-	PE.-	1006	HD-PP-MD		
+1009	så	så	AB	-.-.-	AB.-.-	1013	HD-AjP-MD		
+1010	gott	god	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	1009	HD-ABM		
+1011	som	som	SU	-.-.-	SU.-	1009	HD-ABM		
+1012	lodräta	lodrät	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1009	MD		
+1013	väggar	vägg	NN	-.-.-	NN.UTR.PLU.IND	1008	HD-NP-OO		
+1014	.	_	SY	-.-.-	SY.DEL	1002	--		
+

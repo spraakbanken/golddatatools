@@ -1,3 +1,5 @@
+require 'io/console'
+
 #?: do embedded *Ms exist?
 
 #17 and 34 fixed by dispreferring PH-roots: but is it reliable?
@@ -44,40 +46,53 @@ def nodeid_to_integer(sent_id,node_id)
 end
 
 def deal_with_mwes(primary_tree, current_id, phrases, term_ids, words, verbose)
+    if verbose then STDERR.puts "New method" end
     until false == true do
         next_level = primary_tree[current_id]
         if verbose then STDERR.puts "Current_id: #{current_id}" end
         if verbose then STDERR.puts "Current_id: #{current_id} Next level: #{next_level}" end
+        #STDIN.getch
         next_level.each do |node|
             if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node}" end
             if !term_ids.include?(node)
                 if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal" end
                 cat = phrases[node]
+                #STDIN.getch
                 if cat[2] == "M" #MWE
                     if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal MWE" end
-                    
-                    mwe = primary_tree[node]
+                    #STDIN.getch
+                    mwe = primary_tree[node].clone
+                    if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal MWE #{mwe}" end
                     if mwe.length > 1 #non_analyzable
                         head = nil
-                        next_level.each do |mwenode|
+                        mwe.each do |mwenode|
+                            if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal MWE Non-analyzable Looking for head" end
                             if words[mwenode]["pos"] == cat[0..1]
-                                flag = true
+                                #flag = true
                                 head = mwenode.clone
-                                
+                                if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal MWE Non-analyzable Head #{head}" end
                                 break
                             end
                         end
                         if head.nil? #assign head even if there was no pos match
-                            head = next_level[0]
+                            head = mwe[0].clone
+                            if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal MWE Non-analyzable No real head found #{head}" end
                         end
                         
-                        @primary_tree[current_id].delete(mwe)
+                        if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal MWE Restructuring the tree" end
+                                
+                        @primary_tree[current_id].delete(node)
                         @primary_tree[current_id] << head
-                        @primary_tree[head] = []
+                        @primary_tree.delete(node)
+                        #@primary_tree[head] = []
                         #change labels, too
-                        next_level.each do |mwenode|
+                        mwe.each do |mwenode|
+                            if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal MWE Reassigning heads" end
+                                
                             if mwenode != head
-                                @primary_tree[head] << mwenode
+                                #@primary_tree[head] << mwenode
+                                @reversed_tree[mwenode] = head #next_level[head_label_index]
+                                @reversed_labels[mwenode] = "HD-#{cat}"
                             end
                         end
                     else
@@ -85,10 +100,13 @@ def deal_with_mwes(primary_tree, current_id, phrases, term_ids, words, verbose)
                     end
                 else
                     if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal Usual" end
+                    #STDIN.getch
                     deal_with_mwes(primary_tree, node, phrases, term_ids, words, verbose)
                 end
+                
             end
         end
+        if verbose then STDERR.puts "Current_id: #{current_id} Going up" end
         break
     end
 end
@@ -143,14 +161,14 @@ def process_primary_tree(primary_tree, primary_labels, current_id, term_ids, phr
                         head = node.clone
                         head_label_index = nodeindex
                         if verbose then STDERR.puts "Current_id: #{current_id} Assigned first node as a head: #{head}" end
-                        STDERR.puts "Current_id: #{current_id} FIRST NODE AS HEAD #{head}"
+                        #STDERR.puts "Current_id: #{current_id} FIRST NODE AS HEAD #{head}"
                         break
                     end
                 end
                 if head_label_index.nil?
                     if verbose then STDERR.puts "Current_id: #{current_id} No first node found. Assigning root #{root} as head" end
                     head = root.clone
-                    STDERR.puts "Current_id: #{current_id} ROOT AS HEAD #{head}"
+                    #STDERR.puts "Current_id: #{current_id} ROOT AS HEAD #{head}"
                     #abort
                 end
             end
@@ -307,12 +325,21 @@ subcorpora.each do |subcorpus|
         @newroot = nil
         @under0 = []
         @primary_tree = primary_tree.clone
-        STDERR.puts @primary_tree
-        STDERR.puts ""
-        deal_with_mwes(primary_tree,"#{sent_id}.0", phrases, term_ids, words, verbose)
-        STDERR.puts @primary_tree
+        #@primary_tree.each_pair do |key,value|
+        #    STDERR.puts "#{key},#{value}"
+        #end
+        #STDERR.puts ""
+        deal_with_mwes(primary_tree, "#{sent_id}.0", phrases, term_ids, words, verbose)
+        #@primary_tree.each_pair do |key,value|
+        #    STDERR.puts "#{key},#{value}"
+        #end
+        #STDERR.puts ""
+        #STDERR.puts @reversed_tree
+        #STDERR.puts ""
+        #STDERR.puts @reversed_labels
+        #STDERR.puts ""
         primary_tree = @primary_tree.clone
-        abort
+        #abort
         process_primary_tree(primary_tree, primary_labels, "#{sent_id}.0", term_ids, phrases, 0, sent_id,"",verbose)
         outputfile.puts "# corpus = #{filename}"
         outputfile.puts "# subcorpus = #{subcorpus_id}"
