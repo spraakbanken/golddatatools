@@ -1,7 +1,8 @@
-#ask YG: något annat än palmer?
+#?: do embedded *Ms exist?
+
 #17 and 34 fixed by dispreferring PH-roots: but is it reliable?
-#463: OO to "det där" förlorad
 #headless: treat more systematically depending on type?
+#463: OO to "det där" förlorad
 ## use sec_edge when possible (coordination?) (både i och in 20)
 ## "full" MWE: merge in advance, treat as a unit
 ## "partial" MWE: (see ###): go down a phrase if it's a ??M, take its head
@@ -42,8 +43,57 @@ def nodeid_to_integer(sent_id,node_id)
     return id
 end
 
+def deal_with_mwes(primary_tree, current_id, phrases, term_ids, words, verbose)
+    until false == true do
+        next_level = primary_tree[current_id]
+        if verbose then STDERR.puts "Current_id: #{current_id}" end
+        if verbose then STDERR.puts "Current_id: #{current_id} Next level: #{next_level}" end
+        next_level.each do |node|
+            if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node}" end
+            if !term_ids.include?(node)
+                if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal" end
+                cat = phrases[node]
+                if cat[2] == "M" #MWE
+                    if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal MWE" end
+                    
+                    mwe = primary_tree[node]
+                    if mwe.length > 1 #non_analyzable
+                        head = nil
+                        next_level.each do |mwenode|
+                            if words[mwenode]["pos"] == cat[0..1]
+                                flag = true
+                                head = mwenode.clone
+                                
+                                break
+                            end
+                        end
+                        if head.nil? #assign head even if there was no pos match
+                            head = next_level[0]
+                        end
+                        
+                        @primary_tree[current_id].delete(mwe)
+                        @primary_tree[current_id] << head
+                        @primary_tree[head] = []
+                        #change labels, too
+                        next_level.each do |mwenode|
+                            if mwenode != head
+                                @primary_tree[head] << mwenode
+                            end
+                        end
+                    else
+                        
+                    end
+                else
+                    if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal Usual" end
+                    deal_with_mwes(primary_tree, node, phrases, term_ids, words, verbose)
+                end
+            end
+        end
+        break
+    end
+end
 
-def process_primary_tree(primary_tree, primary_labels, current_id, term_ids,phrases,root, sent_id, phraselabel,verbose)
+def process_primary_tree(primary_tree, primary_labels, current_id, term_ids, phrases, root, sent_id, phraselabel,verbose)
     #current_id = "#{sent_id}.0"
     #root = 0
     cat = phrases[current_id]
@@ -256,6 +306,13 @@ subcorpora.each do |subcorpus|
         @reversed_labels = {}
         @newroot = nil
         @under0 = []
+        @primary_tree = primary_tree.clone
+        STDERR.puts @primary_tree
+        STDERR.puts ""
+        deal_with_mwes(primary_tree,"#{sent_id}.0", phrases, term_ids, words, verbose)
+        STDERR.puts @primary_tree
+        primary_tree = @primary_tree.clone
+        abort
         process_primary_tree(primary_tree, primary_labels, "#{sent_id}.0", term_ids, phrases, 0, sent_id,"",verbose)
         outputfile.puts "# corpus = #{filename}"
         outputfile.puts "# subcorpus = #{subcorpus_id}"
