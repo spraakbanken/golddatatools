@@ -1,6 +1,8 @@
 require 'io/console'
 
-#?: do embedded *Ms exist?
+#?: do embedded *Ms exist? Yes: Romn_Holmsen-Polynesiskpassad.102 and 376. Are they correct, though?
+#? Decide the systematic way to deal with coordination
+
 
 #17 and 34 fixed by dispreferring PH-roots: but is it reliable?
 #headless: treat more systematically depending on type?
@@ -328,16 +330,16 @@ subcorpora.each do |subcorpus|
         @under0 = []
         @primary_tree = primary_tree.clone
         @primary_labels = primary_labels.clone
-        @primary_tree.each_pair do |key,value|
-            STDERR.puts "#{key},#{value},#{@primary_labels[key]}"
-            
-        end
-        STDERR.puts ""
+        #@primary_tree.each_pair do |key,value|
+        #    STDERR.puts "#{key},#{value},#{@primary_labels[key]}"
+        #    
+        #end
+        #STDERR.puts ""
         deal_with_mwes(primary_tree, "#{sent_id}.0", phrases, term_ids, words, verbose)
-        @primary_tree.each_pair do |key,value|
-            STDERR.puts "#{key},#{value},#{@primary_labels[key]}"
-            
-        end
+        #@primary_tree.each_pair do |key,value|
+        #    STDERR.puts "#{key},#{value},#{@primary_labels[key]}"
+        #    
+        #end
         #STDERR.puts ""
         #STDERR.puts @reversed_tree
         #STDERR.puts ""
