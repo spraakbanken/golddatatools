@@ -1,53 +1,30 @@
 # corpus = test
 # subcorpus = Romn_Lundqvist-Ingentobak
-# sent_id = Romn_Lundqvist-Ingentobak.22
-1001	I	i	PE	-.-.-	PE.-	1003	HD-PP-RA		
-1002	Kaimana	Kaimana	EN	-.-.-	EN.-	1001	OO		
-1003	fulländade	fullända	VB	-.-.-	VB.IND.AKT.PRT	0	HD-S---		
-1004	han	han	PO	-.-.-	PO.DEF.SIN.UTR.SUB.-	1003	SB		
-1005	denna	denna	PO	-.-.-	PO.DEF.SIN.UTR.SUB/OBJ.-	1006	DT		
-1006	konst	konst	NN	-.-.-	NN.UTR.SIN.IND	1003	HD-NP-OO		
-1007	i	i	PE	-.-.-	PE.-	1003	HD-PP-MD		
-1008	sådan	sådan	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	1009	HD-AjP-MD	1009:HD-AjP-MD|1007:ME	
-1009	grad	grad	NN	-.-.-	NN.UTR.SIN.IND	1007	HD-NP-OO	1007:HD-NP-OO|1007:ME	
-1010	att	att	SU	-.-.-	SU.-	1008	HD-SuP-JF		
-1011	han	han	PO	-.-.-	PO.DEF.SIN.UTR.SUB.-	1013	SB		
-1012	ofta	ofta	AB	-.-.-	AB.-.-	1013	MD		
-1013	njöt	njuta	VB	-.-.-	VB.IND.AKT.PRT	1010	HD-S-OO		
-1014	av	av	PE	-.-.-	PE.-	1013	HD-PP-MD		
-1015	att	att	SU	-.-.-	SU.-	1014	HD-SuP-OO		
-1016	ha	ha	VB	-.-.-	VB.INF.AKT.-	1015	HD-VP-OO		
-1017	en	en	PO	-.-.-	PO.IND.SIN.UTR.-.-	1020	DT		
-1018	så	så	AB	-.-.-	AB.-.-	1019	HD-AbP-MD		
-1019	vettig	vettig	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	1020	HD-AjP-MD		
-1020	människa	människa	NN	-.-.-	NN.UTR.SIN.IND	1016	HD-NP-OO		
-1021	som	som	SU	-.-.-	SU.-	1018	HD-SuP-JF		
-1022	sig	sig	PO	-.-.-	PO.DEF.SIN/PLU.UTR/NEU.OBJ.-	1021	MD-NP-OO		
-1023	själv	själv	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	1022	MD		
-1024	att	att	SU	-.-.-	SU.-	1020	HD-SuP-MD		
-1025	umgås	umgås	VB	-.-.-	VB.INF.SFO.-	1024	HD-VP-OO		
-1026	med	med	PE	-.-.-	PE.-	1025	MD		
-1027	,	_	SY	-.-.-	SY.DEL	1003	--		
-1028	en	en	PO	-.-.-	PO.IND.SIN.UTR.-.-	1029	DT		
-1029	människa	människa	NN	-.-.-	NN.UTR.SIN.IND	1020	HD-NP-AN	1020:HD-NP-AN|1036:SB|1032:SB	
-1030	som	som	SU	-.-.-	SU.-	1029	HD-SuP-MD		
-1031	överallt	överallt	AB	-.-.-	AB.-.-	1032	RA		
-1032	fann	finna	VB	-.-.-	VB.IND.AKT.PRT	1035	HD-S-KL		
-1033	sig	sig	PO	-.-.-	PO.DEF.SIN/PLU.UTR/NEU.OBJ.-	1032	OO	1032:OO|1032:ME	
-1034	tillrätta	tillrätta	AB	-.-.-	AB.-.-	1032	OA	1032:OA|1032:ME	
-1035	och	och	KO	-.-.-	KO.-	1030	PH-KoP-OO		
-1036	gjorde	göra	VB	-.-.-	VB.IND.AKT.PRT	1035	HD-S-KL		
-1037	det	den	PO	-.-.-	PO.DEF.SIN.NEU.SUB/OBJ.-	1038	DT		
-1038	bästa	bra	AJ	-.-.-	AJ.SUV.SIN/PLU.DEF.UTR/NEU.-	1036	PH-NP-OO		
-1039	av	av	PE	-.-.-	PE.-	1038	HD-PP-MD		
-1040	varje	varje	PO	-.-.-	PO.IND.SIN.UTR.-.-	1041	DT		
-1041	situation	situation	NN	-.-.-	NN.UTR.SIN.IND	1039	HD-NP-OO		
-1042	både	både	KO	-.-.-	KO.-	1036	PH-KoP-MD		
-1043	för	för	PE	-.-.-	PE.-	1042	HD-PP-KL		
-1044	sig	sig	PO	-.-.-	PO.DEF.SIN/PLU.UTR/NEU.OBJ.-	1043	HD-NP-OO		
-1045	själv	själv	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	1044	MD		
-1046	och	och	KO	-.-.-	KO.-	1042	HD-KOM		
-1047	för	för	PE	-.-.-	PE.-	1042	HD-PP-KL		
-1048	andra	andra	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1047	OO		
-1049	.	_	SY	-.-.-	SY.DEL	1003	--		
+# sent_id = Romn_Lundqvist-Ingentobak.17
+1001	Barthel	Barthel	EN	-.-.-	EN.-	1002	SB		
+1002	var	vara	VB	-.-.-	VB.IND.AKT.PRT	1015	--		
+1003	nämligen	nämligen	AB	-.-.-	AB.-.-	1002	MD		
+1004	inte	inte	AB	-.-.-	AB.-.-	1002	MD		
+1005	alls	alls	AB	-.-.-	AB.-.-	1002	MD		
+1006	någon	någon	PO	-.-.-	PO.IND.SIN.UTR.-.-	1007	DT		
+1007	söderhavs-entusiast	Söderhavs|entusiast	NN	-.-.-	NN.UTR.SIN.IND	1002	SP		
+1008	,	_	SY	-.-.-	SY.DEL	1015	--		
+1009	han	han	PO	-.-.-	PO.DEF.SIN.UTR.SUB.-	1010	SB	1010:SB|1016:SB	
+1010	var	vara	VB	-.-.-	VB.IND.AKT.PRT	1015	KL		
+1011	en	en	PO	-.-.-	PO.IND.SIN.UTR.-.-	1014	DT		
+1012	civiliserad	civiliserad	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	1014	MD		
+1013	holländsk	holländsk	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	1014	MD		
+1014	tjänsteman	tjänsteman	NN	-.-.-	NN.UTR.SIN.IND	1010	SP		
+1015	och	och	KO	-.-.-	KO.-	0	--		
+1016	föredrog	föredra	VB	-.-.-	VB.IND.AKT.PRT	1015	KL		
+1017	kanalernas	kanal	NN	-.GEN.-	NN.UTR.PLU.DEF	1018	DT		
+1018	Amsterdam	Amsterdam	EN	-.-.-	EN.-	1016	OO		
+1019	framför	framför	PE	-.-.-	PE.-	1016	MD		
+1020	allt	all	PO	-.-.-	PO.IND.SIN.NEU.-.-	1021	DT		
+1021	annat	annan	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	1019	OO		
+1022	,	_	SY	-.-.-	SY.DEL	1015	--		
+1023	särskilt	särskild	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	1024	MD		
+1024	före	före	PE	-.-.-	PE.-	1019	AN		
+1025	Kaimana	Kaimana	EN	-.-.-	EN.-	1024	OO		
+1026	.	_	SY	-.-.-	SY.DEL	1015	--		
 

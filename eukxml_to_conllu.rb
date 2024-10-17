@@ -1,13 +1,15 @@
 require 'io/console'
 
+#? Decide the systematic way to deal with coordination (## multiple heads in coordination?)
+
 #check labels in general and heads of MWEs in particular (currently just inheriting head node automatically, should be OK) 
-#check if we need @reversed_labels2, check if labels for MWE non-heads are OK
+#check if we need @reversed_labels2 (yes we do for 17 and 34, but what do we actually want for them?), check if labels for MWE non-heads are OK
 #Check Romn_Lundqvist-Ingentobak.45: HD in secondary edges
 
 #?: do embedded *Ms exist? Yes: Romn_Holmsen-Polynesiskpassad.102 and 376. Are they correct, though?
-#? Decide the systematic way to deal with coordination (## multiple heads in coordination?)
 #the third type of MWEs: seems to be OK?
 
+#questions to Gerlof that are already sent
 
 #17 and 34 fixed by dispreferring PH-roots: but is it reliable?
 #headless: treat more systematically depending on type? (NPs)
@@ -89,7 +91,7 @@ def deal_with_mwes(primary_tree, current_id, phrases, term_ids, words, verbose)
                                 #@primary_tree[head] << mwenode
                                 @reversed_tree[mwenode] = head #next_level[head_label_index]
                                 #@reversed_labels[mwenode] = "HD-#{cat}"
-                                @reversed_labels[mwenode] = @	primary_labels[node][mwenodeindex]
+                                @reversed_labels[mwenode] = @primary_labels[node][mwenodeindex]
                             end
                         end
                     else
