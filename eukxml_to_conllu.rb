@@ -3,6 +3,7 @@ require 'io/console'
 #?: do embedded *Ms exist? Yes: Romn_Holmsen-Polynesiskpassad.102 and 376. Are they correct, though?
 #? Decide the systematic way to deal with coordination
 #the third type of MWEs
+#check labels in general and heads of MWEs in particular (currently just inheriting head node automatically, should be OK)
 
 #17 and 34 fixed by dispreferring PH-roots: but is it reliable?
 #headless: treat more systematically depending on type?
@@ -100,7 +101,10 @@ def deal_with_mwes(primary_tree, current_id, phrases, term_ids, words, verbose)
                             end
                         end
                     else
-                        
+                        if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal MWE Analyzable" end
+                        head = mwe[0].clone
+                        @primary_tree[current_id][nodeindex] = head.clone
+                        @primary_tree.delete(node)
                     end
                 else
                     if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal Usual" end
