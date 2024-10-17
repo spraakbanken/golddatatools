@@ -1,5 +1,6 @@
 require 'io/console'
 
+# for every nonterminal, store the head (internal) and the root (external)
 #?: do embedded *Ms exist? Yes: Romn_Holmsen-Polynesiskpassad.102 and 376. Are they correct, though?
 #? Decide the systematic way to deal with coordination
 #the third type of MWEs
