@@ -1,24 +1,17 @@
 require 'io/console'
 
+#check labels in general and heads of MWEs in particular (currently just inheriting head node automatically, should be OK) 
+#check if we need @reversed_labels2, check if labels for MWE non-heads are OK
+#Check Romn_Lundqvist-Ingentobak.45: HD in secondary edges
+
 #?: do embedded *Ms exist? Yes: Romn_Holmsen-Polynesiskpassad.102 and 376. Are they correct, though?
 #? Decide the systematic way to deal with coordination (## multiple heads in coordination?)
 #the third type of MWEs: seems to be OK?
-#check labels in general and heads of MWEs in particular (currently just inheriting head node automatically, should be OK) #463: OO to "det där" förlorad
+
 
 #17 and 34 fixed by dispreferring PH-roots: but is it reliable?
 #headless: treat more systematically depending on type? (NPs)
-
 ## other stragegies: use first, use root, go down? Maybe not needed?
-
-
-
-
-
-
-
-
-
-
 
 #conversion:
 #convert ids
@@ -89,13 +82,14 @@ def deal_with_mwes(primary_tree, current_id, phrases, term_ids, words, verbose)
                         #@reversed_labels[head] = @primary_labels[node].clone
                         #@primary_tree[head] = []
                         #change labels, too
-                        mwe.each do |mwenode|
+                        mwe.each.with_index do |mwenode, mwenodeindex|
                             if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal MWE Reassigning heads" end
                                 
                             if mwenode != head
                                 #@primary_tree[head] << mwenode
                                 @reversed_tree[mwenode] = head #next_level[head_label_index]
-                                @reversed_labels[mwenode] = "HD-#{cat}"
+                                #@reversed_labels[mwenode] = "HD-#{cat}"
+                                @reversed_labels[mwenode] = @	primary_labels[node][mwenodeindex]
                             end
                         end
                     else
@@ -211,7 +205,8 @@ def process_primary_tree(primary_tree, primary_labels, current_id, term_ids, phr
                             @under0 << node
                         end
                         #root = node.gsub("#{sent_id}.","").to_i
-                        @reversed_labels[node] = "#{labels[nodeindex]}-#{cat}-#{phraselabel}"
+                        @reversed_labels[node] = phraselabel #"#{labels[nodeindex]}-#{cat}-#{phraselabel}"
+                        @reversed_labels2[node] = "#{labels[nodeindex]}-#{cat}-#{phraselabel}"
                     else
                         if verbose then STDERR.puts "    Current_id: #{current_id}. Not a head" end
                         if verbose then STDERR.puts "    Current_id: #{current_id}. Ends up under ('head') #{head}" end
@@ -246,7 +241,7 @@ def process_primary_tree(primary_tree, primary_labels, current_id, term_ids, phr
     mainroot = 0
     if @under0.length > 1
         @under0.each do |node|
-            if !@reversed_labels[node].include?("PH")
+            if !@reversed_labels2[node].include?("PH")
                 mainroot = node.clone
                 break
             end
@@ -340,6 +335,7 @@ subcorpora.each do |subcorpus|
             @underoldroot = {}
             @reversed_tree = {}
             @reversed_labels = {}
+            @reversed_labels2 = {}
             @reversed_secondary_tree = Hash.new{|hash, key| hash[key] = Array.new}
             @reversed_secondary_labels = Hash.new{|hash, key| hash[key] = Array.new}
             
