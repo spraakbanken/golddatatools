@@ -1,30 +1,28 @@
 require 'io/console'
 
-# for every nonterminal, store the head (internal) and the root (external)
 #?: do embedded *Ms exist? Yes: Romn_Holmsen-Polynesiskpassad.102 and 376. Are they correct, though?
-#? Decide the systematic way to deal with coordination
-#the third type of MWEs
-#check labels in general and heads of MWEs in particular (currently just inheriting head node automatically, should be OK)
+#? Decide the systematic way to deal with coordination (## multiple heads in coordination?)
+#the third type of MWEs: seems to be OK?
+#check labels in general and heads of MWEs in particular (currently just inheriting head node automatically, should be OK) #463: OO to "det där" förlorad
 
 #17 and 34 fixed by dispreferring PH-roots: but is it reliable?
-#headless: treat more systematically depending on type?
-#463: OO to "det där" förlorad
-## use sec_edge when possible (coordination?) (både i och in 20)
-## "full" MWE: merge in advance, treat as a unit
-## "partial" MWE: (see ###): go down a phrase if it's a ??M, take its head
-###MWEs like "reste sig" in 32 and "höll kvar" in 34: change order: if an NT is a head, take its head
-## headless NPs?
+#headless: treat more systematically depending on type? (NPs)
+
 ## other stragegies: use first, use root, go down? Maybe not needed?
-## multiple heads in coordination?
 
 
 
 
+
+
+
+
+
+
+
+#conversion:
 #convert ids
-
-#secondary tree
-#tokenization, MWE etc.
-
+#tokenization
 #proper names: restore info
 #verbal particles
 #adjectives: adverbs? masc, fem?
@@ -85,10 +83,9 @@ def deal_with_mwes(primary_tree, current_id, phrases, term_ids, words, verbose)
                         
                         if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal MWE Restructuring the tree" end
                                 
-                        @primary_tree[current_id][nodeindex] = head.clone
                         #@primary_tree[current_id] << head
                         #@primary_labels[current_id][nodeindex] = @primary_labels[node].clone
-                        @primary_tree.delete(node)
+                        
                         #@reversed_labels[head] = @primary_labels[node].clone
                         #@primary_tree[head] = []
                         #change labels, too
@@ -104,9 +101,10 @@ def deal_with_mwes(primary_tree, current_id, phrases, term_ids, words, verbose)
                     else
                         if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal MWE Analyzable" end
                         head = mwe[0].clone
-                        @primary_tree[current_id][nodeindex] = head.clone
-                        @primary_tree.delete(node)
                     end
+                    @primary_tree[current_id][nodeindex] = head.clone
+                    @primary_tree.delete(node)
+                    @mwes_replaced[node] = head.clone
                 else
                     if verbose then STDERR.puts "Current_id: #{current_id} Node: #{node} Nonterminal Usual" end
                     #STDIN.getch
@@ -182,6 +180,7 @@ def process_primary_tree(primary_tree, primary_labels, current_id, term_ids, phr
                 end
             end
         end
+        @head_by_nt[current_id] = head.clone
         if verbose then STDERR.puts "  Current_id: #{current_id} Root: #{root}" end
         if verbose then STDERR.puts "  Current_id: #{current_id} Head: #{head}" end
         #if verbose then STDERR.puts "Next level: #{next_level}" end
@@ -281,6 +280,7 @@ STDERR.puts "Parsing xml..."
 file = Nokogiri::XML(File.read("#{PATH}#{filename}.xml"))
 STDERR.puts "Looking for subcorpora..."
 subcorpora = file.css("subcorpus").to_a
+excluded_sents = {"Romn_Holmsen-Polynesiskpassad.102" => true, "Romn_Holmsen-Polynesiskpassad.376" => true}
 subcorpora.each do |subcorpus|
     subcorpus_id = subcorpus["name"]
     
@@ -292,89 +292,131 @@ subcorpora.each do |subcorpus|
         secondary_tree = Hash.new{|hash, key| hash[key] = Array.new}
         secondary_labels = Hash.new{|hash, key| hash[key] = Array.new}
         sent_id = sentence["id"]
-        #STDERR.puts sent_id
-        words = Hash.new{|hash, key| hash[key] = Hash.new}
-        phrases = {}
-        
-        #graph = sentence.css("graph")
-        #tpart = graph.css("terminals")
-        #STDERR.puts tpart
-        terminals = sentence.css("t").to_a
-        
-        terminals.each do |terminal|
-            term_id = terminal["id"]
-            words[term_id]["word"] = terminal["word"]
-            words[term_id]["pos"] = terminal["pos"]
-            words[term_id]["msd"] = terminal["msd"]
-            words[term_id]["msd2"] = terminal["msd2"]
-            words[term_id]["lemma"] = terminal["lemma"]
+        if !excluded_sents[sent_id]
+            #STDERR.puts sent_id
+            words = Hash.new{|hash, key| hash[key] = Hash.new}
+            phrases = {}
             
-        end
-        term_ids = words.keys
-
-        nonterminals = sentence.css("nt").to_a
-        nonterminals.each do |nonterminal|
-            nonterm_id = nonterminal["id"]
-            cat = nonterminal["cat"]
-            phrases[nonterm_id] = cat
-            edges = nonterminal.css("edge").to_a
-            secedges = nonterminal.css("secedge").to_a
-            #STDERR.puts nonterm_id
-            edges.each do |edge|
-                label = edge["label"]
-                idref = edge["idref"]
-                primary_tree[nonterm_id] << idref
-                primary_labels[nonterm_id] << label
+            #graph = sentence.css("graph")
+            #tpart = graph.css("terminals")
+            #STDERR.puts tpart
+            terminals = sentence.css("t").to_a
+            
+            terminals.each do |terminal|
+                term_id = terminal["id"]
+                words[term_id]["word"] = terminal["word"]
+                words[term_id]["pos"] = terminal["pos"]
+                words[term_id]["msd"] = terminal["msd"]
+                words[term_id]["msd2"] = terminal["msd2"]
+                words[term_id]["lemma"] = terminal["lemma"]
+                
             end
-            secedges.each do |secedge|
-                seclabel = secedge["label"]
-                secidref = secedge["idref"]
-                secondary_tree[nonterm_id] << secidref
-                secondary_labels[nonterm_id] << seclabel
+            term_ids = words.keys
+		    
+            nonterminals = sentence.css("nt").to_a
+            nonterminals.each do |nonterminal|
+                nonterm_id = nonterminal["id"]
+                cat = nonterminal["cat"]
+                phrases[nonterm_id] = cat
+                edges = nonterminal.css("edge").to_a
+                secedges = nonterminal.css("secedge").to_a
+                #STDERR.puts nonterm_id
+                edges.each do |edge|
+                    label = edge["label"]
+                    idref = edge["idref"]
+                    primary_tree[nonterm_id] << idref
+                    primary_labels[nonterm_id] << label
+                end
+                secedges.each do |secedge|
+                    seclabel = secedge["label"]
+                    secidref = secedge["idref"]
+                    secondary_tree[nonterm_id] << secidref
+                    secondary_labels[nonterm_id] << seclabel
+                end
+                
             end
+            #STDERR.puts "*** #{primary_tree["Romn_Lundqvist-Ingentobak.20.5"]} ***"
+            #abort
+            @underoldroot = {}
+            @reversed_tree = {}
+            @reversed_labels = {}
+            @reversed_secondary_tree = Hash.new{|hash, key| hash[key] = Array.new}
+            @reversed_secondary_labels = Hash.new{|hash, key| hash[key] = Array.new}
             
+            @newroot = nil
+            @under0 = []
+            @primary_tree = primary_tree.clone
+            @primary_labels = primary_labels.clone
+            @head_by_nt = {}
+            @root_by_nt = {}
+            @mwes_replaced = {}
+            #@primary_tree.each_pair do |key,value|
+            #    STDERR.puts "#{key},#{value},#{@primary_labels[key]}"
+            #    
+            #end
+            #STDERR.puts ""
+            deal_with_mwes(primary_tree, "#{sent_id}.0", phrases, term_ids, words, verbose)
+            #@primary_tree.each_pair do |key,value|
+            #    STDERR.puts "#{key},#{value},#{@primary_labels[key]}"
+            #    
+            #end
+            #STDERR.puts ""
+            #STDERR.puts @reversed_tree
+            #STDERR.puts ""
+            #STDERR.puts @reversed_labels
+            #STDERR.puts ""
+            primary_tree = @primary_tree.clone
+            primary_labels = @primary_labels.clone
+            #abort
+            process_primary_tree(primary_tree, primary_labels, "#{sent_id}.0", term_ids, phrases, 0, sent_id,"",verbose)
+            secondary_tree.each_pair do |nt, towardsarray|
+                seclabelarray = secondary_labels[nt]
+		    
+                towardsarray.each.with_index do |towards, towardsindex|
+                    seclabel = seclabelarray[towardsindex]
+                    @reversed_secondary_labels[towards] << seclabel
+                    if !@head_by_nt[nt].nil?
+                        towardshead = @head_by_nt[nt].clone
+                    else
+                        towardshead = @mwes_replaced[nt]
+                    end
+		    
+                    if term_ids.include?(towards)
+                        @reversed_secondary_tree[towards] << towardshead
+                    else
+                        @reversed_secondary_tree[@head_by_nt[towards]] << towardshead
+                    end
+		    
+                end
+                
+            end
+		    
+		    
+            outputfile.puts "# corpus = #{filename}"
+            outputfile.puts "# subcorpus = #{subcorpus_id}"
+            outputfile.puts "# sent_id = #{sent_id}"
+            term_ids.sort.each do |term_id|
+                #STDERR.puts term_id
+                info = words[term_id]
+                head = nodeid_to_integer(sent_id,@reversed_tree[term_id])
+                deprel = @reversed_labels[term_id]
+                if @reversed_secondary_tree[term_id].length != 0
+                    secdep = "#{head}:#{deprel}"
+                    @reversed_secondary_tree[term_id].each.with_index do |from,fromindex|
+                        seclabel = @reversed_secondary_labels[term_id][fromindex]
+                        secdep << "|#{nodeid_to_integer(sent_id,from)}:#{seclabel}"
+                    end
+                    
+                    
+                end
+                
+                outputfile.puts "#{nodeid_to_integer(sent_id,term_id)}\t#{info["word"]}\t#{info["lemma"]}\t#{info["pos"]}\t#{info["msd2"]}\t#{info["msd"]}\t#{head}\t#{deprel}\t#{secdep}\t"
+            end
+#STDERR.    puts @reversed_tree
+            #STDERR.puts @reversed_labels
+            #abort
+            outputfile.puts ""
         end
-        #STDERR.puts "*** #{primary_tree["Romn_Lundqvist-Ingentobak.20.5"]} ***"
-        #abort
-        @underoldroot = {}
-        @reversed_tree = {}
-        @reversed_labels = {}
-        @newroot = nil
-        @under0 = []
-        @primary_tree = primary_tree.clone
-        @primary_labels = primary_labels.clone
-        #@primary_tree.each_pair do |key,value|
-        #    STDERR.puts "#{key},#{value},#{@primary_labels[key]}"
-        #    
-        #end
-        #STDERR.puts ""
-        deal_with_mwes(primary_tree, "#{sent_id}.0", phrases, term_ids, words, verbose)
-        #@primary_tree.each_pair do |key,value|
-        #    STDERR.puts "#{key},#{value},#{@primary_labels[key]}"
-        #    
-        #end
-        #STDERR.puts ""
-        #STDERR.puts @reversed_tree
-        #STDERR.puts ""
-        #STDERR.puts @reversed_labels
-        #STDERR.puts ""
-        primary_tree = @primary_tree.clone
-        primary_labels = @primary_labels.clone
-        #abort
-        process_primary_tree(primary_tree, primary_labels, "#{sent_id}.0", term_ids, phrases, 0, sent_id,"",verbose)
-        outputfile.puts "# corpus = #{filename}"
-        outputfile.puts "# subcorpus = #{subcorpus_id}"
-        outputfile.puts "# sent_id = #{sent_id}"
-        term_ids.sort.each do |term_id|
-            #STDERR.puts term_id
-            info = words[term_id]
-            
-            outputfile.puts "#{nodeid_to_integer(sent_id,term_id)}\t#{info["word"]}\t#{info["lemma"]}\t#{info["pos"]}\t#{info["msd2"]}\t#{info["msd"]}\t#{nodeid_to_integer(sent_id,@reversed_tree[term_id])}\t#{@reversed_labels[term_id]}\t\t"
-        end
-#STDERR.puts @reversed_tree
-        #STDERR.puts @reversed_labels
-        #abort
-        outputfile.puts ""
     end
 
 
