@@ -289,6 +289,7 @@ subcorpora.each do |subcorpus|
         primary_tree = Hash.new{|hash, key| hash[key] = Array.new}
         primary_labels = Hash.new{|hash, key| hash[key] = Array.new}
         secondary_tree = Hash.new{|hash, key| hash[key] = Array.new}
+        secondary_labels = Hash.new{|hash, key| hash[key] = Array.new}
         sent_id = sentence["id"]
         #STDERR.puts sent_id
         words = Hash.new{|hash, key| hash[key] = Hash.new}
@@ -316,12 +317,19 @@ subcorpora.each do |subcorpus|
             cat = nonterminal["cat"]
             phrases[nonterm_id] = cat
             edges = nonterminal.css("edge").to_a
+            secedges = nonterminal.css("secedge").to_a
             #STDERR.puts nonterm_id
             edges.each do |edge|
                 label = edge["label"]
                 idref = edge["idref"]
                 primary_tree[nonterm_id] << idref
                 primary_labels[nonterm_id] << label
+            end
+            secedges.each do |secedge|
+                seclabel = secedge["label"]
+                secidref = secedge["idref"]
+                secondary_tree[nonterm_id] << secidref
+                secondary_labels[nonterm_id] << seclabel
             end
             
         end
