@@ -33,7 +33,9 @@ require "Nokogiri"
 
 def nodeid_to_integer(sent_id,node_id)
     #STDERR.puts "..#{node_id}"
-    if node_id != 0
+    if node_id.nil?
+        id = "9999"
+    elsif node_id != 0
         id = node_id.gsub("#{sent_id}.","")
         #id = id.to_i - 1000
     else
@@ -277,7 +279,9 @@ STDERR.puts "Parsing xml..."
 file = Nokogiri::XML(File.read("#{PATH}#{filename}.xml"))
 STDERR.puts "Looking for subcorpora..."
 subcorpora = file.css("subcorpus").to_a
-excluded_sents = {"Romn_Holmsen-Polynesiskpassad.102" => true, "Romn_Holmsen-Polynesiskpassad.376" => true}
+#excluded_sents = {"Romn_Holmsen-Polynesiskpassad.102" => true, "Romn_Holmsen-Polynesiskpassad.376" => true}
+
+excluded_sents = {}
 subcorpora.each do |subcorpus|
     subcorpus_id = subcorpus["name"]
     

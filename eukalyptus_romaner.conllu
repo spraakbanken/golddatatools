@@ -346,8 +346,8 @@
 1003	smala	smal	AJ	-.-.-	AJ.POS.SIN.DEF.UTR/NEU.-	1004	MD		
 1004	palmstråket	palm|stråk	NN	-.-.-	NN.NEU.SIN.DEF	1001	OO		
 1005	reste	resa	VB	-.-.-	VB.IND.AKT.PRT	0	--		
-1006	sig	sig	PO	-.-.-	PO.DEF.SIN/PLU.UTR/NEU.OBJ.-	1005	IO	1005:IO|1005:ME	
-1007	bergen	berg	NN	-.-.-	NN.NEU.PLU.DEF	1005	OO		
+1006	sig	sig	PO	-.-.-	PO.DEF.SIN/PLU.UTR/NEU.OBJ.-	1005	OO	1005:OO|1005:ME	
+1007	bergen	berg	NN	-.-.-	NN.NEU.PLU.DEF	1005	SB		
 1008	i	i	PE	-.-.-	PE.-	1005	MD		
 1009	branta	brant	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1010	MD		
 1010	avsatser	avsats	NN	-.-.-	NN.UTR.PLU.IND	1008	OO		
@@ -13570,6 +13570,27 @@ Romn_Holmsen-Polynesiskpassad.70.1015	!	_	SY	-.-.-	SY.DEL	1007	--
 
 # corpus = eukalyptus_romaner
 # subcorpus = Romn_Holmsen-Polynesiskpassad
+# sent_id = Romn_Holmsen-Polynesiskpassad.102
+1001	—	_	SY	-.-.-	SY.DEL	1007	--		
+1002	För	för	PE	-.-.-	PE.-	9999			
+1003	inte	inte	AB	-.-.-	AB.-.-	1005	MD		
+1004	så	så	AB	-.-.-	AB.-.-	1005	MD		
+1005	länge	länge	AB	-.-.-	AB.POS.-	1006	OO	1006:OO|9999:ME	
+1006	sen	sen	PE	-.-.-	PE.-	1007	MD	1007:MD|9999:ME	
+1007	tittade	titta	VB	-.-.-	VB.IND.AKT.PRT	0	--		
+1008	jag	jag	PO	-.-.-	PO.DEF.SIN.UTR.SUB.-	1007	SB		
+1009	på	på	PE	-.-.-	PE.-	1007	MD		
+1010	en	en	PO	-.-.-	PO.IND.SIN.UTR.-.-	1011	DT		
+1011	båt	båt	NN	-.-.-	NN.UTR.SIN.IND	1009	OO		
+1012	med	med	PE	-.-.-	PE.-	1011	MD		
+1013	diverse	diverse	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	1014	MD		
+1014	last	last	NN	-.-.-	NN.UTR.SIN.IND	1012	OO		
+1015	från	från	PE	-.-.-	PE.-	1014	MD		
+1016	Ljusterö	Ljusterö	EN	-.-.-	EN.-	1015	OO		
+1017	.	_	SY	-.-.-	SY.DEL	1007	--		
+
+# corpus = eukalyptus_romaner
+# subcorpus = Romn_Holmsen-Polynesiskpassad
 # sent_id = Romn_Holmsen-Polynesiskpassad.103
 1001	Ämnet	ämne	NN	-.-.-	NN.NEU.SIN.DEF	1002	SB		
 1002	var	vara	VB	-.-.-	VB.IND.AKT.PRT	0	--		
@@ -17752,6 +17773,36 @@ Romn_Holmsen-Polynesiskpassad.360.1007	.	_	SY	-.-.-	SY.DEL	1002	--
 1003	djärva	djärv	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1004	MD		
 1004	sjömän	sjöman	NN	-.-.-	NN.UTR.PLU.IND	1002	SP		
 1005	.	_	SY	-.-.-	SY.DEL	1002	--		
+
+# corpus = eukalyptus_romaner
+# subcorpus = Romn_Holmsen-Polynesiskpassad
+# sent_id = Romn_Holmsen-Polynesiskpassad.376
+1001	—	_	SY	-.-.-	SY.DEL	1016	--		
+1002	De	de	PO	-.-.-	PO.DEF.PLU.UTR/NEU.SUB.-	1003	SB		
+1003	var	vara	VB	-.-.-	VB.IND.AKT.PRT	1014	OO		
+1004	stora	stor	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1005	MD		
+1005	raireva	_	UO	-.-.-	UO.-	1003	SP		
+1006	,	_	SY	-.-.-	SY.DEL	1016	--		
+1007	de	den	PO	-.-.-	PO.DEF.PLU.UTR/NEU.SUB.-	1009	DT		
+1008	flygande	flygande	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1009	MD		
+1009	molnen	moln	NN	-.-.-	NN.NEU.PLU.DEF	1005	AN		
+1010	för	för	PE	-.-.-	PE.-	9999			
+1011	länge	länge	AB	-.-.-	AB.POS.-	1012	OO	1012:OO|9999:ME	
+1012	sedan	sedan	PE	-.-.-	PE.-	1009	MD	1009:MD|9999:ME	
+1013	,	_	SY	-.-.-	SY.DEL	1016	--		
+1014	viskade	viska	VB	-.-.-	VB.IND.AKT.PRT	1016	KL		
+1015	Reri	Reri	EN	-.-.-	EN.-	1014	SB	1014:SB|1017:SB	
+1016	och	och	KO	-.-.-	KO.-	0	--		
+1017	betraktade	betrakta	VB	-.-.-	VB.IND.AKT.PRT	1016	KL		
+1018	barnsligt	barnslig	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	1019	MD		
+1019	drömmande	drömmande	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	1017	MD		
+1020	sin	sin	PO	-.-.-	PO.DEF.SIN.UTR.PSS.-	1021	DT		
+1021	bild	bild	NN	-.-.-	NN.UTR.SIN.IND	1017	OO		
+1022	i	i	PE	-.-.-	PE.-	1017	RA		
+1023	lavabassängens	lava|bassäng	NN	-.GEN.-	NN.UTR.SIN.DEF	1025	DT		
+1024	kristalliska	kristallisk	AJ	-.-.-	AJ.POS.SIN.DEF.UTR/NEU.-	1025	MD		
+1025	vatten	vatten	NN	-.-.-	NN.NEU.SIN.IND	1022	OO		
+1026	.	_	SY	-.-.-	SY.DEL	1016	--		
 
 # corpus = eukalyptus_romaner
 # subcorpus = Romn_Holmsen-Polynesiskpassad
