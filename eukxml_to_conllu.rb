@@ -1,5 +1,9 @@
 require 'io/console'
 
+# reverse head-dependent for content words
+# coordination
+# aux-main verb (subject predicative)
+
 #? Decide the systematic way to deal with coordination (## multiple heads in coordination?)
 
 #check labels in general and heads of MWEs in particular (currently just inheriting head node automatically, should be OK) 
