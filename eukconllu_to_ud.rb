@@ -10,13 +10,26 @@ outputfile = File.open("#{filename}_ud.conllu","w:utf-8")
 #lexical mismatches
 #syncretism: just disappear (like now)? Or comma?
 
+@adverbial_heads = ["AJ","VB"] #TODO: Are there misleading cases of "vara" as head? Deal with coordination
 
-def convert(pos, msd, msd2)
-    upos = @matchingu[pos]
+def convert(id, sentence)
+    pos = sentence[id]["pos"]
+    msd = sentence[id]["msd"]
+    msd2 = sentence[id]["msd2"]
+    head = sentence[id]["head"]
+    deprel = sentence[id]["deprel"]
+
+    if pos == "AJ" and msd.include?("SIN.IND.NEU") and @adverbial_heads.include?(sentence[head]["pos"]) and sentence[head]["lemma"] != "vara"
+        upos = "ADV" #TODO: why doesn't work?
+    else
+        upos = @matchingu[pos]
+    end
+    
     feats = ""
     msd.each do |msdunit|
         if !@matchfeats[msdunit].nil?
             feats << "#{@matchfeats[msdunit]}|"
+            
         end
     end
     if ["NOUN","PROPN","ADJ"].include?(upos)
@@ -36,7 +49,7 @@ end
 
 
 output = []
-
+sentence = {}
 inputfile.each_line do |line|
     line1 = line.strip
     if line1 != ""
@@ -44,14 +57,28 @@ inputfile.each_line do |line|
             output << line1
         else
             line2 = line1.split("\t")
+            id = line2[0]
+            form = line2[1]
+            lemma = line2[2].gsub("|","")
             pos = line2[3]
             msd2 = line2[4].split(".")
             msd = line2[5].split(".")[1..-1]
-            upos, feats = convert(pos, msd, msd2)
-            line3 = [line2[0..2].join("\t"), upos, "_", feats, line2[6..-1].join("\t")].join("\t")
-            output << line3
+            head = line2[6]
+            deprel = line2[7]
+            extra1 = line2[8]
+            extra2 = line2[9]
+            sentence[id] = {"form"=>form,"msd"=>msd,"msd2"=>msd2,"head"=>head,"deprel"=>deprel,"lemma"=>lemma, "extra1"=>extra1, "extra2"=>extra2, "pos" => pos} 
+
+            
         end
     else
+        sentence.each_pair do |id,senthash|
+            upos, feats = convert(id, sentence)
+            line3 = [id, senthash["form"], senthash["lemma"], upos, "_", feats, senthash["head"], senthash["deprel"], senthash["extra1"], senthash["extra2"]].join("\t")
+            output << line3
+            end
+        
+        
         outputfile.puts output
         outputfile.puts ""
         output = []
