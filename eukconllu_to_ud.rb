@@ -2,25 +2,38 @@ filename = ARGV[0]
 inputfile = File.open("#{filename}.conllu","r:utf-8")
 outputfile = File.open("#{filename}_ud.conllu","w:utf-8")
 
-@matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN"}
+@matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN"}
 @matchingp = {"PE" => "PP"}
 @matchfeats = {"-.-.-" => "_", "IND" => "Definite=Ind", "DEF" => "Definite=Def", "POS" => "Degree=Pos", "KOM" => "Degree=Cmp", "SUV"=> "Degree=Sup", "UTR" => "Gender=Com", "NEU" => "Gender=Neut", "SIN" => "Number=Sing", "PLU" => "Number=Plur"}
 
 #case: check whether it spreads somewhere it shouldn't. Do any syncrectic cases disappear?
 #lexical mismatches
 #syncretism: just disappear (like now)? Or comma?
+#Deal with coordination (ADJ vs ADV)
+#TODO: proper nouns in the beginning of the sentence or (partial) abbreviations
 
-@adverbial_heads = ["AJ","VB"] #TODO: Are there misleading cases of "vara" as head? Deal with coordination
 
-def convert(id, sentence)
+@adverbial_heads = ["AJ","VB"] #TODO: Are there misleading cases of "vara" as head? 
+
+def convert(id, sentence, sent_id)
     pos = sentence[id]["pos"]
+    form = sentence[id]["form"]
     msd = sentence[id]["msd"]
     msd2 = sentence[id]["msd2"]
     head = sentence[id]["head"]
     deprel = sentence[id]["deprel"]
+    
+    #if id == "1017" 
+    #    STDERR.puts pos, msd, sentence[head]["pos"], sentence[head]["lemma"]
+    #end
 
-    if pos == "AJ" and msd.include?("SIN.IND.NEU") and @adverbial_heads.include?(sentence[head]["pos"]) and sentence[head]["lemma"] != "vara"
-        upos = "ADV" #TODO: why doesn't work?
+    if pos == "AJ" and msd.include?("SIN") and msd.include?("IND") and msd.include?("NEU") and @adverbial_heads.include?(sentence[head]["pos"]) and sentence[head]["lemma"] != "vara"
+        upos = "ADV" 
+    elsif pos == "NN"
+        if form[0] == form[0].upcase and id != "1001" and !(id == "1002" and sentence["1001"]["pos"] == "SY") and !msd2.include?("FKN")
+            upos = "PROPN"
+            STDERR.puts "#{sent_id} #{form}"
+        end
     else
         upos = @matchingu[pos]
     end
@@ -50,11 +63,15 @@ end
 
 output = []
 sentence = {}
+sent_id = ""
 inputfile.each_line do |line|
     line1 = line.strip
     if line1 != ""
         if line1[0] == "#"
             output << line1
+            if line1.include?("sent_id")
+                sent_id = line1.split(" = ")[1]
+            end
         else
             line2 = line1.split("\t")
             id = line2[0]
@@ -73,7 +90,7 @@ inputfile.each_line do |line|
         end
     else
         sentence.each_pair do |id,senthash|
-            upos, feats = convert(id, sentence)
+            upos, feats = convert(id, sentence, sent_id)
             line3 = [id, senthash["form"], senthash["lemma"], upos, "_", feats, senthash["head"], senthash["deprel"], senthash["extra1"], senthash["extra2"]].join("\t")
             output << line3
             end
@@ -82,5 +99,6 @@ inputfile.each_line do |line|
         outputfile.puts output
         outputfile.puts ""
         output = []
+        sentence = {}
     end
 end

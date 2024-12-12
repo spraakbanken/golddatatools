@@ -1,0 +1,33 @@
+# corpus = eukalyptus_nyhetstext
+# subcorpus = Arbt_Fackfientlig
+# sent_id = Arbt_Fackfientlig.7
+1001	Men	men		_		1005	DF		
+1002	avslöjandet	avslöjande	NOUN	_	Gender=Neut|Number=Sing|Definite=Def|Case=Nom	1005	SB		
+1003	i	i	ADP	_		1002	MD		
+1004	Transportarbetaren	Transportarbetaren		_		1003	OO		
+1005	möttes	mötta		_	Definite=Ind	0	--		
+1006	av	av	ADP	_		1005	AG		
+1007	missnöje	missnöje	NOUN	_	Gender=Neut|Number=Sing|Definite=Ind|Case=Nom	1006	OO		
+1008	från	från	ADP	_		1007	MD		
+1009	många	mången	ADJ	_	Degree=Pos|Number=Plur|Case=Nom	1008	OO		
+1010	av	av	ADP	_		1009	MD		
+1011	de	den		_	Definite=Def|Number=Plur	1013	DT		
+1012	svenska	svensk	ADJ	_	Degree=Pos|Number=Plur|Case=Nom	1013	MD		
+1013	chaufförerna	chaufför	NOUN	_	Gender=Com|Number=Plur|Definite=Def|Case=Nom	1010	OO		
+1014	,	_		_		1005	--		
+1015	vilket	vilken		_	Definite=Ind|Number=Sing|Gender=Neut	1005	DF	1005:DF|1028:OO	
+1016	enligt	enligt	ADP	_		1021	MD		
+1017	fackligt	facklig	ADV	_	Degree=Pos|Number=Sing|Definite=Ind|Gender=Neut	1018	MD		
+1018	aktiva	aktiv	ADJ	_	Degree=Pos|Number=Plur|Case=Nom	1020	MD		
+1019	danska	dansk	ADJ	_	Degree=Pos|Number=Plur|Case=Nom	1020	MD		
+1020	chaufförer	chaufför	NOUN	_	Gender=Com|Number=Plur|Definite=Ind|Case=Nom	1016	OO		
+1021	är	vara		_	Definite=Ind	1015	OO		
+1022	precis	precis		_		1023	MD		
+1023	vad	vad		_	Definite=Ind|Number=Sing|Gender=Neut	1021	PH		
+1024	Jörgen	Jörgen		_		1026	SB		
+1025	Bach	Bach		_		1024	ME		
+1026	är	vara		_	Definite=Ind	1021	OO		
+1027	ute	ute		_		1028	MD		
+1028	efter	efter	ADP	_		1026	SP	1026:SP|1027:ME	
+1029	.	_		_		1005	--		
+

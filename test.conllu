@@ -1,30 +1,33 @@
-# corpus = test
-# subcorpus = Romn_Lundqvist-Ingentobak
-# sent_id = Romn_Lundqvist-Ingentobak.17
-1001	Barthel	Barthel	EN	-.-.-	EN.-	1002	SB		
-1002	var	vara	VB	-.-.-	VB.IND.AKT.PRT	1015	--		
-1003	nämligen	nämligen	AB	-.-.-	AB.-.-	1002	MD		
-1004	inte	inte	AB	-.-.-	AB.-.-	1002	MD		
-1005	alls	alls	AB	-.-.-	AB.-.-	1002	MD		
-1006	någon	någon	PO	-.-.-	PO.IND.SIN.UTR.-.-	1007	DT		
-1007	söderhavs-entusiast	Söderhavs|entusiast	NN	-.-.-	NN.UTR.SIN.IND	1002	SP		
-1008	,	_	SY	-.-.-	SY.DEL	1015	--		
-1009	han	han	PO	-.-.-	PO.DEF.SIN.UTR.SUB.-	1010	SB	1010:SB|1016:SB	
-1010	var	vara	VB	-.-.-	VB.IND.AKT.PRT	1015	KL		
-1011	en	en	PO	-.-.-	PO.IND.SIN.UTR.-.-	1014	DT		
-1012	civiliserad	civiliserad	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	1014	MD		
-1013	holländsk	holländsk	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	1014	MD		
-1014	tjänsteman	tjänsteman	NN	-.-.-	NN.UTR.SIN.IND	1010	SP		
-1015	och	och	KO	-.-.-	KO.-	0	--		
-1016	föredrog	föredra	VB	-.-.-	VB.IND.AKT.PRT	1015	KL		
-1017	kanalernas	kanal	NN	-.GEN.-	NN.UTR.PLU.DEF	1018	DT		
-1018	Amsterdam	Amsterdam	EN	-.-.-	EN.-	1016	OO		
-1019	framför	framför	PE	-.-.-	PE.-	1016	MD		
-1020	allt	all	PO	-.-.-	PO.IND.SIN.NEU.-.-	1021	DT		
-1021	annat	annan	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	1019	OO		
-1022	,	_	SY	-.-.-	SY.DEL	1015	--		
-1023	särskilt	särskild	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	1024	MD		
-1024	före	före	PE	-.-.-	PE.-	1019	AN		
-1025	Kaimana	Kaimana	EN	-.-.-	EN.-	1024	OO		
-1026	.	_	SY	-.-.-	SY.DEL	1015	--		
+# corpus = eukalyptus_nyhetstext
+# subcorpus = Arbt_Fackfientlig
+# sent_id = Arbt_Fackfientlig.7
+1001	Men	men	KO	-.-.-	KO.-	1005	DF		
+1002	avslöjandet	avslöjande	NN	-.-.-	NN.NEU.SIN.DEF	1005	SB		
+1003	i	i	PE	-.-.-	PE.-	1002	MD		
+1004	Transportarbetaren	Transportarbetaren	EN	-.-.-	EN.-	1003	OO		
+1005	möttes	mötta	VB	-.-.-	VB.IND.SFO.PRT	0	--		
+1006	av	av	PE	-.-.-	PE.-	1005	AG		
+1007	missnöje	missnöje	NN	-.-.-	NN.NEU.SIN.IND	1006	OO		
+1008	från	från	PE	-.-.-	PE.-	1007	MD		
+1009	många	mången	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1008	OO		
+1010	av	av	PE	-.-.-	PE.-	1009	MD		
+1011	de	den	PO	-.-.-	PO.DEF.PLU.UTR/NEU.SUB/OBJ.-	1013	DT		
+1012	svenska	svensk	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1013	MD		
+1013	chaufförerna	chaufför	NN	-.-.-	NN.UTR.PLU.DEF	1010	OO		
+1014	,	_	SY	-.-.-	SY.DEL	1005	--		
+1015	vilket	vilken	PO	-.-.-	PO.IND.SIN.NEU.-.FRL	1005	DF	1005:DF|1028:OO	
+1016	enligt	enligt	PE	-.-.-	PE.-	1021	MD		
+1017	fackligt	facklig	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	1018	MD		
+1018	aktiva	aktiv	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1020	MD		
+1019	danska	dansk	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1020	MD		
+1020	chaufförer	chaufför	NN	-.-.-	NN.UTR.PLU.IND	1016	OO		
+1021	är	vara	VB	-.-.-	VB.IND.AKT.PRS	1015	OO		
+1022	precis	precis	AB	-.-.-	AB.-.-	1023	MD		
+1023	vad	vad	PO	-.-.-	PO.IND.SIN.NEU.-.FRL	1021	PH		
+1024	Jörgen	Jörgen	EN	-.-.-	EN.-	1026	SB		
+1025	Bach	Bach	EN	-.-.-	EN.-	1024	ME		
+1026	är	vara	VB	-.-.-	VB.IND.AKT.PRS	1021	OO		
+1027	ute	ute	AB	-.-.-	AB.-.-	1028	MD		
+1028	efter	efter	PE	-.-.-	PE.-	1026	SP	1026:SP|1027:ME	
+1029	.	_	SY	-.-.-	SY.DEL	1005	--		
 
