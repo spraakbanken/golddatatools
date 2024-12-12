@@ -2,7 +2,7 @@ filename = ARGV[0]
 inputfile = File.open("#{filename}.conllu","r:utf-8")
 outputfile = File.open("#{filename}_ud.conllu","w:utf-8")
 
-@matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN"}
+@matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN", "SY"=>"PUNCT", "IJ"=>"INTJ"}
 @matchingp = {"PE" => "PP"}
 @matchfeats = {"-.-.-" => "_", "IND" => "Definite=Ind", "DEF" => "Definite=Def", "POS" => "Degree=Pos", "KOM" => "Degree=Cmp", "SUV"=> "Degree=Sup", "UTR" => "Gender=Com", "NEU" => "Gender=Neut", "SIN" => "Number=Sing", "PLU" => "Number=Plur"}
 
@@ -10,7 +10,7 @@ outputfile = File.open("#{filename}_ud.conllu","w:utf-8")
 #lexical mismatches
 #syncretism: just disappear (like now)? Or comma?
 #Deal with coordination (ADJ vs ADV)
-#TODO: proper nouns in the beginning of the sentence or (partial) abbreviations
+#TODO: proper nouns in the beginning of the sentence or (partial) abbreviations (JO-ombudsman) or numbers in the beginning
 
 
 @adverbial_heads = ["AJ","VB"] #TODO: Are there misleading cases of "vara" as head? 
