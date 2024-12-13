@@ -1,6 +1,10 @@
+mode = "convert"
+
 filename = ARGV[0]
 inputfile = File.open("#{filename}.conllu","r:utf-8")
-outputfile = File.open("#{filename}_ud.conllu","w:utf-8")
+if mode == "convert"
+    outputfile = File.open("#{filename}_ud.conllu","w:utf-8")
+end
 
 @matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN", "SY"=>"PUNCT", "IJ"=>"INTJ"}
 @matchingp = {"PE" => "PP"}
@@ -14,6 +18,7 @@ outputfile = File.open("#{filename}_ud.conllu","w:utf-8")
 
 
 @adverbial_heads = ["AJ","VB"] #TODO: Are there misleading cases of "vara" as head? 
+@punctuation = [".", ",", "‘", "-", "?", "(", ")", ":", "*", ";"]
 
 def convert(id, sentence, sent_id)
     pos = sentence[id]["pos"]
@@ -34,6 +39,8 @@ def convert(id, sentence, sent_id)
             upos = "PROPN"
             STDERR.puts "#{sent_id} #{form}"
         end
+    elsif pos == "SY"
+
     else
         upos = @matchingu[pos]
     end
@@ -68,7 +75,9 @@ inputfile.each_line do |line|
     line1 = line.strip
     if line1 != ""
         if line1[0] == "#"
-            output << line1
+            if mode == "convert"
+                output << line1
+            end
             if line1.include?("sent_id")
                 sent_id = line1.split(" = ")[1]
             end
@@ -84,21 +93,25 @@ inputfile.each_line do |line|
             deprel = line2[7]
             extra1 = line2[8]
             extra2 = line2[9]
-            sentence[id] = {"form"=>form,"msd"=>msd,"msd2"=>msd2,"head"=>head,"deprel"=>deprel,"lemma"=>lemma, "extra1"=>extra1, "extra2"=>extra2, "pos" => pos} 
 
+            if mode == "convert"
+                sentence[id] = {"form"=>form,"msd"=>msd,"msd2"=>msd2,"head"=>head,"deprel"=>deprel,"lemma"=>lemma, "extra1"=>extra1, "extra2"=>extra2, "pos" => pos} 
+            end
             
         end
     else
-        sentence.each_pair do |id,senthash|
-            upos, feats = convert(id, sentence, sent_id)
-            line3 = [id, senthash["form"], senthash["lemma"], upos, "_", feats, senthash["head"], senthash["deprel"], senthash["extra1"], senthash["extra2"]].join("\t")
-            output << line3
-            end
-        
-        
-        outputfile.puts output
-        outputfile.puts ""
-        output = []
-        sentence = {}
+        if mode == "convert"
+            sentence.each_pair do |id,senthash|
+                upos, feats = convert(id, sentence, sent_id)
+                line3 = [id, senthash["form"], senthash["lemma"], upos, "_", feats, senthash["head"], senthash["deprel"], senthash["extra1"], senthash["extra2"]].join("\t")
+                output << line3
+                end
+            
+            
+            outputfile.puts output
+            outputfile.puts ""
+            output = []
+            sentence = {}
+        end
     end
 end
