@@ -1,12 +1,26 @@
 mode = "convert"
+list_out_pos = true
+lemma_per_pos2 = Hash.new{|hash, key| hash[key] = Array.new}
 
 filename = ARGV[0]
 inputfile = File.open("#{filename}.conllu","r:utf-8")
+
 if mode == "convert"
+    
     outputfile = File.open("#{filename}_ud.conllu","w:utf-8")
+elsif mode == "list_pos"
+    ref_pos = ARGV[1]
+    if ref_pos == "??"
+        ref_pos2 = "QQ"
+    else
+        ref_pos2 = ref_pos
+    end
+    pos_outputfile = File.open("#{ref_pos2}_#{filename}.txt","w:utf-8")
+    #lemmas_per_pos = Hash.new{|hash, key| hash[key] = Hash.new(true)}
+    lemmas_per_pos = Hash.new(true)
 end
 
-@matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN", "SY"=>"PUNCT", "IJ"=>"INTJ"}
+@matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN", "SY"=>"PUNCT", "IJ"=>"INTJ", "KO" => "CCONJ", "AB" => "ADV", "NU" => "NUM", "PO" => "PRON", "SU" => "SCONJ", "UO" => "X", "SY" => "SYM", "VB" => "VERB"}
 @matchingp = {"PE" => "PP"}
 @matchfeats = {"-.-.-" => "_", "IND" => "Definite=Ind", "DEF" => "Definite=Def", "POS" => "Degree=Pos", "KOM" => "Degree=Cmp", "SUV"=> "Degree=Sup", "UTR" => "Gender=Com", "NEU" => "Gender=Neut", "SIN" => "Number=Sing", "PLU" => "Number=Plur"}
 
@@ -27,19 +41,23 @@ def convert(id, sentence, sent_id)
     msd2 = sentence[id]["msd2"]
     head = sentence[id]["head"]
     deprel = sentence[id]["deprel"]
+    firsttoken = sentence.keys.min
     
     #if id == "1017" 
     #    STDERR.puts pos, msd, sentence[head]["pos"], sentence[head]["lemma"]
     #end
 
-    if pos == "AJ" and msd.include?("SIN") and msd.include?("IND") and msd.include?("NEU") and @adverbial_heads.include?(sentence[head]["pos"]) and sentence[head]["lemma"] != "vara"
+    if (pos == "AJ" and msd.include?("SIN") and msd.include?("IND") and msd.include?("NEU")) and (sentence[head].nil? or (@adverbial_heads.include?(sentence[head]["pos"]) and sentence[head]["lemma"] != "vara"))
+        #STDERR.puts "#{sent_id} #{form}"
         upos = "ADV" 
     elsif pos == "NN"
-        if form[0] == form[0].upcase and id != "1001" and !(id == "1002" and sentence["1001"]["pos"] == "SY") and !msd2.include?("FKN")
+        if form[0] == form[0].upcase and id != firsttoken and !(id == (firsttoken+1) and sentence[firsttoken]["pos"] == "SY") and !msd2.include?("FKN")
             upos = "PROPN"
-            STDERR.puts "#{sent_id} #{form}"
+            #STDERR.puts "#{sent_id} #{form}"
+        else
+            upos = "NOUN"
         end
-    elsif pos == "SY"
+    #elsif pos == "SY"
 
     else
         upos = @matchingu[pos]
@@ -80,10 +98,11 @@ inputfile.each_line do |line|
             end
             if line1.include?("sent_id")
                 sent_id = line1.split(" = ")[1]
+                STDERR.puts sent_id
             end
         else
             line2 = line1.split("\t")
-            id = line2[0]
+            id = line2[0].to_i
             form = line2[1]
             lemma = line2[2].gsub("|","")
             pos = line2[3]
@@ -93,6 +112,16 @@ inputfile.each_line do |line|
             deprel = line2[7]
             extra1 = line2[8]
             extra2 = line2[9]
+            if mode == "list_pos"
+                if pos == ref_pos
+                    #lemmas_per_pos[pos][lemma] = true
+                    if lemma != "_"
+                        lemmas_per_pos[lemma] = true
+                    else
+                        lemmas_per_pos[form] = true
+                    end
+                end
+            end
 
             if mode == "convert"
                 sentence[id] = {"form"=>form,"msd"=>msd,"msd2"=>msd2,"head"=>head,"deprel"=>deprel,"lemma"=>lemma, "extra1"=>extra1, "extra2"=>extra2, "pos" => pos} 
@@ -105,6 +134,14 @@ inputfile.each_line do |line|
                 upos, feats = convert(id, sentence, sent_id)
                 line3 = [id, senthash["form"], senthash["lemma"], upos, "_", feats, senthash["head"], senthash["deprel"], senthash["extra1"], senthash["extra2"]].join("\t")
                 output << line3
+
+                    if list_out_pos
+                        if senthash["lemma"] != "_"
+                            lemma_per_pos2[upos] << senthash["lemma"]
+                        else
+                            lemma_per_pos2[upos] << senthash["form"]
+                        end
+                    end
                 end
             
             
@@ -113,5 +150,18 @@ inputfile.each_line do |line|
             output = []
             sentence = {}
         end
+    end
+end
+
+if mode == "list_pos"
+    lemmas_per_pos.each_key do |lemma|
+        pos_outputfile.puts lemma
+    end
+end
+
+if list_out_pos
+    outpos = File.open("outposs.tsv","w:utf-8")
+    lemma_per_pos2.each_pair do |upos,lemmas|
+        outpos.puts "#{upos}\t#{lemmas.uniq.join("\t")}"
     end
 end
