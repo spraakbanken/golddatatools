@@ -29,7 +29,7 @@ end
 #syncretism: just disappear (like now)? Or comma?
 #Deal with coordination (ADJ vs ADV)
 #TODO: proper nouns in the beginning of the sentence or (partial) abbreviations (JO-ombudsman) or numbers in the beginning
-
+#TODO: check the PART vs SCONJ heuristics for "att"
 
 @adverbial_heads = ["AJ","VB"] #TODO: Are there misleading cases of "vara" as head? 
 @punctuation = [".", ",", "‘", "-", "?", "(", ")", ":", "*", ";"]
@@ -47,7 +47,20 @@ def convert(id, sentence, sent_id)
     #    STDERR.puts pos, msd, sentence[head]["pos"], sentence[head]["lemma"]
     #end
 
-    if (pos == "AJ" and msd.include?("SIN") and msd.include?("IND") and msd.include?("NEU")) and (sentence[head].nil? or (@adverbial_heads.include?(sentence[head]["pos"]) and sentence[head]["lemma"] != "vara"))
+    if ["inte","icke","ej"].include?(form.downcase)
+        upos = "PART"
+    elsif "att" == form.downcase
+        if !sentence[id+1].nil?
+            if sentence[id+1]["pos"] == "VB" and sentence[id+1]["msd"].include?("INF")
+                upos = "PART"
+            else
+                upos = "SCONJ"
+            end
+        else
+            STDOUT.puts "#{sent_id} att at the end of a sentence"
+        end
+
+    elsif (pos == "AJ" and msd.include?("SIN") and msd.include?("IND") and msd.include?("NEU")) and (sentence[head].nil? or (@adverbial_heads.include?(sentence[head]["pos"]) and sentence[head]["lemma"] != "vara"))
         #STDERR.puts "#{sent_id} #{form}"
         upos = "ADV" 
     elsif pos == "NN"
@@ -130,6 +143,23 @@ inputfile.each_line do |line|
         end
     else
         if mode == "convert"
+            counter = 1
+            idhash = {}
+            sentence.keys.sort.each do |id|
+                idhash[id] = counter
+                counter += 1
+            end
+            idhash[0] = 0
+
+            sentence2 = {}
+            sentence.each_pair do |id, senthash|
+                newid = idhash[id]
+                newhead = idhash[senthash[head]]
+                sentence2[newid] = senthash
+                sentence2[newid]["head"] = newhead
+            end
+            sentence = sentence2.clone 
+
             sentence.each_pair do |id,senthash|
                 upos, feats = convert(id, sentence, sent_id)
                 line3 = [id, senthash["form"], senthash["lemma"], upos, "_", feats, senthash["head"], senthash["deprel"], senthash["extra1"], senthash["extra2"]].join("\t")
