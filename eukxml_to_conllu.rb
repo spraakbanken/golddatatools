@@ -401,6 +401,10 @@ subcorpora.each do |subcorpus|
             outputfile.puts "# corpus = #{filename}"
             outputfile.puts "# subcorpus = #{subcorpus_id}"
             outputfile.puts "# sent_id = #{sent_id}"
+            
+
+            
+
             term_ids.sort.each do |term_id|
                 #STDERR.puts term_id
                 info = words[term_id]
