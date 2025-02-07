@@ -24,6 +24,7 @@ end
 @matchingp = {"PE" => "PP"}
 @matchfeats = {"-.-.-" => "_", "IND" => "Definite=Ind", "DEF" => "Definite=Def", "POS" => "Degree=Pos", "KOM" => "Degree=Cmp", "SUV"=> "Degree=Sup", "UTR" => "Gender=Com", "NEU" => "Gender=Neut", "SIN" => "Number=Sing", "PLU" => "Number=Plur"}
 
+#Arbt_Fackfientlig.7 -- ask Gerlof
 #case: check whether it spreads somewhere it shouldn't. Do any syncrectic cases disappear?
 #lexical mismatches
 #syncretism: just disappear (like now)? Or comma?
