@@ -1,4 +1,4 @@
-mode = "other"
+mode = "convert"
 list_out_pos = false
 lemma_per_pos2 = Hash.new{|hash, key| hash[key] = Array.new}
 
