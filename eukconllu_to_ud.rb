@@ -1,5 +1,5 @@
-mode = "convert"
-list_out_pos = true
+mode = "other"
+list_out_pos = false
 lemma_per_pos2 = Hash.new{|hash, key| hash[key] = Array.new}
 
 filename = ARGV[0]
@@ -20,20 +20,47 @@ elsif mode == "list_pos"
     lemmas_per_pos = Hash.new(true)
 end
 
-@matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN", "SY"=>"PUNCT", "IJ"=>"INTJ", "KO" => "CCONJ", "AB" => "ADV", "NU" => "NUM", "PO" => "PRON", "SU" => "SCONJ", "UO" => "X", "SY" => "SYM", "VB" => "VERB"}
+@matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN", "SY"=>"PUNCT", "IJ"=>"INTJ", "KO" => "CCONJ", "AB" => "ADV", "NU" => "NUM", "PO" => "PRON", "SU" => "SCONJ", "UO" => "X", "VB" => "VERB"}
+#dealt separately: PART, SYM, PUNCT
+
 @matchingp = {"PE" => "PP"}
 @matchfeats = {"-.-.-" => "_", "IND" => "Definite=Ind", "DEF" => "Definite=Def", "POS" => "Degree=Pos", "KOM" => "Degree=Cmp", "SUV"=> "Degree=Sup", "UTR" => "Gender=Com", "NEU" => "Gender=Neut", "SIN" => "Number=Sing", "PLU" => "Number=Plur"}
 
 #Arbt_Fackfientlig.7 -- ask Gerlof
-#case: check whether it spreads somewhere it shouldn't. Do any syncrectic cases disappear?
+#case: check whether it spreads somewhere it shouldn't. Do any syncretic cases disappear?
 #lexical mismatches
 #syncretism: just disappear (like now)? Or comma?
 #Deal with coordination (ADJ vs ADV)
 #TODO: proper nouns in the beginning of the sentence or (partial) abbreviations (JO-ombudsman) or numbers in the beginning
 #TODO: check the PART vs SCONJ heuristics for "att"
+#TODO: Arbt_Fackfientlig.2, 1003: 1008:
+
+#!TODO: VERB vs AUX
+#!DET
+#!PRONOUNS
+
+#To ignore or manually
+# - as minus can potentially get labelled as PUNCT. But interval dashes are much more frequent, and they are PUNCT, so I am disabling the minus detector
+# : as division can potentially get labelled as PUNCT
 
 @adverbial_heads = ["AJ","VB"] #TODO: Are there misleading cases of "vara" as head? 
-@punctuation = [".", ",", "‘", "-", "?", "(", ")", ":", "*", ";"]
+@punctuation = [".", ",", "‘", "-", "?", "(", ")", ":", "*", ";", "\"","!","'","`","•","–","—","”","[","]","…","“"]
+
+def complex_punctuation(form)
+    combinable_punctuation = [".", "?", "!"]
+    combinable_punctuation.each do |symbol|
+        form.gsub!(symbol,"")
+        if form.length == 0
+            break
+        end
+    end
+    if form.length == 0
+        punctuation = true
+    else
+        punctuation = false
+    end
+    return punctuation
+end
 
 def convert(id, sentence, sent_id)
     pos = sentence[id]["pos"]
@@ -71,7 +98,20 @@ def convert(id, sentence, sent_id)
         else
             upos = "NOUN"
         end
-    #elsif pos == "SY"
+    elsif pos == "SY"
+        if @punctuation.include?(form)
+            #if form == "-" or form == "–" and "0123456789,".include?(sentence[id+1]["form"][0])
+            #    upos = "SYM"
+            #else
+            upos = "PUNCT"
+            #end
+        elsif complex_punctuation(form)
+            upos = "PUNCT"
+        elsif form == "--" or form == "---"
+            upos = "PUNCT"
+        else 
+            upos = "SYM"
+        end
 
     else
         upos = @matchingu[pos]
@@ -96,6 +136,7 @@ def convert(id, sentence, sent_id)
     if feats[-1] == "|"
         feats = feats[0..-2]
     end
+    feats = feats.split("|").sort.join("|")
     return upos, feats
 end
 
@@ -103,6 +144,7 @@ end
 output = []
 sentence = {}
 sent_id = ""
+dtlist = []
 inputfile.each_line do |line|
     line1 = line.strip
     if line1 != ""
@@ -139,6 +181,12 @@ inputfile.each_line do |line|
 
             if mode == "convert"
                 sentence[id] = {"form"=>form,"msd"=>msd,"msd2"=>msd2,"head"=>head,"deprel"=>deprel,"lemma"=>lemma, "extra1"=>extra1, "extra2"=>extra2, "pos" => pos} 
+            end
+
+            if mode == "other"
+                if pos == "PO" and deprel == "DT" and !dtlist.include?(lemma)
+                    dtlist << lemma
+                end
             end
             
         end
@@ -195,4 +243,8 @@ if list_out_pos
     lemma_per_pos2.each_pair do |upos,lemmas|
         outpos.puts "#{upos}\t#{lemmas.uniq.join("\t")}"
     end
+end
+
+if mode == "other"
+    STDERR.puts dtlist
 end

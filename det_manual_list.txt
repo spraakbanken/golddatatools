@@ -1,0 +1,18 @@
+LISTED: den, en, all, någon, denna, vilken, ingen
+
+UNLISTED, but from data or common sense: varje, båda, bägge, var, allting
+
+CONTRADICTIONS in data: varannan, varenda, varsin
+
+NO: sig, sin, vi, de, vars, viss, samtlig, han, hon, min, mycket, litet, er, din, varandra
+
+
+
+
+en, ett, den, det, de “the”
+detta, denna, dessa
+vilket
+vilken
+någon
+alla
+ingen
