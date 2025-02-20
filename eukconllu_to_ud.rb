@@ -37,7 +37,8 @@ end
 
 #!TODO: VERB vs AUX
 #!DET
-#!PRONOUNS
+#!PRONOUNS, som...
+#lemma: en_viss
 
 #To ignore or manually
 # - as minus can potentially get labelled as PUNCT. But interval dashes are much more frequent, and they are PUNCT, so I am disabling the minus detector
