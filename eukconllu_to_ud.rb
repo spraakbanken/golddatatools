@@ -39,17 +39,21 @@ end
 #!DET
 #!PRONOUNS, som...
 #lemma: en_viss
+# EN: numeral
+# lemmatization of "andra" and possessive pronouns and många and mycket
 
 #To ignore or manually
 # - as minus can potentially get labelled as PUNCT. But interval dashes are much more frequent, and they are PUNCT, so I am disabling the minus detector
 # : as division can potentially get labelled as PUNCT
+# allting annat
 
 @adverbial_heads = ["AJ","VB"] #TODO: Are there misleading cases of "vara" as head? 
 @punctuation = [".", ",", "‘", "-", "?", "(", ")", ":", "*", ";", "\"","!","'","`","•","–","—","”","[","]","…","“"]
 @determiners = ["den", "en", "all", "någon", "denna", "vilken", "ingen", "varannan", "varenda"]
-@pronadjs = ["samtlig","all"]
-@prontypes = ["denna" => "Dem", "man" => "Ind", "annan" => "Ind", ]
-
+#TODO #@pronadjs = ["mycket","litet"]
+@prontypespron = ["denna" => "Dem", "man" => "Ind", "annan" => "Ind", "många" => "Ind", "mången" => "Ind", "någon" => "Ind", "mycket" => "Ind", "mycken" => "Ind", "densamma" => "Ind", "fler" => "Ind", "vad" => "Int", "vem" => "Int", "vilken" => "Int", "ingen" => "Neg", "ingenting" => "Neg", "ingendera" => "Neg", "de" => "Prs", "sig" => "Prs", "jag" => "Prs", "du" => "Prs", "han" => "Prs", "hon" => "Prs", "hen" => "Prs", "vi" => "Prs", "ni" => "Prs", "varannan" => "Rcp", "varann" => "Rcp", "varandra" => "Rcp"] 
+#STOPPED at PRON-REL
+#TODO: check that everything is captured #den, vilken and other ambiguous
 
 def complex_punctuation(form)
     combinable_punctuation = [".", "?", "!"]
@@ -70,6 +74,7 @@ end
 def convert(id, sentence, sent_id)
     pos = sentence[id]["pos"]
     form = sentence[id]["form"]
+    lemma = sentence[id]["lemma"]
     msd = sentence[id]["msd"]
     msd2 = sentence[id]["msd2"]
     head = sentence[id]["head"]
@@ -126,6 +131,18 @@ def convert(id, sentence, sent_id)
         upos = @matchingu[pos]
     end
     
+    #TODO: coordination, comparatives
+    if lemma == "mycket" or lemma == "mycken" or lemma == "litet"
+        if deprel == "DT"
+            upos = "ADJ"
+        elsif deprel == "MD"
+            upos = "ADV"
+        else
+            upos = "PRON"
+        end
+
+    end
+
     feats = ""
     msd.each do |msdunit|
         if !@matchfeats[msdunit].nil?
@@ -140,18 +157,18 @@ def convert(id, sentence, sent_id)
             feats << "Case=Nom"
         end
     end
-    if upos == "PRON" and @pronadjs.include?(lemma)
-        if deprel == "MD"
-            upos = ADJ
-        end
-    end
+    #if upos == "PRON" and @pronadjs.include?(lemma)
+    #    if deprel == "MD"
+    #        upos = ADJ
+    #    end
+    #end
     
     if feats[-1] == "|"
         feats = feats[0..-2]
     end
 
     if upos == "PRON" or upos == "DET"
-        
+        #TODO: Add PronType
     end
 
 
