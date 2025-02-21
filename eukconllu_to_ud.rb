@@ -46,6 +46,10 @@ end
 
 @adverbial_heads = ["AJ","VB"] #TODO: Are there misleading cases of "vara" as head? 
 @punctuation = [".", ",", "‘", "-", "?", "(", ")", ":", "*", ";", "\"","!","'","`","•","–","—","”","[","]","…","“"]
+@determiners = ["den", "en", "all", "någon", "denna", "vilken", "ingen", "varannan", "varenda"]
+@pronadjs = ["samtlig","all"]
+@prontypes = ["denna" => "Dem", "man" => "Ind", "annan" => "Ind", ]
+
 
 def complex_punctuation(form)
     combinable_punctuation = [".", "?", "!"]
@@ -87,6 +91,10 @@ def convert(id, sentence, sent_id)
             end
         else
             STDOUT.puts "#{sent_id} att at the end of a sentence"
+        end
+    elsif deprel == "DT"
+        if @determiners.include?(lemma)
+            upos = "DET"
         end
 
     elsif (pos == "AJ" and msd.include?("SIN") and msd.include?("IND") and msd.include?("NEU")) and (sentence[head].nil? or (@adverbial_heads.include?(sentence[head]["pos"]) and sentence[head]["lemma"] != "vara"))
@@ -132,11 +140,22 @@ def convert(id, sentence, sent_id)
             feats << "Case=Nom"
         end
     end
-
+    if upos == "PRON" and @pronadjs.include?(lemma)
+        if deprel == "MD"
+            upos = ADJ
+        end
+    end
     
     if feats[-1] == "|"
         feats = feats[0..-2]
     end
+
+    if upos == "PRON" or upos == "DET"
+        
+    end
+
+
+
     feats = feats.split("|").sort.join("|")
     return upos, feats
 end
