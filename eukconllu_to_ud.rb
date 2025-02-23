@@ -50,9 +50,9 @@ end
 @adverbial_heads = ["AJ","VB"] #TODO: Are there misleading cases of "vara" as head? 
 @punctuation = [".", ",", "‘", "-", "?", "(", ")", ":", "*", ";", "\"","!","'","`","•","–","—","”","[","]","…","“"]
 @determiners = ["den", "en", "all", "någon", "denna", "vilken", "ingen", "varannan", "varenda"]
-#TODO #@pronadjs = ["mycket","litet"]
-@prontypespron = ["denna" => "Dem", "man" => "Ind", "annan" => "Ind", "många" => "Ind", "mången" => "Ind", "någon" => "Ind", "mycket" => "Ind", "mycken" => "Ind", "densamma" => "Ind", "fler" => "Ind", "vad" => "Int", "vem" => "Int", "vilken" => "Int", "ingen" => "Neg", "ingenting" => "Neg", "ingendera" => "Neg", "de" => "Prs", "sig" => "Prs", "jag" => "Prs", "du" => "Prs", "han" => "Prs", "hon" => "Prs", "hen" => "Prs", "vi" => "Prs", "ni" => "Prs", "varannan" => "Rcp", "varann" => "Rcp", "varandra" => "Rcp"] 
-#STOPPED at PRON-REL
+
+#@prontypespron = ["denna" => "Dem", "man" => "Ind", "annan" => "Ind", "många" => "Ind", "mången" => "Ind", "någon" => "Ind", "mycket" => "Ind", "mycken" => "Ind", "densamma" => "Ind", "fler" => "Ind", "vad" => "Int", "vem" => "Int", "vilken" => "Int", "ingen" => "Neg", "ingenting" => "Neg", "ingendera" => "Neg", "de" => "Prs", "sig" => "Prs", "jag" => "Prs", "du" => "Prs", "han" => "Prs", "hon" => "Prs", "hen" => "Prs", "vi" => "Prs", "ni" => "Prs", "varannan" => "Rcp", "varann" => "Rcp", "varandra" => "Rcp"] 
+
 #TODO: check that everything is captured #den, vilken and other ambiguous
 
 def complex_punctuation(form)

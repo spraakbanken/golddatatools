@@ -1,0 +1,44 @@
+AMBIGUOUS
+de	Art
+de	Prs
+den	Art
+den	Prs
+en	Art
+en	Prs
+en	Ind
+man	Art
+man	Rel
+man	Prs
+man	Ind
+någon	Rel
+någon	Prs
+någon	Ind
+någon	Neg
+vad	Rel
+vad	Prs
+vad	Int
+vad	Tot
+var	Ind
+som	Rel
+som	Ind
+vars	Rel
+vilka	Rel
+vilken	Rel
+vilken	Int
+vilken	Tot
+vilket	Tot
+
+
+MISTAKES:
+densamma	Ind
+hon	Ind
+ingen	Ind
+ingenting	Ind
+två	Ind
+vara	Ind
+vara	Tot
+varandra	Ind
+vardera	Ind
+varje	Prs
+varje	Ind
+vem	Tot

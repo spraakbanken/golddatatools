@@ -1,0 +1,58 @@
+should_be	lemma	prontype	frequency																																																		
+“Tot”	"all"	"Prs"	19	sv-ud-dev-249	sv-ud-dev-402	sv-ud-dev-438	sv-ud-test-292	sv-ud-test-576	sv-ud-test-606	sv-ud-test-612	sv-ud-test-938	sv-ud-test-999	sv-ud-test-1001	sv-ud-test-1190	sv-ud-train-1880	sv-ud-train-2093	sv-ud-train-2475	sv-ud-train-2766	sv-ud-train-2866	sv-ud-train-2904	sv-ud-train-3001	sv-ud-train-3409																															
+“Tot”	"all"	"Ind"	2	sv-ud-train-222	sv-ud-train-3861																																																
+	"all"	"Tot"	217																																																		
+“Tot”+lemma	"allt"	"Prs"	1	sv-ud-test-1054																																																	
+“Tot”+lemma	"allt"	"Tot"	2	sv-ud-dev-225	sv-ud-train-4253																																																
+“Ind”	"annan"	"Prs"	7	sv-ud-dev-66	sv-ud-test-502	sv-ud-train-533	sv-ud-train-1574	sv-ud-train-1872	sv-ud-train-2572	sv-ud-train-2898																																											
+	"annan"	"Ind"	50	sv-ud-dev-35	sv-ud-dev-136	sv-ud-dev-257	sv-ud-dev-372	sv-ud-dev-461	sv-ud-dev-481	sv-ud-test-243	sv-ud-test-258	sv-ud-test-306	sv-ud-test-387	sv-ud-test-562	sv-ud-test-628	sv-ud-test-629	sv-ud-test-651	sv-ud-test-861	sv-ud-test-875	sv-ud-test-900	sv-ud-test-1069	sv-ud-test-1210	sv-ud-train-115	sv-ud-train-149	sv-ud-train-693	sv-ud-train-868	sv-ud-train-869	sv-ud-train-941	sv-ud-train-1056	sv-ud-train-1282	sv-ud-train-1523	sv-ud-train-1686	sv-ud-train-1766	sv-ud-train-2023	sv-ud-train-2242	sv-ud-train-2575	sv-ud-train-2615	sv-ud-train-2700	sv-ud-train-2814	sv-ud-train-2938	sv-ud-train-2957	sv-ud-train-3238	sv-ud-train-3296	sv-ud-train-3307	sv-ud-train-3436	sv-ud-train-3792	sv-ud-train-3798	sv-ud-train-3817	sv-ud-train-3836	sv-ud-train-4031	sv-ud-train-4083	sv-ud-train-4131	sv-ud-train-4164
+	"de"	"Art"	630																																																		
+	"de"	"Prs"	601																																																		
+	"den"	"Art"	1156																																																		
+	"den"	"Prs"	1432																																																		
+“Dem”	"denna"	"Prs"	3	sv-ud-test-1188	sv-ud-train-1739	sv-ud-train-3660																																															
+	"denna"	"Dem"	504																																																		
+?	"densamma"	"Prs"	2	sv-ud-test-840	sv-ud-test-1182																																																
+?	"densamma"	"Ind"	11	sv-ud-test-60	sv-ud-test-71	sv-ud-test-761	sv-ud-test-1208	sv-ud-train-275	sv-ud-train-465	sv-ud-train-520	sv-ud-train-1064	sv-ud-train-3628	sv-ud-train-3871	sv-ud-train-4124																																							
+	"en"	"Art"	2089																																																		
+various	"en"	"Prs"	19	sv-ud-dev-3	sv-ud-dev-332	sv-ud-test-573	sv-ud-test-581	sv-ud-test-616	sv-ud-test-704	sv-ud-test-709	sv-ud-test-1095	sv-ud-train-1370	sv-ud-train-1378	sv-ud-train-1486	sv-ud-train-1544	sv-ud-train-1846	sv-ud-train-2618	sv-ud-train-3058	sv-ud-train-3263	sv-ud-train-3532	sv-ud-train-3629	sv-ud-train-3669																															
+	"en"	"Ind"	5	sv-ud-dev-280	sv-ud-train-3255	sv-ud-train-3261	sv-ud-train-4048	sv-ud-train-4048																																													
+	"en"	""	1	sv-ud-dev-101																																																	
+	"hon"	"Prs"	86																																																		
+“Prs” (hon=människa, men ändå?)	"hon"	"Ind"	1	sv-ud-train-3094																																																	
+“Neg”	"ingen"	"Ind"	1	sv-ud-train-3419																																																	
+	"ingen"	"Neg"	83																																																		
+	"ingenting"	"Ind"	1	sv-ud-dev-495																																																	
+	"ingenting"	"Neg"	8	sv-ud-dev-262	sv-ud-test-118	sv-ud-test-348	sv-ud-test-1050	sv-ud-train-1613	sv-ud-train-3853	sv-ud-train-4002	sv-ud-train-4276																																										
+wrong lemma	"man"	"Art"	1	sv-ud-train-2290																																																	
+“Ind”	"man"	"Rel"	2	sv-ud-dev-44	sv-ud-train-2852																																																
+wrong lemma	"man"	"Prs"	39	sv-ud-dev-89	sv-ud-test-142	sv-ud-test-170	sv-ud-test-220	sv-ud-test-352	sv-ud-test-353	sv-ud-test-774	sv-ud-test-931	sv-ud-test-1010	sv-ud-test-1047	sv-ud-test-1124	sv-ud-test-1126	sv-ud-test-1127	sv-ud-test-1173	sv-ud-train-854	sv-ud-train-974	sv-ud-train-984	sv-ud-train-1237	sv-ud-train-1549	sv-ud-train-1741	sv-ud-train-1884	sv-ud-train-2478	sv-ud-train-2570	sv-ud-train-3231	sv-ud-train-3234	sv-ud-train-3244	sv-ud-train-3250	sv-ud-train-3258	sv-ud-train-3278	sv-ud-train-3296	sv-ud-train-3296	sv-ud-train-3324	sv-ud-train-3386	sv-ud-train-3436	sv-ud-train-3564	sv-ud-train-3708	sv-ud-train-4062	sv-ud-train-4146	sv-ud-train-4248											
+	"man"	"Ind"	675																																																		
+??	"någon"	"Rel"	5	sv-ud-dev-418	sv-ud-test-798	sv-ud-test-1066	sv-ud-train-2213	sv-ud-train-4218																																													
+“Ind”	"någon"	"Prs"	3	sv-ud-test-1199	sv-ud-train-2576	sv-ud-train-4164																																															
+	"någon"	"Ind"	247																																																		
+??	"någon"	"Neg"	1	sv-ud-train-3879																																																	
+	"sig"	"Prs"	690																																																		
+“Prs”	"sig"	"Ind"	3	sv-ud-train-639	sv-ud-train-2403	sv-ud-train-4165																																															
+	"som"	"Rel"	1109																																																		
+“Rel”	"som"	"Ind"	2	sv-ud-dev-118	sv-ud-train-3727																																																
+“Int”	"vad"	"Rel"	1	sv-ud-test-106																																																	
+“Int” or “Rel”??	"vad"	"Prs"	29	sv-ud-dev-41	sv-ud-dev-47	sv-ud-dev-136	sv-ud-dev-143	sv-ud-dev-268	sv-ud-test-142	sv-ud-test-153	sv-ud-test-470	sv-ud-test-492	sv-ud-test-612	sv-ud-test-861	sv-ud-test-1043	sv-ud-test-1174	sv-ud-test-1190	sv-ud-train-2080	sv-ud-train-2205	sv-ud-train-2703	sv-ud-train-2895	sv-ud-train-3492	sv-ud-train-3695	sv-ud-train-3947	sv-ud-train-4067	sv-ud-train-4086	sv-ud-train-4149	sv-ud-train-4177	sv-ud-train-4186	sv-ud-train-4203	sv-ud-train-4225	sv-ud-train-4280																					
+	"vad"	"Int"	97																																																		
+?	"vad"	"Tot"	1	sv-ud-test-821																																																	
+	"var"	"Ind"	2	sv-ud-train-3340	sv-ud-train-3696																																																
+	"var"	"Tot"	37	sv-ud-test-170	sv-ud-test-374	sv-ud-test-441	sv-ud-test-489	sv-ud-test-522	sv-ud-test-774	sv-ud-test-1010	sv-ud-test-1047	sv-ud-test-1124	sv-ud-test-1127	sv-ud-test-1173	sv-ud-train-853	sv-ud-train-854	sv-ud-train-889	sv-ud-train-897	sv-ud-train-984	sv-ud-train-1370	sv-ud-train-1378	sv-ud-train-1417	sv-ud-train-1423	sv-ud-train-1424	sv-ud-train-1738	sv-ud-train-1765	sv-ud-train-1884	sv-ud-train-2076	sv-ud-train-2263	sv-ud-train-2570	sv-ud-train-3231	sv-ud-train-3244	sv-ud-train-3256	sv-ud-train-3258	sv-ud-train-3263	sv-ud-train-3296	sv-ud-train-3296	sv-ud-train-3436	sv-ud-train-4062	sv-ud-train-4145													
+wrong lemma	"vara"	"Ind"	5	sv-ud-dev-170	sv-ud-test-220	sv-ud-train-2587	sv-ud-train-3287	sv-ud-train-3341																																													
+wrong lemma	"vara"	"Tot"	12	sv-ud-dev-285	sv-ud-test-270	sv-ud-test-477	sv-ud-train-1401	sv-ud-train-1424	sv-ud-train-1486	sv-ud-train-1550	sv-ud-train-2055	sv-ud-train-2144	sv-ud-train-4139	sv-ud-train-4139	sv-ud-train-4146																																						
+“Rcp”	"varandra"	"Ind"	1	sv-ud-dev-469																																																	
+	"varandra"	"Rcp"	37	sv-ud-dev-469	sv-ud-test-125	sv-ud-test-197	sv-ud-test-198	sv-ud-test-1101	sv-ud-test-1130	sv-ud-test-1131	sv-ud-test-1153	sv-ud-train-21	sv-ud-train-867	sv-ud-train-899	sv-ud-train-1357	sv-ud-train-2786	sv-ud-train-2975	sv-ud-train-2983	sv-ud-train-3033	sv-ud-train-3063	sv-ud-train-3063	sv-ud-train-3066	sv-ud-train-3215	sv-ud-train-3236	sv-ud-train-3262	sv-ud-train-3264	sv-ud-train-3267	sv-ud-train-3494	sv-ud-train-3564	sv-ud-train-3642	sv-ud-train-3659	sv-ud-train-3825	sv-ud-train-3941	sv-ud-train-3941	sv-ud-train-3962	sv-ud-train-4030	sv-ud-train-4136	sv-ud-train-4161	sv-ud-train-4161	sv-ud-train-4165													
+“Tot”	"vardera"	"Ind"	1	sv-ud-train-1416																																																	
+	"vardera"	"Tot"	4	sv-ud-test-200	sv-ud-test-941	sv-ud-train-296	sv-ud-train-1859																																														
+“Tot”	"varje"	"Prs"	5	sv-ud-test-1023	sv-ud-test-1077	sv-ud-train-2889	sv-ud-train-3350	sv-ud-train-4142																																													
+“Tot”	"varje"	"Ind"	2	sv-ud-test-121	sv-ud-train-1072																																																
+	"varje"	"Tot"	120																																																		
+	"vem"	"Int"	12	sv-ud-dev-161	sv-ud-dev-215	sv-ud-dev-398	sv-ud-test-15	sv-ud-test-19	sv-ud-test-223	sv-ud-test-1072	sv-ud-train-917	sv-ud-train-972	sv-ud-train-983	sv-ud-train-2737	sv-ud-train-3476																																						
+?	"vem"	"Tot"	2	sv-ud-train-229	sv-ud-train-1228																																																
+	"vilken"	"Rel"	47	sv-ud-dev-28	sv-ud-dev-47	sv-ud-dev-66	sv-ud-dev-85	sv-ud-dev-201	sv-ud-dev-442	sv-ud-test-21	sv-ud-test-218	sv-ud-test-403	sv-ud-test-600	sv-ud-test-711	sv-ud-test-716	sv-ud-test-960	sv-ud-train-216	sv-ud-train-715	sv-ud-train-724	sv-ud-train-731	sv-ud-train-733	sv-ud-train-1043	sv-ud-train-1366	sv-ud-train-1437	sv-ud-train-1961	sv-ud-train-2080	sv-ud-train-2105	sv-ud-train-2366	sv-ud-train-2372	sv-ud-train-2460	sv-ud-train-2575	sv-ud-train-2581	sv-ud-train-2615	sv-ud-train-2710	sv-ud-train-2826	sv-ud-train-2873	sv-ud-train-3183	sv-ud-train-3227	sv-ud-train-3277	sv-ud-train-3411	sv-ud-train-3573	sv-ud-train-3636	sv-ud-train-3755	sv-ud-train-3831	sv-ud-train-3936	sv-ud-train-3971	sv-ud-train-3986	sv-ud-train-4093	sv-ud-train-4224	sv-ud-train-4250			
+	"vilken"	"Int"	84																																																		
+various	"vilken"	"Tot"	3	sv-ud-dev-233	sv-ud-train-2896	sv-ud-train-3268																																															
