@@ -1,0 +1,34 @@
+"the"	"Art"	2	sv-ud-dev-50	sv-ud-train-2874
+"vars"	"Rel"	10	sv-ud-dev-343	sv-ud-test-41	sv-ud-test-707	sv-ud-test-841	sv-ud-train-611	sv-ud-train-821	sv-ud-train-3311	sv-ud-train-3637	sv-ud-train-3946	sv-ud-train-4259
+"vilka"	"Rel"	4	sv-ud-train-1275	sv-ud-train-3577	sv-ud-train-3627	sv-ud-train-4009
+"du"	"Prs"	306
+"vi"	"Prs"	552
+"han"	"Prs"	135
+"jag"	"Prs"	125
+"ni"	"Prs"	44	sv-ud-dev-270	sv-ud-dev-271	sv-ud-dev-271	sv-ud-dev-484	sv-ud-test-49	sv-ud-test-59	sv-ud-test-59	sv-ud-test-72	sv-ud-test-105	sv-ud-test-1176	sv-ud-train-337	sv-ud-train-346	sv-ud-train-356	sv-ud-train-365	sv-ud-train-393	sv-ud-train-393	sv-ud-train-393	sv-ud-train-393	sv-ud-train-398	sv-ud-train-401	sv-ud-train-402	sv-ud-train-403	sv-ud-train-405	sv-ud-train-405	sv-ud-train-407	sv-ud-train-407	sv-ud-train-407	sv-ud-train-407	sv-ud-train-409	sv-ud-train-413	sv-ud-train-414	sv-ud-train-414	sv-ud-train-1187	sv-ud-train-1188	sv-ud-train-1188	sv-ud-train-1772	sv-ud-train-2763	sv-ud-train-2763	sv-ud-train-3476	sv-ud-train-3476	sv-ud-train-3476	sv-ud-train-4110	sv-ud-train-4205	sv-ud-train-4206
+"vår"	"Prs"	2	sv-ud-dev-273	sv-ud-dev-362
+"mitt"	"Prs"	2	sv-ud-dev-306	sv-ud-dev-308
+"mycken"	"Ind"	8	sv-ud-dev-42	sv-ud-dev-411	sv-ud-test-287	sv-ud-test-458	sv-ud-test-1215	sv-ud-train-3041	sv-ud-train-3161	sv-ud-train-3827
+"någonting"	"Ind"	4	sv-ud-dev-62	sv-ud-test-986	sv-ud-test-989	sv-ud-test-1004
+"mången"	"Ind"	37	sv-ud-dev-159	sv-ud-dev-182	sv-ud-test-136	sv-ud-test-438	sv-ud-test-540	sv-ud-test-768	sv-ud-test-885	sv-ud-test-907	sv-ud-test-1024	sv-ud-test-1084	sv-ud-train-875	sv-ud-train-876	sv-ud-train-879	sv-ud-train-880	sv-ud-train-882	sv-ud-train-1062	sv-ud-train-1263	sv-ud-train-1544	sv-ud-train-1673	sv-ud-train-2241	sv-ud-train-2501	sv-ud-train-2544	sv-ud-train-2563	sv-ud-train-2642	sv-ud-train-3068	sv-ud-train-3160	sv-ud-train-3237	sv-ud-train-3318	sv-ud-train-3339	sv-ud-train-3339	sv-ud-train-3351	sv-ud-train-3360	sv-ud-train-3377	sv-ud-train-3821	sv-ud-train-3826	sv-ud-train-3932	sv-ud-train-4042
+"mycket"	"Ind"	8	sv-ud-dev-183	sv-ud-dev-280	sv-ud-dev-456	sv-ud-dev-499	sv-ud-test-1071	sv-ud-train-773	sv-ud-train-4068	sv-ud-train-4234
+"sån"	"Ind"	14	sv-ud-test-240	sv-ud-test-650	sv-ud-test-728	sv-ud-test-1040	sv-ud-train-94	sv-ud-train-414	sv-ud-train-612	sv-ud-train-787	sv-ud-train-2540	sv-ud-train-2823	sv-ud-train-2918	sv-ud-train-3047	sv-ud-train-3372	sv-ud-train-3509
+"somlig"	"Ind"	5	sv-ud-test-306	sv-ud-test-561	sv-ud-test-568	sv-ud-test-651	sv-ud-train-3824
+"många"	"Ind"	7	sv-ud-test-445	sv-ud-train-890	sv-ud-train-1201	sv-ud-train-1537	sv-ud-train-2176	sv-ud-train-3288	sv-ud-train-3791
+"varannan"	"Ind"	3	sv-ud-test-462	sv-ud-test-463	sv-ud-train-881
+"nånting"	"Ind"	2	sv-ud-test-1080	sv-ud-train-2501
+"flera"	"Ind"	4	sv-ud-train-496	sv-ud-train-514	sv-ud-train-1875	sv-ud-train-2782
+"fler"	"Ind"	2	sv-ud-train-2238	sv-ud-train-2241
+"få"	"Ind"	1	sv-ud-train-2372
+"två"	"Ind"	1	sv-ud-train-2517
+"vissa"	"Ind"	1	sv-ud-train-3347
+"båda"	"Tot"	36	sv-ud-dev-162	sv-ud-dev-456	sv-ud-dev-457	sv-ud-dev-503	sv-ud-test-63	sv-ud-test-197	sv-ud-test-213	sv-ud-test-220	sv-ud-test-236	sv-ud-test-239	sv-ud-test-604	sv-ud-test-1009	sv-ud-train-421	sv-ud-train-423	sv-ud-train-634	sv-ud-train-930	sv-ud-train-937	sv-ud-train-956	sv-ud-train-1548	sv-ud-train-2914	sv-ud-train-2946	sv-ud-train-3479	sv-ud-train-3492	sv-ud-train-3510	sv-ud-train-3529	sv-ud-train-3531	sv-ud-train-3538	sv-ud-train-3635	sv-ud-train-3644	sv-ud-train-3745	sv-ud-train-3753	sv-ud-train-4032	sv-ud-train-4062	sv-ud-train-4180	sv-ud-train-4197	sv-ud-train-4299
+"vilket"	"Tot"	1	sv-ud-dev-316
+"bådadera"	"Tot"	2	sv-ud-test-183	sv-ud-test-1116
+"allting"	"Tot"	4	sv-ud-test-273	sv-ud-test-323	sv-ud-test-1024	sv-ud-train-1901
+"envar"	"Tot"	1	sv-ud-test-412
+"bägge"	"Tot"	7	sv-ud-test-1132	sv-ud-test-1146	sv-ud-train-4027	sv-ud-train-4030	sv-ud-train-4070	sv-ud-train-4187	sv-ud-train-4256
+"samtlig"	"Tot"	2	sv-ud-train-469	sv-ud-train-2267
+"alltihop"	"Tot"	1	sv-ud-train-2129
+"ingendera"	"Neg"	1	sv-ud-test-1103
+"varann"	"Rcp"	6	sv-ud-test-981	sv-ud-test-983	sv-ud-train-4213	sv-ud-train-4235	sv-ud-train-4247	sv-ud-train-4248

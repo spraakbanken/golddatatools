@@ -2,9 +2,9 @@
 #?HA
 
 sbx_to_ud = Hash.new{|hash, key| hash[key] = Array.new}
-corpus = "LinES"
+corpus = "Talbanken"
 f = File.open("C:\\Sasha\\D\\DGU\\UD\\UD215langs\\Swedish-#{corpus}.conllu","r:utf-8")
-o = File.open("prontype_by_lemma-#{corpus}.tsv","w:utf-8")
+o = File.open("unamb_prontype_by_lemma-#{corpus}.tsv","w:utf-8")
 
 prontypes = Hash.new{|hash, key| hash[key] = Hash.new(0)}
 lemmata = Hash.new{|hash, key| hash[key] = Array.new}
@@ -44,7 +44,7 @@ prontypes.each_pair do |prontype,lemmas|
     #lemmata = lemmas.keys
     #o.puts "#{prontype}\t\"#{lemmata.join("\", \"")}\""
     lemmas.each_pair do |lemma,count|
-        if lemmata[lemma].uniq.length > 1
+        if lemmata[lemma].uniq.length == 1
             if count <= 50
                 o.puts "\"#{lemma}\"\t\"#{prontype}\"\t#{count}\t#{sent_ids[prontype][lemma].join("\t")}"
             else

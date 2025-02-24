@@ -51,9 +51,8 @@ end
 @punctuation = [".", ",", "‘", "-", "?", "(", ")", ":", "*", ";", "\"","!","'","`","•","–","—","”","[","]","…","“"]
 @determiners = ["den", "en", "all", "någon", "denna", "vilken", "ingen", "varannan", "varenda"]
 
-#@prontypespron = ["denna" => "Dem", "man" => "Ind", "annan" => "Ind", "många" => "Ind", "mången" => "Ind", "någon" => "Ind", "mycket" => "Ind", "mycken" => "Ind", "densamma" => "Ind", "fler" => "Ind", "vad" => "Int", "vem" => "Int", "vilken" => "Int", "ingen" => "Neg", "ingenting" => "Neg", "ingendera" => "Neg", "de" => "Prs", "sig" => "Prs", "jag" => "Prs", "du" => "Prs", "han" => "Prs", "hon" => "Prs", "hen" => "Prs", "vi" => "Prs", "ni" => "Prs", "varannan" => "Rcp", "varann" => "Rcp", "varandra" => "Rcp"] 
-
-#TODO: check that everything is captured #den, vilken and other ambiguous
+@prontypes = {"all" => "Tot", "annan" => "Ind", "denna" => "Dem", "densamma" => "Dem", "en" => "Art", "en" => "Ind", "hon" => "Prs", "ingen" => "Neg", "ingenting" => "Neg", "man" => "Ind", "någon" => "Ind", "sig" => "Prs", "som" => "Rel", "var" => "Tot", "varandra" => "Rcp", "vardera" => "Tot", "varje" => "Tot", "vem" => "Int", "the" => "Art", "vars" => "Rel", "vilka" => "Rel", "du" => "Prs", "vi" => "Prs", "han" => "Prs", "jag" => "Prs", "ni" => "Prs", "vår" => "Prs", "mitt" => "Prs", "mycken" => "Ind", "någonting" => "Ind", "mången" => "Ind", "mycket" => "Ind", "sån" => "Ind", "somlig" => "Ind", "många" => "Ind", "varannan" => "Ind", "nånting" => "Ind", "flera" => "Ind", "fler" => "Ind", "få" => "Ind", "två" => "Ind", "vissa" => "Ind", "båda" => "Tot", "vilket" => "Tot", "bådadera" => "Tot", "allting" => "Tot", "envar" => "Tot", "bägge" => "Tot", "samtlig" => "Tot", "alltihop" => "Tot", "ingendera" => "Neg", "varann" => "Rcp", "vad" => "Int, Rel", "vilken" => "Int, Rel"} #Based on Talbanken
+#TODO: #vad, vilken (+vem? det?) and other ambiguous +den här
 
 def complex_punctuation(form)
     combinable_punctuation = [".", "?", "!"]
@@ -169,9 +168,19 @@ def convert(id, sentence, sent_id)
 
     if upos == "PRON" or upos == "DET"
         #TODO: Add PronType
+        if (lemma == "de" or lemma == "den") and upos == "PRON"
+            prontype = "Prs"
+        elsif (lemma == "de" or lemma == "den") and upos == "DET"
+            prontype = "Art"
+        else
+            prontype = @prontypes["lemma"]
+        end
+        if prontype == "" or prontype.nil?
+            STDOUT.puts "Unknown prontype! #{lemma} #{sent_id}"
+        else
+            feats << "|PronType=#{prontype}"
+        end
     end
-
-
 
     feats = feats.split("|").sort.join("|")
     return upos, feats
