@@ -50,9 +50,13 @@ end
 @adverbial_heads = ["AJ","VB"] #TODO: Are there misleading cases of "vara" as head? 
 @punctuation = [".", ",", "‘", "-", "?", "(", ")", ":", "*", ";", "\"","!","'","`","•","–","—","”","[","]","…","“"]
 @determiners = ["den", "en", "all", "någon", "denna", "vilken", "ingen", "varannan", "varenda"]
+@posslemmas = {"min" => "jag", "din" => "du", "vår" => "vi", "er" => "ni", "sin" => "sig"}
+@lemmacorrections = {"en viss" => "viss"}
+@uposcorrections = {"viss" => "ADJ"}
 
-@prontypes = {"all" => "Tot", "annan" => "Ind", "denna" => "Dem", "densamma" => "Dem", "en" => "Art", "en" => "Ind", "hon" => "Prs", "ingen" => "Neg", "ingenting" => "Neg", "man" => "Ind", "någon" => "Ind", "sig" => "Prs", "som" => "Rel", "var" => "Tot", "varandra" => "Rcp", "vardera" => "Tot", "varje" => "Tot", "vem" => "Int", "the" => "Art", "vars" => "Rel", "vilka" => "Rel", "du" => "Prs", "vi" => "Prs", "han" => "Prs", "jag" => "Prs", "ni" => "Prs", "vår" => "Prs", "mitt" => "Prs", "mycken" => "Ind", "någonting" => "Ind", "mången" => "Ind", "mycket" => "Ind", "sån" => "Ind", "somlig" => "Ind", "många" => "Ind", "varannan" => "Ind", "nånting" => "Ind", "flera" => "Ind", "fler" => "Ind", "få" => "Ind", "två" => "Ind", "vissa" => "Ind", "båda" => "Tot", "vilket" => "Tot", "bådadera" => "Tot", "allting" => "Tot", "envar" => "Tot", "bägge" => "Tot", "samtlig" => "Tot", "alltihop" => "Tot", "ingendera" => "Neg", "varann" => "Rcp", "vad" => "Int, Rel", "vilken" => "Int, Rel"} #Based on Talbanken
+@prontypes = {"all" => "Tot", "annan" => "Ind", "denna" => "Dem", "densamma" => "Dem", "en" => "Art", "hon" => "Prs", "ingen" => "Neg", "ingenting" => "Neg", "man" => "Ind", "någon" => "Ind", "sig" => "Prs", "som" => "Rel", "var" => "Tot", "varandra" => "Rcp", "vardera" => "Tot", "varje" => "Tot", "vem" => "Int", "the" => "Art", "vars" => "Rel", "vilka" => "Rel", "du" => "Prs", "vi" => "Prs", "han" => "Prs", "jag" => "Prs", "ni" => "Prs", "vår" => "Prs", "mitt" => "Prs", "mycken" => "Ind", "någonting" => "Ind", "mången" => "Ind", "mycket" => "Ind", "sån" => "Ind", "somlig" => "Ind", "många" => "Ind", "varannan" => "Ind", "nånting" => "Ind", "flera" => "Ind", "fler" => "Ind", "få" => "Ind", "två" => "Ind", "vissa" => "Ind", "båda" => "Tot", "vilket" => "Tot", "bådadera" => "Tot", "allting" => "Tot", "envar" => "Tot", "bägge" => "Tot", "samtlig" => "Tot", "alltihop" => "Tot", "ingendera" => "Neg", "varann" => "Rcp", "vad" => "Int,Rel", "vilken" => "Int,Rel", "litet" => "Ind", "allihopa" => "Tot", "alltihopa" => "Tot", "varsin" => "Tot", "varenda" => "Tot", "allesammans" => "Tot"} #Based on Talbanken + corrections from https://github.com/UniversalDependencies/docs/issues/1083#issuecomment-2677651632
 #TODO: #vad, vilken (+vem? det?) and other ambiguous +den här
+#DOC: possible overproduction of pronouns, especially "Tot"
 
 def complex_punctuation(form)
     combinable_punctuation = [".", "?", "!"]
@@ -84,6 +88,10 @@ def convert(id, sentence, sent_id)
     #    STDERR.puts pos, msd, sentence[head]["pos"], sentence[head]["lemma"]
     #end
 
+    if !@lemmacorrections[lemma].nil? 
+        lemma = @lemmacorrections[lemma]
+    end
+
     if ["inte","icke","ej"].include?(form.downcase)
         upos = "PART"
     elsif "att" == form.downcase
@@ -96,11 +104,6 @@ def convert(id, sentence, sent_id)
         else
             STDOUT.puts "#{sent_id} att at the end of a sentence"
         end
-    elsif deprel == "DT"
-        if @determiners.include?(lemma)
-            upos = "DET"
-        end
-
     elsif (pos == "AJ" and msd.include?("SIN") and msd.include?("IND") and msd.include?("NEU")) and (sentence[head].nil? or (@adverbial_heads.include?(sentence[head]["pos"]) and sentence[head]["lemma"] != "vara"))
         #STDERR.puts "#{sent_id} #{form}"
         upos = "ADV" 
@@ -130,6 +133,11 @@ def convert(id, sentence, sent_id)
         upos = @matchingu[pos]
     end
     
+    if deprel == "DT"
+        if @determiners.include?(lemma)
+            upos = "DET"
+        end
+    end
     #TODO: coordination, comparatives
     if lemma == "mycket" or lemma == "mycken" or lemma == "litet"
         if deprel == "DT"
@@ -141,6 +149,11 @@ def convert(id, sentence, sent_id)
         end
 
     end
+
+    if !@uposcorrections[lemma].nil? 
+        upos = @uposcorrections[lemma]
+    end
+
 
     feats = ""
     msd.each do |msdunit|
@@ -156,34 +169,41 @@ def convert(id, sentence, sent_id)
             feats << "Case=Nom"
         end
     end
-    #if upos == "PRON" and @pronadjs.include?(lemma)
-    #    if deprel == "MD"
-    #        upos = ADJ
-    #    end
-    #end
+
     
     if feats[-1] == "|"
         feats = feats[0..-2]
     end
 
     if upos == "PRON" or upos == "DET"
-        #TODO: Add PronType
+        if !@posslemmas[lemma].nil?
+            lemma = @posslemmas[lemma]
+        end
+
         if (lemma == "de" or lemma == "den") and upos == "PRON"
             prontype = "Prs"
         elsif (lemma == "de" or lemma == "den") and upos == "DET"
             prontype = "Art"
         else
-            prontype = @prontypes["lemma"]
+            prontype = @prontypes[lemma]
         end
         if prontype == "" or prontype.nil?
             STDOUT.puts "Unknown prontype! #{lemma} #{sent_id}"
         else
             feats << "|PronType=#{prontype}"
         end
+
+
     end
 
+    
+
     feats = feats.split("|").sort.join("|")
-    return upos, feats
+    if upos == "" or upos.nil?
+        STDOUT.puts "Empty UPOS #{lemma} #{id} #{sent_id}"
+    end
+
+    return upos, feats, lemma
 end
 
 

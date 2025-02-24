@@ -1,6 +1,3 @@
-#Train a converter
-#?HA
-
 sbx_to_ud = Hash.new{|hash, key| hash[key] = Array.new}
 corpus = "Talbanken"
 f = File.open("C:\\Sasha\\D\\DGU\\UD\\UD215langs\\Swedish-#{corpus}.conllu","r:utf-8")
