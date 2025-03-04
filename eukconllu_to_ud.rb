@@ -22,9 +22,28 @@ end
 
 @matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN", "SY"=>"PUNCT", "IJ"=>"INTJ", "KO" => "CCONJ", "AB" => "ADV", "NU" => "NUM", "PO" => "PRON", "SU" => "SCONJ", "UO" => "X", "VB" => "VERB"}
 #dealt separately: PART, SYM, PUNCT
+#!TODO: VERB vs AUX, SCONJ vs PRON vs ADV
+#!Participles are adjectives. VerbForm=Part
+#!DET
+#!PRONOUNS, som...
+# EN: numeral
+
+
 
 @matchingp = {"PE" => "PP"}
-@matchfeats = {"-.-.-" => "_", "IND" => "Definite=Ind", "DEF" => "Definite=Def", "POS" => "Degree=Pos", "KOM" => "Degree=Cmp", "SUV"=> "Degree=Sup", "UTR" => "Gender=Com", "NEU" => "Gender=Neut", "SIN" => "Number=Sing", "PLU" => "Number=Plur"}
+@matchfeats = {"-.-.-" => "_", "IND" => "Definite=Ind", "DEF" => "Definite=Def", "POS" => "Degree=Pos", "KOM" => "Degree=Cmp", "SUV"=> "Degree=Sup", "UTR" => "Gender=Com", "NEU" => "Gender=Neut", "MAS" => "Gender=Masc", "SIN" => "Number=Sing", "PLU" => "Number=Plur", "SUB" => "Case=Nom", "OBJ" => "Case=Acc"}
+#"UTR/NEU" => "Gender=Com,Neut", "IND/DEF" => "Definite=Ind,Def", "SIN/PLU" => "Number=Sing,Plur", "SUB/OBJ" => "Case=Acc,Nom" Decided not to add. Usually covers the full range of possible values (and thus not recommended). Exception: Gender (Masc), but it's marginal. Syncretic case in EUK applies (mostly?) to determiners, so not relevant either.
+
+@matchvbfeats = {"IND" => "Mood=Ind", "AKT" => "Voice=Act", "PRS" => "Tense=Pres", "PRT" => "Tense=Past", "SFO" =>"Voice=Pass", "KON" => "Mood=Sub", "IMP" => "Mood=Imp", "INF" => "VerbForm=Inf", "SPM" => "VerbForm=Sup"}
+
+#KON: exclude må?
+#SFO: exclude reflexive, habitual, deponent and quasi-deponent
+#Periphrastic passive
+#FRL -- use to find SUBORDINATORS
+#PSS: can be used?
+#Add Polarity https://universaldependencies.org/treebanks/sv_talbanken/sv_talbanken-feat-Polarity.html
+#Deal with msd2
+#Add TYPO
 
 #Arbt_Fackfientlig.7 -- ask Gerlof
 #case: check whether it spreads somewhere it shouldn't. Do any syncretic cases disappear?
@@ -35,11 +54,7 @@ end
 #TODO: check the PART vs SCONJ heuristics for "att"
 #TODO: Arbt_Fackfientlig.2, 1003: 1008:
 
-#!TODO: VERB vs AUX
-#!DET
-#!PRONOUNS, som...
 #lemma: en_viss
-# EN: numeral
 # lemmatization of "andra" and possessive pronouns and många and mycket
 
 #To ignore or manually
@@ -48,7 +63,6 @@ end
 # allting annat
 
 @adverbial_heads = ["AJ","VB"] #TODO: Are there misleading cases of "vara" as head? 
-@punctuation = [".", ",", "‘", "-", "?", "(", ")", ":", "*", ";", "\"","!","'","`","•","–","—","”","[","]","…","“"]
 @determiners = ["den", "en", "all", "någon", "denna", "vilken", "ingen", "varannan", "varenda"]
 @posslemmas = {"min" => "jag", "din" => "du", "vår" => "vi", "er" => "ni", "sin" => "sig"}
 @lemmacorrections = {"en viss" => "viss"}
@@ -57,22 +71,6 @@ end
 @prontypes = {"all" => "Tot", "annan" => "Ind", "denna" => "Dem", "densamma" => "Dem", "en" => "Art", "hon" => "Prs", "ingen" => "Neg", "ingenting" => "Neg", "man" => "Ind", "någon" => "Ind", "sig" => "Prs", "som" => "Rel", "var" => "Tot", "varandra" => "Rcp", "vardera" => "Tot", "varje" => "Tot", "vem" => "Int", "the" => "Art", "vars" => "Rel", "vilka" => "Rel", "du" => "Prs", "vi" => "Prs", "han" => "Prs", "jag" => "Prs", "ni" => "Prs", "vår" => "Prs", "mitt" => "Prs", "mycken" => "Ind", "någonting" => "Ind", "mången" => "Ind", "mycket" => "Ind", "sån" => "Ind", "somlig" => "Ind", "många" => "Ind", "varannan" => "Ind", "nånting" => "Ind", "flera" => "Ind", "fler" => "Ind", "få" => "Ind", "två" => "Ind", "vissa" => "Ind", "båda" => "Tot", "vilket" => "Tot", "bådadera" => "Tot", "allting" => "Tot", "envar" => "Tot", "bägge" => "Tot", "samtlig" => "Tot", "alltihop" => "Tot", "ingendera" => "Neg", "varann" => "Rcp", "vad" => "Int,Rel", "vilken" => "Int,Rel", "litet" => "Ind", "allihopa" => "Tot", "alltihopa" => "Tot", "varsin" => "Tot", "varenda" => "Tot", "allesammans" => "Tot"} #Based on Talbanken + corrections from https://github.com/UniversalDependencies/docs/issues/1083#issuecomment-2677651632
 #TODO: #vad, vilken (+vem? det?) and other ambiguous +den här
 #DOC: possible overproduction of pronouns, especially "Tot"
-
-def complex_punctuation(form)
-    combinable_punctuation = [".", "?", "!"]
-    combinable_punctuation.each do |symbol|
-        form.gsub!(symbol,"")
-        if form.length == 0
-            break
-        end
-    end
-    if form.length == 0
-        punctuation = true
-    else
-        punctuation = false
-    end
-    return punctuation
-end
 
 def convert(id, sentence, sent_id)
     pos = sentence[id]["pos"]
@@ -115,17 +113,9 @@ def convert(id, sentence, sent_id)
             upos = "NOUN"
         end
     elsif pos == "SY"
-        if @punctuation.include?(form)
-            #if form == "-" or form == "–" and "0123456789,".include?(sentence[id+1]["form"][0])
-            #    upos = "SYM"
-            #else
+        if msd.include?("DEL")
             upos = "PUNCT"
-            #end
-        elsif complex_punctuation(form)
-            upos = "PUNCT"
-        elsif form == "--" or form == "---"
-            upos = "PUNCT"
-        else 
+        else
             upos = "SYM"
         end
 
@@ -157,8 +147,14 @@ def convert(id, sentence, sent_id)
 
     feats = ""
     msd.each do |msdunit|
-        if !@matchfeats[msdunit].nil?
-            feats << "#{@matchfeats[msdunit]}|"
+        if pos == "VB"
+            relevant_feats = @matchvbfeats.clone
+        else
+            relevant_feats = @matchfeats.clone
+        end
+
+        if !relevant_feats[msdunit].nil?
+            feats << "#{relevant_feats[msdunit]}|"
             
         end
     end
@@ -192,13 +188,19 @@ def convert(id, sentence, sent_id)
         else
             feats << "|PronType=#{prontype}"
         end
+    end
 
-
+    if upos == "VERB" and !feats.include?("VerbForm")
+        feats << "|VerbForm=Fin"
     end
 
     
 
     feats = feats.split("|").sort.join("|")
+    if feats == ""
+        feats = "_"
+    end
+
     if upos == "" or upos.nil?
         STDOUT.puts "Empty UPOS #{lemma} #{id} #{sent_id}"
     end
