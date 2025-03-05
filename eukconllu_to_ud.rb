@@ -35,13 +35,11 @@ end
 #"UTR/NEU" => "Gender=Com,Neut", "IND/DEF" => "Definite=Ind,Def", "SIN/PLU" => "Number=Sing,Plur", "SUB/OBJ" => "Case=Acc,Nom" Decided not to add. Usually covers the full range of possible values (and thus not recommended). Exception: Gender (Masc), but it's marginal. Syncretic case in EUK applies (mostly?) to determiners, so not relevant either.
 
 @matchvbfeats = {"IND" => "Mood=Ind", "AKT" => "Voice=Act", "PRS" => "Tense=Pres", "PRT" => "Tense=Past", "SFO" =>"Voice=Pass", "KON" => "Mood=Sub", "IMP" => "Mood=Imp", "INF" => "VerbForm=Inf", "SPM" => "VerbForm=Sup"}
-#Add Foreign for UO
 #KON: exclude må?
 #SFO: exclude reflexive, habitual, deponent and quasi-deponent
 #Periphrastic passive
-#FRL -- use to find SUBORDINATORS
+#FRL -- use to find SUBORDINATORS?
 #PSS: can be used?
-#Add Polarity https://universaldependencies.org/treebanks/sv_talbanken/sv_talbanken-feat-Polarity.html
 #Deal with msd2
 #Add TYPO
 
@@ -167,10 +165,6 @@ def convert(id, sentence, sent_id)
     end
 
     
-    if feats[-1] == "|"
-        feats = feats[0..-2]
-    end
-
     if upos == "PRON" or upos == "DET"
         if !@posslemmas[lemma].nil?
             lemma = @posslemmas[lemma]
@@ -194,7 +188,21 @@ def convert(id, sentence, sent_id)
         feats << "|VerbForm=Fin"
     end
 
-    
+    if pos == "UO"
+        feats << "|Foreign=Yes"
+    end
+    if upos == "PART" and (lemma == "inte" or lemma == "icke" or lemma == "ej")
+       feats << "|Polarity=Neg"
+    end    
+
+
+    feats.gsub!("||","|")
+    if feats[-1] == "|"
+        feats = feats[0..-2]
+    end
+    if feats[0] == "|"
+       feats = feats[1..-1]
+    end
 
     feats = feats.split("|").sort.join("|")
     if feats == ""
