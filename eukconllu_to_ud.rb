@@ -23,7 +23,6 @@ end
 @matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN", "SY"=>"PUNCT", "IJ"=>"INTJ", "KO" => "CCONJ", "AB" => "ADV", "NU" => "NUM", "PO" => "PRON", "SU" => "SCONJ", "UO" => "X", "VB" => "VERB"}
 #dealt separately: PART, SYM, PUNCT
 #!TODO: VERB vs AUX, SCONJ vs PRON vs ADV
-#!Participles are adjectives. VerbForm=Part
 #!DET
 #!PRONOUNS, som...
 # EN: numeral
@@ -34,7 +33,7 @@ end
 @matchfeats = {"-.-.-" => "_", "IND" => "Definite=Ind", "DEF" => "Definite=Def", "POS" => "Degree=Pos", "KOM" => "Degree=Cmp", "SUV"=> "Degree=Sup", "UTR" => "Gender=Com", "NEU" => "Gender=Neut", "MAS" => "Gender=Masc", "SIN" => "Number=Sing", "PLU" => "Number=Plur", "SUB" => "Case=Nom", "OBJ" => "Case=Acc"}
 #"UTR/NEU" => "Gender=Com,Neut", "IND/DEF" => "Definite=Ind,Def", "SIN/PLU" => "Number=Sing,Plur", "SUB/OBJ" => "Case=Acc,Nom" Decided not to add. Usually covers the full range of possible values (and thus not recommended). Exception: Gender (Masc), but it's marginal. Syncretic case in EUK applies (mostly?) to determiners, so not relevant either.
 
-@matchvbfeats = {"IND" => "Mood=Ind", "AKT" => "Voice=Act", "PRS" => "Tense=Pres", "PRT" => "Tense=Past", "SFO" =>"Voice=Pass", "KON" => "Mood=Sub", "IMP" => "Mood=Imp", "INF" => "VerbForm=Inf", "SPM" => "VerbForm=Sup"}
+@matchvbfeats = {"IND" => "Mood=Ind", "AKT" => "Voice=Act", "PRS" => "Tense=Pres", "PRT" => "Tense=Past", "SFO" =>"Voice=Pass", "KON" => "Mood=Sub", "IMP" => "Mood=Imp", "INF" => "VerbForm=Inf", "SPM" => "VerbForm=Sup", "SIN" => "Number=Sing", "PLU" => "Number=Plur", "SUB" => "Case=Nom", "OBJ" => "Case=Acc", "UTR" => "Gender=Com", "NEU" => "Gender=Neut", "MAS" => "Gender=Masc"}
 #KON: exclude må?
 #SFO: exclude reflexive, habitual, deponent and quasi-deponent
 #Periphrastic passive
@@ -69,6 +68,10 @@ end
 @prontypes = {"all" => "Tot", "annan" => "Ind", "denna" => "Dem", "densamma" => "Dem", "en" => "Art", "hon" => "Prs", "ingen" => "Neg", "ingenting" => "Neg", "man" => "Ind", "någon" => "Ind", "sig" => "Prs", "som" => "Rel", "var" => "Tot", "varandra" => "Rcp", "vardera" => "Tot", "varje" => "Tot", "vem" => "Int", "the" => "Art", "vars" => "Rel", "vilka" => "Rel", "du" => "Prs", "vi" => "Prs", "han" => "Prs", "jag" => "Prs", "ni" => "Prs", "vår" => "Prs", "mitt" => "Prs", "mycken" => "Ind", "någonting" => "Ind", "mången" => "Ind", "mycket" => "Ind", "sån" => "Ind", "somlig" => "Ind", "många" => "Ind", "varannan" => "Ind", "nånting" => "Ind", "flera" => "Ind", "fler" => "Ind", "få" => "Ind", "två" => "Ind", "vissa" => "Ind", "båda" => "Tot", "vilket" => "Tot", "bådadera" => "Tot", "allting" => "Tot", "envar" => "Tot", "bägge" => "Tot", "samtlig" => "Tot", "alltihop" => "Tot", "ingendera" => "Neg", "varann" => "Rcp", "vad" => "Int,Rel", "vilken" => "Int,Rel", "litet" => "Ind", "allihopa" => "Tot", "alltihopa" => "Tot", "varsin" => "Tot", "varenda" => "Tot", "allesammans" => "Tot"} #Based on Talbanken + corrections from https://github.com/UniversalDependencies/docs/issues/1083#issuecomment-2677651632
 #TODO: #vad, vilken (+vem? det?) and other ambiguous +den här
 #DOC: possible overproduction of pronouns, especially "Tot"
+
+@partpenult = "abcdfghjklmnpqrstvwxz"
+@notparticiples = ["ökänd", "mången", "glad", "gedigen", "liten", "hård", "sen", "mycken", "välkommen", "öppen", "ilsken", "egen", "osund", "enskild", "blåögd", "ond", "medveten", "angelägen", "okänd", "kristen", "vuxen", "rädd", "jätte|ond", "jätte|ledsen", "lessen", "sugen", "synd", "ledsen", "mild", "obenägen", "ren", "nämnvärd", "jättesugen", "vaken", "stenhård", "naken", "nyfiken", "högljudd", "galen", "värd", "toppen", "oerhörd", "omedveten", "helhjärtad", "vild", "lyhörd", "avsevärd", "sund", "belägen", "folkvald", "blond", "trogen", "förmögen", "färgglad", "sorgsen", "överlägsen", "outvecklad", "önskvärd", "rund", "belåten", "härsken", "moloken", "grund", "blå|mild", "plikttrogen", "oönskad", "len", "säregen", "mogen", "avlägsen", "älskvärd", "medfaren", "ljummen"]
+
 
 def convert(id, sentence, sent_id)
     pos = sentence[id]["pos"]
@@ -120,6 +123,9 @@ def convert(id, sentence, sent_id)
     else
         upos = @matchingu[pos]
     end
+
+    
+
     
     if deprel == "DT"
         if @determiners.include?(lemma)
@@ -143,7 +149,24 @@ def convert(id, sentence, sent_id)
     end
 
 
-    feats = ""
+    feats = []
+    if pos == "AJ" 
+        if ((lemma[-1] == "d" and @partpenult.include?(lemma[-2])) or (lemma[-2..-1] == "en")) and !@notparticiples.include?(lemma)
+            if !sentence[head].nil?
+                if sentence[head]["lemma"] == "bli" and deprel == "SP"
+                    upos = "VB"
+                    feats << "Voice=Pass"
+                    #TODO: change the structure, add aux:pass deprel, change POS of bli to "aux"
+                end
+            end
+            feats << "Tense=Past"
+            feats << "VerbForm=Part"
+        elsif lemma[-4..-1] == "ande" or lemma[-4..-1] == "ende" 
+            feats << "Tense=Pres"
+            feats << "VerbForm=Part"
+        end
+    end
+
     msd.each do |msdunit|
         if pos == "VB"
             relevant_feats = @matchvbfeats.clone
@@ -152,7 +175,7 @@ def convert(id, sentence, sent_id)
         end
 
         if !relevant_feats[msdunit].nil?
-            feats << "#{relevant_feats[msdunit]}|"
+            feats << "#{relevant_feats[msdunit]}"
             
         end
     end
@@ -180,31 +203,32 @@ def convert(id, sentence, sent_id)
         if prontype == "" or prontype.nil?
             STDOUT.puts "Unknown prontype! #{lemma} #{sent_id}"
         else
-            feats << "|PronType=#{prontype}"
+            feats << "PronType=#{prontype}"
         end
     end
 
-    if upos == "VERB" and !feats.include?("VerbForm")
-        feats << "|VerbForm=Fin"
+    if upos == "VERB" and !feats.join.include?("VerbForm")
+        feats << "VerbForm=Fin"
     end
 
     if pos == "UO"
-        feats << "|Foreign=Yes"
+        feats << "Foreign=Yes"
     end
     if upos == "PART" and (lemma == "inte" or lemma == "icke" or lemma == "ej")
-       feats << "|Polarity=Neg"
+       feats << "Polarity=Neg"
     end    
 
 
-    feats.gsub!("||","|")
-    if feats[-1] == "|"
-        feats = feats[0..-2]
-    end
-    if feats[0] == "|"
-       feats = feats[1..-1]
-    end
+    #feats.gsub!("||","|")
+    #if feats[-1] == "|"
+    #    feats = feats[0..-2]
+    #end
+    #if feats[0] == "|"
+    #   feats = feats[1..-1]
+    #end
 
-    feats = feats.split("|").sort.join("|")
+    #feats = feats.split("|").sort.join("|")
+    feats = feats.sort.join("|")
     if feats == ""
         feats = "_"
     end
