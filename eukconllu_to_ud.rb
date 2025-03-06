@@ -22,9 +22,9 @@ end
 
 @matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN", "SY"=>"PUNCT", "IJ"=>"INTJ", "KO" => "CCONJ", "AB" => "ADV", "NU" => "NUM", "PO" => "PRON", "SU" => "SCONJ", "UO" => "X", "VB" => "VERB"}
 #dealt separately: PART, SYM, PUNCT
-#!TODO: VERB vs AUX, SCONJ vs PRON vs ADV
-#!DET
-#!PRONOUNS, som...
+#!TODO: SCONJ vs PRON vs ADV (som)
+#TODO: coordination
+#TODO: control by matching POSs
 # EN: numeral
 
 
@@ -52,13 +52,12 @@ end
 #TODO: Arbt_Fackfientlig.2, 1003: 1008:
 
 #lemma: en_viss
-# lemmatization of "andra" and possessive pronouns and många and mycket
+#lemmatization of "andra" and possessive pronouns and många and mycket
 
 #To ignore or manually
-# - as minus can potentially get labelled as PUNCT. But interval dashes are much more frequent, and they are PUNCT, so I am disabling the minus detector
-# : as division can potentially get labelled as PUNCT
 # allting annat
 
+@auxlist = ["böra", "få", "komma", "kunna", "lär", "må", "måste", "skola", "torde",  "vilja", "bli", "ha", "vara"]   #from https://quest.ms.mff.cuni.cz/udvalidator/cgi-bin/unidep/langspec/specify_auxiliary.pl?lcode=sv with changes discussed in https://github.com/UniversalDependencies/docs/issues/1082
 @adverbial_heads = ["AJ","VB"] #TODO: Are there misleading cases of "vara" as head? 
 @determiners = ["den", "en", "all", "någon", "denna", "vilken", "ingen", "varannan", "varenda"]
 @posslemmas = {"min" => "jag", "din" => "du", "vår" => "vi", "er" => "ni", "sin" => "sig"}
@@ -73,8 +72,26 @@ end
 @unvoiced_partpenult  = "cfhkpqstxz"
 @notparticiples = ["ökänd", "mången", "glad", "gedigen", "liten", "hård", "sen", "mycken", "välkommen", "öppen", "ilsken", "egen", "osund", "enskild", "blåögd", "ond", "medveten", "angelägen", "okänd", "kristen", "vuxen", "rädd", "jätte|ond", "jätte|ledsen", "lessen", "sugen", "synd", "ledsen", "mild", "obenägen", "ren", "nämnvärd", "jättesugen", "vaken", "stenhård", "naken", "nyfiken", "högljudd", "galen", "värd", "toppen", "oerhörd", "omedveten", "helhjärtad", "vild", "lyhörd", "avsevärd", "sund", "belägen", "folkvald", "blond", "trogen", "förmögen", "färgglad", "sorgsen", "överlägsen", "outvecklad", "önskvärd", "rund", "belåten", "härsken", "moloken", "grund", "blå|mild", "plikttrogen", "oönskad", "len", "säregen", "mogen", "avlägsen", "älskvärd", "medfaren", "ljummen", "först", "korrekt", "främst", "direkt", "fast", "indirekt", "gôtt", "rätt", "näst", "trist", "exakt", "sist", "glatt", "övertrött", "perfekt", "tyst", "flott", "förtjust", "platt", "nätt", "sankt", "terrest", "ogift", "rödlätt", "storväxt", "kroknäst", "kompakt", "knäppt", "smått"]
 
+#TODO: ADD COORDINATION
+def finddaughters(sentence,nodeofinterest)
+    #STDERR.puts "nodeofinterest: #{nodeofinterest}"
+    #STDERR.puts "finddaughters: #{sentence}"
+    daughters = []
+    sentence.each_pair do |id, infohash|
+        #STDERR.puts id
+        #STDERR.puts infohash
+        if infohash["head"] == nodeofinterest
+            
+            daughters << id
+        end
+    end
+    return daughters
+
+end
+
 
 def convert(id, sentence, sent_id)
+    #STDERR.puts "convert: #{sentence}"
     pos = sentence[id]["pos"]
     form = sentence[id]["form"]
     lemma = sentence[id]["lemma"]
@@ -120,7 +137,6 @@ def convert(id, sentence, sent_id)
         else
             upos = "SYM"
         end
-
     else
         upos = @matchingu[pos]
     end
@@ -167,6 +183,61 @@ def convert(id, sentence, sent_id)
             feats << "VerbForm=Part"
         end
     end
+
+    if pos == "VB"
+        #TODO: add "det" disambiguation
+        #TODO: add "vara" disambiguation
+        #TODO: add "ha" bortfall
+        #TODO: deal with "bli" (make participle detection a function and apply it)
+        if @auxlist.include?(lemma)
+            #STDERR.puts "AUXLIST!"
+            auxflag = false
+            daughters = finddaughters(sentence,id)
+            #STDERR.puts daughters
+            if lemma == "bli"
+                
+                daughters.each do |daughter|
+                    if SHOULD APPLY TO DAUGHTER feats.include?("VerbForm=Part") and feats.include?("Tense=Past") and sentence[daughter]["deprel"] == "SP"
+                        auxflag = true
+                        break
+                    end
+                end
+
+            elsif lemma == "ha"
+                daughters.each do |daughter|
+                    #STDERR.puts daughter
+                    if sentence[daughter]["msd"].include?("SPM") and sentence[daughter]["deprel"] == "IV"
+                        auxflag = true
+                        break
+                    end
+                end
+
+            elsif lemma == "vara"
+                daughters.each do |daughter|
+                    if sentence[daughter]["deprel"] == "SP"
+                        auxflag = true
+                        break
+                    end
+                end
+            else
+                #STDERR.puts "OTHER!"
+                daughters.each do |daughter|
+                    #STDERR.puts daughter
+                    if (sentence[daughter]["msd"].include?("INF") or sentence[daughter]["lemma"] == "att") and sentence[daughter]["deprel"] == "IV"
+                        auxflag = true
+                        break
+                    end
+                end
+                
+            end
+            if auxflag
+                #STDERR.puts "AUX!"
+                upos = "AUX"
+            end
+        end
+    end
+
+
 
     msd.each do |msdunit|
         if pos == "VB"
@@ -265,7 +336,7 @@ inputfile.each_line do |line|
             pos = line2[3]
             msd2 = line2[4].split(".")
             msd = line2[5].split(".")[1..-1]
-            head = line2[6]
+            head = line2[6].to_i
             deprel = line2[7]
             extra1 = line2[8]
             extra2 = line2[9]
@@ -283,6 +354,7 @@ inputfile.each_line do |line|
             if mode == "convert"
                 sentence[id] = {"form"=>form,"msd"=>msd,"msd2"=>msd2,"head"=>head,"deprel"=>deprel,"lemma"=>lemma, "extra1"=>extra1, "extra2"=>extra2, "pos" => pos} 
             end
+            #STDERR.puts sentence[id]["head"]
 
             if mode == "other"
                 if pos == "PO" and deprel == "DT" and !dtlist.include?(lemma)
@@ -304,11 +376,12 @@ inputfile.each_line do |line|
             sentence2 = {}
             sentence.each_pair do |id, senthash|
                 newid = idhash[id]
-                newhead = idhash[senthash[head]]
+                newhead = idhash[senthash["head"]]
                 sentence2[newid] = senthash
                 sentence2[newid]["head"] = newhead
             end
-            sentence = sentence2.clone 
+            sentence = sentence2.clone
+            #STDERR.puts "#{sentence}"
 
             sentence.each_pair do |id,senthash|
                 upos, feats = convert(id, sentence, sent_id)

@@ -1,33 +1,19 @@
-# corpus = eukalyptus_nyhetstext
-# subcorpus = Arbt_Fackfientlig
-# sent_id = Arbt_Fackfientlig.7
-1001	Men	men	KO	-.-.-	KO.-	1005	DF		
-1002	avslöjandet	avslöjande	NN	-.-.-	NN.NEU.SIN.DEF	1005	SB		
-1003	i	i	PE	-.-.-	PE.-	1002	MD		
-1004	Transportarbetaren	Transportarbetaren	EN	-.-.-	EN.-	1003	OO		
-1005	möttes	mötta	VB	-.-.-	VB.IND.SFO.PRT	0	--		
-1006	av	av	PE	-.-.-	PE.-	1005	AG		
-1007	missnöje	missnöje	NN	-.-.-	NN.NEU.SIN.IND	1006	OO		
-1008	från	från	PE	-.-.-	PE.-	1007	MD		
-1009	många	mången	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1008	OO		
-1010	av	av	PE	-.-.-	PE.-	1009	MD		
-1011	de	den	PO	-.-.-	PO.DEF.PLU.UTR/NEU.SUB/OBJ.-	1013	DT		
-1012	svenska	svensk	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1013	MD		
-1013	chaufförerna	chaufför	NN	-.-.-	NN.UTR.PLU.DEF	1010	OO		
-1014	,	_	SY	-.-.-	SY.DEL	1005	--		
-1015	vilket	vilken	PO	-.-.-	PO.IND.SIN.NEU.-.FRL	1005	DF	1005:DF|1028:OO	
-1016	enligt	enligt	PE	-.-.-	PE.-	1021	MD		
-1017	fackligt	facklig	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	1018	MD		
-1018	aktiva	aktiv	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1020	MD		
-1019	danska	dansk	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1020	MD		
-1020	chaufförer	chaufför	NN	-.-.-	NN.UTR.PLU.IND	1016	OO		
-1021	är	vara	VB	-.-.-	VB.IND.AKT.PRS	1015	OO		
-1022	precis	precis	AB	-.-.-	AB.-.-	1023	MD		
-1023	vad	vad	PO	-.-.-	PO.IND.SIN.NEU.-.FRL	1021	PH		
-1024	Jörgen	Jörgen	EN	-.-.-	EN.-	1026	SB		
-1025	Bach	Bach	EN	-.-.-	EN.-	1024	ME		
-1026	är	vara	VB	-.-.-	VB.IND.AKT.PRS	1021	OO		
-1027	ute	ute	AB	-.-.-	AB.-.-	1028	MD		
-1028	efter	efter	PE	-.-.-	PE.-	1026	SP	1026:SP|1027:ME	
-1029	.	_	SY	-.-.-	SY.DEL	1005	--		
+# corpus = eukalyptus_europarl
+# subcorpus = Eupa_00-01-17
+# sent_id = Eupa_00-01-17.473
+1001	Man	man	PO	-.-.-	PO.DEF.SIN.UTR.SUB.-	1002	SB	1002:SB|1003:SB	
+1002	bör	böra	VB	-.-.-	VB.IND.AKT.PRS	0	--		
+1003	komma	komma	VB	-.-.-	VB.INF.AKT.-	1002	IV		
+1004	ihåg	ihåg	AB	-.-.-	AB.-.-	1003	PL	1003:PL|1003:ME	
+1005	att	att	SU	-.-.-	SU.-	1003	OO		
+1006	landsbygden	landsbygd	NN	-.-.-	NN.UTR.SIN.DEF	1007	SB		
+1007	utgör	utgöra	VB	-.-.-	VB.IND.AKT.PRS	1005	OO		
+1008	nästan	nästan	AB	-.-.-	AB.-.-	1009	MD		
+1009	fyra	fyra	NU	-.-.-	NU.-	1010	DF		
+1010	femtedelar	femtedel	NN	-.-.-	NN.UTR.PLU.IND	1007	SP		
+1011	av	av	PE	-.-.-	PE.-	1010	MD		
+1012	Europeiska	europeisk	AJ	-.-.-	AJ.POS.SIN.DEF.UTR/NEU.-	1013	MD		
+1013	unionens	union	NN	-.GEN.-	NN.UTR.SIN.DEF	1014	DT	1014:DT|1012:ME	
+1014	yta	yta	NN	-.-.-	NN.UTR.SIN.IND	1011	OO		
+1015	.	_	SY	-.-.-	SY.DEL	1002	--		
 
