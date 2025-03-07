@@ -21,12 +21,9 @@ elsif mode == "list_pos"
 end
 
 @matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN", "SY"=>"PUNCT", "IJ"=>"INTJ", "KO" => "CCONJ", "AB" => "ADV", "NU" => "NUM", "PO" => "PRON", "SU" => "SCONJ", "UO" => "X", "VB" => "VERB"}
-#dealt separately: PART, SYM, PUNCT
-#!TODO: SCONJ vs PRON vs ADV (som)
-#TODO: coordination
-#TODO: control by matching POSs
-# EN: numeral
-
+#TODO1: SCONJ vs PRON vs ADV (som)
+#TODO2: coordination
+#TODO2: control by matching POSs
 
 
 @matchingp = {"PE" => "PP"}
@@ -34,45 +31,40 @@ end
 #"UTR/NEU" => "Gender=Com,Neut", "IND/DEF" => "Definite=Ind,Def", "SIN/PLU" => "Number=Sing,Plur", "SUB/OBJ" => "Case=Acc,Nom" Decided not to add. Usually covers the full range of possible values (and thus not recommended). Exception: Gender (Masc), but it's marginal. Syncretic case in EUK applies (mostly?) to determiners, so not relevant either.
 
 @matchvbfeats = {"IND" => "Mood=Ind", "AKT" => "Voice=Act", "PRS" => "Tense=Pres", "PRT" => "Tense=Past", "SFO" =>"Voice=Pass", "KON" => "Mood=Sub", "IMP" => "Mood=Imp", "INF" => "VerbForm=Inf", "SPM" => "VerbForm=Sup", "SIN" => "Number=Sing", "PLU" => "Number=Plur", "SUB" => "Case=Nom", "OBJ" => "Case=Acc", "UTR" => "Gender=Com", "NEU" => "Gender=Neut", "MAS" => "Gender=Masc"}
-#KON: exclude må?
-#SFO: exclude reflexive, habitual, deponent and quasi-deponent
-#Periphrastic passive
-#FRL -- use to find SUBORDINATORS?
-#PSS: can be used?
-#Deal with msd2
-#Add TYPO
+#TODO2: ASK: KON: exclude må?
+#TODO1: SFO: exclude reflexive, habitual, deponent and quasi-deponent
+#TODO2: FRL -- use to find SUBORDINATORS?
+#TODO2: PSS: can be used?
+#TODO1: Deal with msd2
+#TODO1: Add TYPO
 
-#Arbt_Fackfientlig.7 -- ask Gerlof
-#case: check whether it spreads somewhere it shouldn't. Do any syncretic cases disappear?
-#lexical mismatches
-#syncretism: just disappear (like now)? Or comma?
-#Deal with coordination (ADJ vs ADV)
-#TODO: proper nouns in the beginning of the sentence or (partial) abbreviations (JO-ombudsman) or numbers in the beginning
-#TODO: check the PART vs SCONJ heuristics for "att"
-#TODO: Arbt_Fackfientlig.2, 1003: 1008:
+#TODO2: Arbt_Fackfientlig.7 -- ask Gerlof
+#TODO1: case: check whether it spreads somewhere it shouldn't. Do any syncretic cases disappear?
+#TODO1: proper nouns in the beginning of the sentence or (partial) abbreviations (JO-ombudsman) or numbers in the beginning
+#TODO1: check the PART vs SCONJ heuristics for "att"
+#TODO1: Arbt_Fackfientlig.2, 1003: 1008:
 
-#lemma: en_viss
-#lemmatization of "andra" and possessive pronouns and många and mycket
+#TODO2: lemmatization of "andra" and possessive pronouns and många and mycket
 
-#To ignore or manually
+#DIM (DOC, IGNORE, MANUALLY)
 # allting annat
+# EN: numeral
 
 @auxlist = ["böra", "få", "komma", "kunna", "lär", "må", "måste", "skola", "torde",  "vilja", "bli", "ha", "vara"]   #from https://quest.ms.mff.cuni.cz/udvalidator/cgi-bin/unidep/langspec/specify_auxiliary.pl?lcode=sv with changes discussed in https://github.com/UniversalDependencies/docs/issues/1082
-@adverbial_heads = ["AJ","VB"] #TODO: Are there misleading cases of "vara" as head? 
+@adverbial_heads = ["AJ","VB"] #TODO1: Are there misleading cases of "vara" as head? 
 @determiners = ["den", "en", "all", "någon", "denna", "vilken", "ingen", "varannan", "varenda"]
 @posslemmas = {"min" => "jag", "din" => "du", "vår" => "vi", "er" => "ni", "sin" => "sig"}
 @lemmacorrections = {"en viss" => "viss"}
 @uposcorrections = {"viss" => "ADJ"}
 
 @prontypes = {"all" => "Tot", "annan" => "Ind", "denna" => "Dem", "densamma" => "Dem", "en" => "Art", "hon" => "Prs", "ingen" => "Neg", "ingenting" => "Neg", "man" => "Ind", "någon" => "Ind", "sig" => "Prs", "som" => "Rel", "var" => "Tot", "varandra" => "Rcp", "vardera" => "Tot", "varje" => "Tot", "vem" => "Int", "the" => "Art", "vars" => "Rel", "vilka" => "Rel", "du" => "Prs", "vi" => "Prs", "han" => "Prs", "jag" => "Prs", "ni" => "Prs", "vår" => "Prs", "mitt" => "Prs", "mycken" => "Ind", "någonting" => "Ind", "mången" => "Ind", "mycket" => "Ind", "sån" => "Ind", "somlig" => "Ind", "många" => "Ind", "varannan" => "Ind", "nånting" => "Ind", "flera" => "Ind", "fler" => "Ind", "få" => "Ind", "två" => "Ind", "vissa" => "Ind", "båda" => "Tot", "vilket" => "Tot", "bådadera" => "Tot", "allting" => "Tot", "envar" => "Tot", "bägge" => "Tot", "samtlig" => "Tot", "alltihop" => "Tot", "ingendera" => "Neg", "varann" => "Rcp", "vad" => "Int,Rel", "vilken" => "Int,Rel", "litet" => "Ind", "allihopa" => "Tot", "alltihopa" => "Tot", "varsin" => "Tot", "varenda" => "Tot", "allesammans" => "Tot"} #Based on Talbanken + corrections from https://github.com/UniversalDependencies/docs/issues/1083#issuecomment-2677651632
-#TODO: #vad, vilken (+vem? det?) and other ambiguous +den här
-#DOC: possible overproduction of pronouns, especially "Tot"
+#TODO2: #vad, vilken (+vem? det?) and other ambiguous +den här
+#DIM: possible overproduction of pronouns, especially "Tot"
 
 @partpenult = "abcdfghjklmnpqrstvwxz"
 @unvoiced_partpenult  = "cfhkpqstxz"
 @notparticiples = ["ökänd", "mången", "glad", "gedigen", "liten", "hård", "sen", "mycken", "välkommen", "öppen", "ilsken", "egen", "osund", "enskild", "blåögd", "ond", "medveten", "angelägen", "okänd", "kristen", "vuxen", "rädd", "jätte|ond", "jätte|ledsen", "lessen", "sugen", "synd", "ledsen", "mild", "obenägen", "ren", "nämnvärd", "jättesugen", "vaken", "stenhård", "naken", "nyfiken", "högljudd", "galen", "värd", "toppen", "oerhörd", "omedveten", "helhjärtad", "vild", "lyhörd", "avsevärd", "sund", "belägen", "folkvald", "blond", "trogen", "förmögen", "färgglad", "sorgsen", "överlägsen", "outvecklad", "önskvärd", "rund", "belåten", "härsken", "moloken", "grund", "blå|mild", "plikttrogen", "oönskad", "len", "säregen", "mogen", "avlägsen", "älskvärd", "medfaren", "ljummen", "först", "korrekt", "främst", "direkt", "fast", "indirekt", "gôtt", "rätt", "näst", "trist", "exakt", "sist", "glatt", "övertrött", "perfekt", "tyst", "flott", "förtjust", "platt", "nätt", "sankt", "terrest", "ogift", "rödlätt", "storväxt", "kroknäst", "kompakt", "knäppt", "smått"]
 
-#TODO: ADD COORDINATION
 def finddaughters(sentence,nodeofinterest)
     #STDERR.puts "nodeofinterest: #{nodeofinterest}"
     #STDERR.puts "finddaughters: #{sentence}"
@@ -97,7 +89,7 @@ def detectparticiple(pos,upos,lemma,head,deprel,sentence)
                 if sentence[head]["lemma"] == "bli" and deprel == "SP"
                     upos = "VB"
                     feats << "Voice=Pass"
-                    #TODO: change the structure, add aux:pass deprel, change POS of bli to "aux"
+                    #TODO3: change the structure, add aux:pass deprel, change POS of bli to "aux"
                 end
             end
             feats << "Tense=Past"
@@ -170,7 +162,7 @@ def convert(id, sentence, sent_id)
             upos = "DET"
         end
     end
-    #TODO: coordination, comparatives
+    
     if lemma == "mycket" or lemma == "mycken" or lemma == "litet"
         if deprel == "DT"
             upos = "ADJ"
@@ -194,9 +186,9 @@ def convert(id, sentence, sent_id)
     upos = partresults[0]
 
     if pos == "VB"
-        #TODO: add "det" disambiguation
-        #TODO: add "vara" disambiguation
-        #TODO: add "ha" bortfall
+        #DIM: add "det" disambiguation
+        #DIM: add "vara" disambiguation
+        
         
         if @auxlist.include?(lemma)
             #STDERR.puts "AUXLIST!"
