@@ -89,6 +89,27 @@ def finddaughters(sentence,nodeofinterest)
 
 end
 
+def detectparticiple(pos,upos,lemma,head,deprel,sentence)
+    feats = []
+    if pos == "AJ" 
+        if ((lemma[-1] == "d" and @partpenult.include?(lemma[-2])) or (lemma[-2..-1] == "en") or (lemma[-1] == "t" and @unvoiced_partpenult.include?(lemma[-2]))) and !@notparticiples.include?(lemma)
+            if !sentence[head].nil?
+                if sentence[head]["lemma"] == "bli" and deprel == "SP"
+                    upos = "VB"
+                    feats << "Voice=Pass"
+                    #TODO: change the structure, add aux:pass deprel, change POS of bli to "aux"
+                end
+            end
+            feats << "Tense=Past"
+            feats << "VerbForm=Part"
+        elsif lemma[-4..-1] == "ande" or lemma[-4..-1] == "ende" 
+            feats << "Tense=Pres"
+            feats << "VerbForm=Part"
+        end
+    end
+    return upos,feats
+end
+
 
 def convert(id, sentence, sent_id)
     #STDERR.puts "convert: #{sentence}"
@@ -167,28 +188,16 @@ def convert(id, sentence, sent_id)
 
 
     feats = []
-    if pos == "AJ" 
-        if ((lemma[-1] == "d" and @partpenult.include?(lemma[-2])) or (lemma[-2..-1] == "en") or (lemma[-1] == "t" and @unvoiced_partpenult.include?(lemma[-2]))) and !@notparticiples.include?(lemma)
-            if !sentence[head].nil?
-                if sentence[head]["lemma"] == "bli" and deprel == "SP"
-                    upos = "VB"
-                    feats << "Voice=Pass"
-                    #TODO: change the structure, add aux:pass deprel, change POS of bli to "aux"
-                end
-            end
-            feats << "Tense=Past"
-            feats << "VerbForm=Part"
-        elsif lemma[-4..-1] == "ande" or lemma[-4..-1] == "ende" 
-            feats << "Tense=Pres"
-            feats << "VerbForm=Part"
-        end
-    end
+    partresults = detectparticiple(pos,upos,lemma,head,deprel,sentence) 
+    feats << partresults[1]
+    feats.flatten!
+    upos = partresults[0]
 
     if pos == "VB"
         #TODO: add "det" disambiguation
         #TODO: add "vara" disambiguation
         #TODO: add "ha" bortfall
-        #TODO: deal with "bli" (make participle detection a function and apply it)
+        
         if @auxlist.include?(lemma)
             #STDERR.puts "AUXLIST!"
             auxflag = false
@@ -197,7 +206,9 @@ def convert(id, sentence, sent_id)
             if lemma == "bli"
                 
                 daughters.each do |daughter|
-                    if SHOULD APPLY TO DAUGHTER feats.include?("VerbForm=Part") and feats.include?("Tense=Past") and sentence[daughter]["deprel"] == "SP"
+                    daughterupos,daughterfeats = detectparticiple(sentence[daughter]["pos"],"",sentence[daughter]["lemma"],sentence[daughter]["head"],sentence[daughter]["deprel"],sentence)
+ 
+                    if daughterfeats.include?("VerbForm=Part") and daughterfeats.include?("Tense=Past") and sentence[daughter]["deprel"] == "SP"
                         auxflag = true
                         break
                     end
@@ -223,7 +234,7 @@ def convert(id, sentence, sent_id)
                 #STDERR.puts "OTHER!"
                 daughters.each do |daughter|
                     #STDERR.puts daughter
-                    if (sentence[daughter]["msd"].include?("INF") or sentence[daughter]["lemma"] == "att") and sentence[daughter]["deprel"] == "IV"
+                    if ((sentence[daughter]["msd"].include?("INF") or sentence[daughter]["lemma"] == "att")) or (sentence[daughter]["msd"].include?("SPM")) and sentence[daughter]["deprel"] == "IV"
                         auxflag = true
                         break
                     end
