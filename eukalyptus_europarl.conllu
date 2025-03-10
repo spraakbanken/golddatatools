@@ -7360,7 +7360,7 @@ Eupa_00-01-17.290.1002	.	_	SY	-.-.-	SY.DEL	1002	--
 1019	relevanta	relevant	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1018	SP		
 1020	stryks	stryka	VB	-.-.-	VB.IND.SFO.PRS	1006	KL		
 1021	och	och	KO	-.-.-	KO.-	0	--		
-1022	den	den	PO	-.-.-	PO.DEF.SIN.UTR.SUB/OBJ.-	1023	SB		
+1022	den	den	PO	-.-.-	PO.DEF.SIN.UTR.SUB/OBJ.-	1023	SB		det
 1023	innebär	innebära	VB	-.-.-	VB.IND.AKT.PRS	1021	KL		
 1024	att	att	SU	-.-.-	SU.-	1023	OO		
 1025	förfarandet	förfarande	NN	-.-.-	NN.NEU.SIN.DEF	1026	SB		
@@ -8083,7 +8083,7 @@ Eupa_00-01-17.290.1002	.	_	SY	-.-.-	SY.DEL	1002	--
 1019	vägar	väg	NN	-.-.-	NN.UTR.PLU.IND	1021	KL		
 1020	,	_	SY	-.-.-	SY.DEL	1005	--		
 1021	järnvägsnät	järnvägsnät	NN	-.-.-	NN.NEU.PLU.IND	1017	OO		
-1022	osv.	och så vidare	AB	FKN.-.-	AB.-.-	1021	KL		
+1022	osv.	och så vidare	AB	FKN.-.-	AB.-.-	1021	KL		osv.
 1024	,	_	SY	-.-.-	SY.DEL	1005	--		
 1025	även	även	AB	-.-.-	AB.-.-	1026	ME		
 1026	om	om	SU	-.-.-	SU.-	1028	MD		
@@ -9101,7 +9101,7 @@ Eupa_00-01-17.290.1002	.	_	SY	-.-.-	SY.DEL	1002	--
 1035	mellan	mellan	PE	-.-.-	PE.-	1034	MD		
 1036	CEN	CEN	EN	-.-.-	EN.-	1037	KL		
 1037	och	och	KO	-.-.-	KO.-	1035	OO		
-1038	FN:s	FN	EN	-.GEN.-	EN.-	1042	DT		
+1038	FN:s	FN	EN	-.GEN.-	EN.-	1042	DT		FN:s
 1041	ekonomiska	ekonomisk	AJ	-.-.-	AJ.POS.SIN.DEF.UTR/NEU.-	1042	MD		
 1042	kommission	kommission	NN	-.-.-	NN.UTR.SIN.IND	1037	KL		
 1043	för	för	PE	-.-.-	PE.-	1042	MD		
@@ -10922,7 +10922,7 @@ Eupa_00-01-17.428.1002	.	_	SY	-.-.-	SY.DEL	1002	--
 1011	något	någon	PO	-.-.-	PO.IND.SIN.NEU.-.-	1012	DT		
 1012	sätt	sätt	NN	-.-.-	NN.NEU.SIN.IND	1010	OO		
 1013	verkar	verka	VB	-.-.-	VB.IND.AKT.PRS	1007	OO		
-1014	har	ha	VB	-.-.-	VB.IND.AKT.PRS	1013	IV		
+1014	har	ha	VB	-.-.-	VB.IND.AKT.PRS	1013	IV		ha
 1015	gömts	gömma	VB	-.-.-	VB.SPM.SFO.-	1014	IV		
 1016	i	i	PE	-.-.-	PE.-	1015	MD		
 1017	Förenade	förenad	AJ	-.-.-	AJ.POS.SIN.DEF.UTR/NEU.-	1019	DT		
@@ -12770,7 +12770,7 @@ Eupa_00-01-17.428.1002	.	_	SY	-.-.-	SY.DEL	1002	--
 1043	andra	andra	AJ	-.-.-	AJ.POS.SIN.DEF.UTR/NEU.-	1041	OO	1041:OO|1039:	
 1044	,	_	SY	-.-.-	SY.DEL	1045	--		
 1045	är	vara	VB	-.-.-	VB.IND.AKT.PRS	0	--		
-1046	de	den	PO	-.-.-	PO.DEF.PLU.UTR/NEU.SUB/OBJ.-	1045	SP	1045:SP|1050:SB|1048:SB	
+1046	de	den	PO	-.-.-	PO.DEF.PLU.UTR/NEU.SUB/OBJ.-	1045	SP	1045:SP|1050:SB|1048:SB	det
 1047	som	som	SU	-.-.-	SU.-	1046	MD		
 1048	kommer	komma	VB	-.-.-	VB.IND.AKT.PRS	1047	OO		
 1049	att	att	SU	-.-.-	SU.-	1048	IV		
@@ -15599,7 +15599,7 @@ Eupa_00-01-17.428.1002	.	_	SY	-.-.-	SY.DEL	1002	--
 1021	samman	samman	AB	-.-.-	AB.-.-	1020	PL	1020:PL|1020:ME	
 1022	med	med	PE	-.-.-	PE.-	1020	OA		
 1023	den	den	PO	-.-.-	PO.DEF.SIN.UTR.SUB/OBJ.-	1026	DT		
-1024	extra nationella	extra|nationell	AJ	-.-.-	AJ.POS.SIN.DEF.UTR/NEU.-	1026	MD		
+1024	extra nationella	extra|nationell	AJ	-.-.-	AJ.POS.SIN.DEF.UTR/NEU.-	1026	MD		extra-nationella
 1026	politiken	politik	NN	-.-.-	NN.UTR.SIN.DEF	1022	OO		
 1027	för	för	PE	-.-.-	PE.-	1026	MD		
 1028	fysisk	fysisk	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	1029	MD		
@@ -16763,7 +16763,7 @@ Eupa_00-01-17.428.1002	.	_	SY	-.-.-	SY.DEL	1002	--
 1035	ofta	ofta	AB	-.-.-	AB.POS.-	1037	MD		
 1036	skattebetalarna	skattebetalare	NN	-.-.-	NN.UTR.PLU.DEF	1037	SB	1037:SB|1038:SB	
 1037	får	få	VB	-.-.-	VB.IND.AKT.PRS	1034	OO		
-1038	står	stå	VB	-.-.-	VB.INF.AKT.-	1037	IV		
+1038	står	stå	VB	-.-.-	VB.INF.AKT.-	1037	IV		stå
 1039	för	för	PE	-.-.-	PE.-	1038	OA		
 1040	,	_	SY	-.-.-	SY.DEL	1004	--		
 1041	utan	utan	KO	-.-.-	KO.-	1010	MD		
@@ -19104,7 +19104,7 @@ Eupa_00-01-17.428.1002	.	_	SY	-.-.-	SY.DEL	1002	--
 1007	säga	säga	VB	-.-.-	VB.INF.AKT.-	1002	IV		
 1008	till	till	PE	-.-.-	PE.-	1007	OA		
 1009	Ribeiro	Ribeiro	EN	-.-.-	EN.-	1008	OO	1008:OO|1013:SB|1012:SB	
-1010	i	e	EN	-.-.-	EN.-	1009	ME		
+1010	i	e	EN	-.-.-	EN.-	1009	ME		e
 1011	Castro	Castro	EN	-.-.-	EN.-	1009	ME		
 1012	som	som	SU	-.-.-	SU.-	1009	MD		
 1013	ställt	ställa	VB	-.-.-	VB.SPM.AKT.-	1012	IV		

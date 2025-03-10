@@ -3684,7 +3684,7 @@ Regr_255053.16.1003	.	_	SY	-.-.-	SY.DEL	1003	--
 1003	idag	idag	AB	-.-.-	AB.-.-	1002	MD		
 1004	tagit	ta	VB	-.-.-	VB.SPM.AKT.-	1002	IV		
 1005	emot	emot	PE	-.-.-	PE.-	1004	PL	1004:PL|1004:ME	
-1006	Lösöreköpskommittén	lösöre|köps|kommitté	NN	-.-.-	NN.UTR.SIN.DEF	1007	DT		
+1006	Lösöreköpskommittén	lösöre|köps|kommitté	NN	-.-.-	NN.UTR.SIN.DEF	1007	DT		Lösöreköpskommitténs
 1007	betänkande	betänkande	NN	-.-.-	NN.NEU.SIN.IND	1004	OO	1004:OO|1011:SB|1009:SB	
 1008	som	som	SU	-.-.-	SU.-	1007	MD		
 1009	kommer	komma	VB	-.-.-	VB.IND.AKT.PRS	1008	OO		
@@ -13393,7 +13393,7 @@ Regr_255926.9.1002	:	_	SY	-.-.-	SY.DEL	1003	--
 1008	förnekelsen	förnekelse	NN	-.-.-	NN.UTR.SIN.DEF	1012	SB	1012:SB|1013:	
 1009	över	över	PE	-.-.-	PE.-	1008	MD		
 1010	eventuell	eventuell	AJ	-.-.-	AJ.POS.SIN.IND.UTR.-	1011	MD		
-1011	inbladning	inblandning	NN	-.-.-	NN.UTR.SIN.IND	1009	OO		
+1011	inbladning	inblandning	NN	-.-.-	NN.UTR.SIN.IND	1009	OO		inblandning
 1012	kan	kunna	VB	-.-.-	VB.IND.AKT.PRS	1005	OO		
 1013	vara	vara	VB	-.-.-	VB.INF.AKT.-	1012	IV		
 1014	en	en	PO	-.-.-	PO.IND.SIN.UTR.-.-	1015	DT		
@@ -14016,7 +14016,7 @@ Regr_255926.9.1002	:	_	SY	-.-.-	SY.DEL	1003	--
 1005	ha	ha	VB	-.-.-	VB.INF.AKT.-	1002	IV		
 1006	lärt	lära	VB	-.-.-	VB.SPM.AKT.-	1005	IV		
 1007	oss	vi	PO	-.-.-	PO.DEF.PLU.UTR/NEU.OBJ.-	1006	IO	1006:IO|1006:ME	
-1008	särkilt	särskild	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	1009	MD		
+1008	särkilt	särskild	AJ	-.-.-	AJ.POS.SIN.IND.NEU.-	1009	MD		särskilt
 1009	mycket	mycket	PO	-.-.-	PO.IND.SIN.NEU.-.-	1006	OO		
 1010	,	_	SY	-.-.-	SY.DEL	1015	--		
 1011	säger	säga	VB	-.-.-	VB.IND.AKT.PRS	1015	KL		
@@ -15412,7 +15412,7 @@ Regr_255926.9.1002	:	_	SY	-.-.-	SY.DEL	1003	--
 1001	Ledare	ledare	NN	-.-.-	NN.UTR.PLU.IND	1005	SB		
 1002	från	från	PE	-.-.-	PE.-	1001	MD		
 1003	hela	hel	AJ	-.-.-	AJ.POS.SIN.DEF.UTR/NEU.-	1004	MD		
-1004	välden	värld	NN	-.-.-	NN.UTR.SIN.DEF	1002	OO		
+1004	välden	värld	NN	-.-.-	NN.UTR.SIN.DEF	1002	OO		världen
 1005	samlas	samla	VB	-.-.-	VB.IND.SFO.PRS	0	--		
 1006	för	för	PE	-.-.-	PE.-	1005	MD		
 1007	att	att	SU	-.-.-	SU.-	1006	OO		
@@ -18541,7 +18541,7 @@ Regr_255193.14.1017	.	_	SY	-.-.-	SY.DEL	1002	--
 1006	i	i	PE	-.-.-	PE.-	1005	MD		
 1007	skolförordningen	skol|förordning	NN	-.-.-	NN.UTR.SIN.DEF	1006	OO		
 1008	avser	avse	VB	-.-.-	VB.IND.AKT.PRS	0	--		
-1009	årkurs	årskurs	NN	-.-.-	NN.UTR.SIN.IND	1015	KL		
+1009	årkurs	årskurs	NN	-.-.-	NN.UTR.SIN.IND	1015	KL		årskurs
 1010	6	sex	NU	-.-.-	NU.-	1009	AN		
 1011	i	i	PE	-.-.-	PE.-	1009	MD		
 1012	grundskolan	grundskola	NN	-.-.-	NN.UTR.SIN.DEF	1013	KL		
@@ -20171,7 +20171,7 @@ Regr_255193.14.1017	.	_	SY	-.-.-	SY.DEL	1002	--
 1010	kommit	komma	VB	-.-.-	VB.SPM.AKT.-	1009	IV		
 1011	från	från	PE	-.-.-	PE.-	1010	OA		
 1012	andra	andra	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1014	MD		
-1013	borgliga	borgerlig	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1014	MD		
+1013	borgliga	borgerlig	AJ	-.-.-	AJ.POS.PLU.IND/DEF.UTR/NEU.-	1014	MD		borgerliga
 1014	politiker	politiker	NN	-.-.-	NN.UTR.PLU.IND	1011	OO	1011:OO|1016:SB	
 1015	som	som	SU	-.-.-	SU.-	1014	MD		
 1016	menar	mena	VB	-.-.-	VB.IND.AKT.PRS	1015	OO		

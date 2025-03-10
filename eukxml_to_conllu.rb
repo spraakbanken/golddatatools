@@ -28,7 +28,7 @@ require 'io/console'
 #graphical connection
 
 
-verbose = ARGV[1]
+verbose = ARGV[0]
 if verbose.nil?
     verbose = false
 end
@@ -275,160 +275,202 @@ end
 
 PATH = "C:\\Sasha\\D\\DGU\\SBX_resources\\Eukalyptus-1.0.0\\Annotations\\"
 #PATH = "D:\\DGU\\SBX_resources\\Eukalyptus\\Eukalyptus-1.0.0\\Annotations\\"
-filename = ARGV[0]
-outputfile = File.open("#{filename}.conllu","w:utf-8")
 
 
-STDERR.puts "Parsing xml..."
-file = Nokogiri::XML(File.read("#{PATH}#{filename}.xml"))
-STDERR.puts "Looking for subcorpora..."
-subcorpora = file.css("subcorpus").to_a
-#excluded_sents = {"Romn_Holmsen-Polynesiskpassad.102" => true, "Romn_Holmsen-Polynesiskpassad.376" => true}
 
+#filename = ARGV[0]
+#outputfile = File.open("#{filename}.conllu","w:utf-8")
+outputfile = File.open("eukalyptus_all.conllu","w:utf-8")
+filenames = ["Eukalyptus_Blogg","Eukalyptus_Europarl","Eukalyptus_Nyhetstext","Eukalyptus_Romaner","Eukalyptus_Wikipedia"]
 excluded_sents = {}
-subcorpora.each do |subcorpus|
-    subcorpus_id = subcorpus["name"]
+filenames.each do |filename|
     
-    STDERR.puts subcorpus_id
-    sentences = subcorpus.css("s").to_a
-    sentences.each do |sentence|
-        primary_tree = Hash.new{|hash, key| hash[key] = Array.new}
-        primary_labels = Hash.new{|hash, key| hash[key] = Array.new}
-        secondary_tree = Hash.new{|hash, key| hash[key] = Array.new}
-        secondary_labels = Hash.new{|hash, key| hash[key] = Array.new}
-        sent_id = sentence["id"]
-        if !excluded_sents[sent_id]
-            #STDERR.puts sent_id
-            words = Hash.new{|hash, key| hash[key] = Hash.new}
-            phrases = {}
-            
-            #graph = sentence.css("graph")
-            #tpart = graph.css("terminals")
-            #STDERR.puts tpart
-            terminals = sentence.css("t").to_a
-            
-            terminals.each do |terminal|
-                term_id = terminal["id"]
-                words[term_id]["word"] = terminal["word"]
-                words[term_id]["pos"] = terminal["pos"]
-                words[term_id]["msd"] = terminal["msd"]
-                words[term_id]["msd2"] = terminal["msd2"]
-                words[term_id]["lemma"] = terminal["lemma"]
-                
-            end
-            term_ids = words.keys
-		    
-            nonterminals = sentence.css("nt").to_a
-            nonterminals.each do |nonterminal|
-                nonterm_id = nonterminal["id"]
-                cat = nonterminal["cat"]
-                phrases[nonterm_id] = cat
-                edges = nonterminal.css("edge").to_a
-                secedges = nonterminal.css("secedge").to_a
-                #STDERR.puts nonterm_id
-                edges.each do |edge|
-                    label = edge["label"]
-                    idref = edge["idref"]
-                    primary_tree[nonterm_id] << idref
-                    primary_labels[nonterm_id] << label
-                end
-                secedges.each do |secedge|
-                    seclabel = secedge["label"]
-                    secidref = secedge["idref"]
-                    secondary_tree[nonterm_id] << secidref
-                    secondary_labels[nonterm_id] << seclabel
-                end
-                
-            end
-            #STDERR.puts "*** #{primary_tree["Romn_Lundqvist-Ingentobak.20.5"]} ***"
-            #abort
-            @underoldroot = {}
-            @reversed_tree = {}
-            @reversed_labels = {}
-            @reversed_labels2 = {}
-            @reversed_secondary_tree = Hash.new{|hash, key| hash[key] = Array.new}
-            @reversed_secondary_labels = Hash.new{|hash, key| hash[key] = Array.new}
-            
-            @newroot = nil
-            @under0 = []
-            @primary_tree = primary_tree.clone
-            @primary_labels = primary_labels.clone
-            @head_by_nt = {}
-            @root_by_nt = {}
-            @mwes_replaced = {}
-            #@primary_tree.each_pair do |key,value|
-            #    STDERR.puts "#{key},#{value},#{@primary_labels[key]}"
-            #    
-            #end
-            #STDERR.puts ""
-            deal_with_mwes(primary_tree, "#{sent_id}.0", phrases, term_ids, words, verbose)
-            #@primary_tree.each_pair do |key,value|
-            #    STDERR.puts "#{key},#{value},#{@primary_labels[key]}"
-            #    
-            #end
-            #STDERR.puts ""
-            #STDERR.puts @reversed_tree
-            #STDERR.puts ""
-            #STDERR.puts @reversed_labels
-            #STDERR.puts ""
-            primary_tree = @primary_tree.clone
-            primary_labels = @primary_labels.clone
-            #abort
-            process_primary_tree(primary_tree, primary_labels, "#{sent_id}.0", term_ids, phrases, 0, sent_id,"",verbose)
-            secondary_tree.each_pair do |nt, towardsarray|
-                seclabelarray = secondary_labels[nt]
-		    
-                towardsarray.each.with_index do |towards, towardsindex|
-                    seclabel = seclabelarray[towardsindex]
-                    @reversed_secondary_labels[towards] << seclabel
-                    if !@head_by_nt[nt].nil?
-                        towardshead = @head_by_nt[nt].clone
-                    else
-                        towardshead = @mwes_replaced[nt]
-                    end
-		    
-                    if term_ids.include?(towards)
-                        @reversed_secondary_tree[towards] << towardshead
-                    else
-                        @reversed_secondary_tree[@head_by_nt[towards]] << towardshead
-                    end
-		    
-                end
-                
-            end
-		    
-		    
-            outputfile.puts "# corpus = #{filename}"
-            outputfile.puts "# subcorpus = #{subcorpus_id}"
-            outputfile.puts "# sent_id = #{sent_id}"
-            
-
-            
-
-            term_ids.sort.each do |term_id|
-                #STDERR.puts term_id
-                info = words[term_id]
-                head = nodeid_to_integer(sent_id,@reversed_tree[term_id])
-                deprel = @reversed_labels[term_id]
-                if @reversed_secondary_tree[term_id].length != 0
-                    secdep = "#{head}:#{deprel}"
-                    @reversed_secondary_tree[term_id].each.with_index do |from,fromindex|
-                        seclabel = @reversed_secondary_labels[term_id][fromindex]
-                        secdep << "|#{nodeid_to_integer(sent_id,from)}:#{seclabel}"
-                    end
-                    
-                    
-                end
-                
-                outputfile.puts "#{nodeid_to_integer(sent_id,term_id)}\t#{info["word"]}\t#{info["lemma"]}\t#{info["pos"]}\t#{info["msd2"]}\t#{info["msd"]}\t#{head}\t#{deprel}\t#{secdep}\t"
-            end
-#STDERR.    puts @reversed_tree
-            #STDERR.puts @reversed_labels
-            #abort
-            outputfile.puts ""
+    STDERR.puts "Parsing xml..."
+    file = Nokogiri::XML(File.read("#{PATH}#{filename}.xml"))
+    STDERR.puts "Looking for subcorpora..."
+    subcorpora = file.css("subcorpus").to_a
+    #excluded_sents = {"Romn_Holmsen-Polynesiskpassad.102" => true, "Romn_Holmsen-Polynesiskpassad.376" => true}
+    
+    #prev_subcorpus_id = ""
+    #subcorpus_id = ""
+    
+    
+    subcorpora.each do |subcorpus|
+        
+        subcorpus_id = subcorpus["name"]
+        if filename.include?("Nyhet")
+            subcorpus_id = "News_#{subcorpus_id}"
         end
+        #if subcorpus_id != prev_subcorpus_id
+        #    newdoc = true
+        #end
+        
+        STDERR.puts subcorpus_id
+        sentences = subcorpus.css("s").to_a
+        sentences.each.with_index do |sentence,sentnumber|
+            primary_tree = Hash.new{|hash, key| hash[key] = Array.new}
+            primary_labels = Hash.new{|hash, key| hash[key] = Array.new}
+            secondary_tree = Hash.new{|hash, key| hash[key] = Array.new}
+            secondary_labels = Hash.new{|hash, key| hash[key] = Array.new}
+            sent_id = sentence["id"]
+            if !excluded_sents[sent_id]
+                #STDERR.puts sent_id
+                words = Hash.new{|hash, key| hash[key] = Hash.new}
+                phrases = {}
+                
+                #graph = sentence.css("graph")
+                #tpart = graph.css("terminals")
+                #STDERR.puts tpart
+                terminals = sentence.css("t").to_a
+                
+                terminals.each do |terminal|
+                    term_id = terminal["id"]
+                    words[term_id]["word"] = terminal["word"]
+                    words[term_id]["pos"] = terminal["pos"]
+                    words[term_id]["msd"] = terminal["msd"]
+                    words[term_id]["msd2"] = terminal["msd2"]
+                    words[term_id]["lemma"] = terminal["lemma"]
+                    words[term_id]["read_as"] = terminal["read_as"]
+                    words[term_id]["connected"] = terminal["connected"]
+                end
+                term_ids = words.keys
+    		    
+                nonterminals = sentence.css("nt").to_a
+                nonterminals.each do |nonterminal|
+                    nonterm_id = nonterminal["id"]
+                    cat = nonterminal["cat"]
+                    phrases[nonterm_id] = cat
+                    edges = nonterminal.css("edge").to_a
+                    secedges = nonterminal.css("secedge").to_a
+                    #STDERR.puts nonterm_id
+                    edges.each do |edge|
+                        label = edge["label"]
+                        idref = edge["idref"]
+                        primary_tree[nonterm_id] << idref
+                        primary_labels[nonterm_id] << label
+                    end
+                    secedges.each do |secedge|
+                        seclabel = secedge["label"]
+                        secidref = secedge["idref"]
+                        secondary_tree[nonterm_id] << secidref
+                        secondary_labels[nonterm_id] << seclabel
+                    end
+                    
+                end
+                #STDERR.puts "*** #{primary_tree["Romn_Lundqvist-Ingentobak.20.5"]} ***"
+                #abort
+                @underoldroot = {}
+                @reversed_tree = {}
+                @reversed_labels = {}
+                @reversed_labels2 = {}
+                @reversed_secondary_tree = Hash.new{|hash, key| hash[key] = Array.new}
+                @reversed_secondary_labels = Hash.new{|hash, key| hash[key] = Array.new}
+                
+                @newroot = nil
+                @under0 = []
+                @primary_tree = primary_tree.clone
+                @primary_labels = primary_labels.clone
+                @head_by_nt = {}
+                @root_by_nt = {}
+                @mwes_replaced = {}
+                #@primary_tree.each_pair do |key,value|
+                #    STDERR.puts "#{key},#{value},#{@primary_labels[key]}"
+                #    
+                #end
+                #STDERR.puts ""
+                deal_with_mwes(primary_tree, "#{sent_id}.0", phrases, term_ids, words, verbose)
+                #@primary_tree.each_pair do |key,value|
+                #    STDERR.puts "#{key},#{value},#{@primary_labels[key]}"
+                #    
+                #end
+                #STDERR.puts ""
+                #STDERR.puts @reversed_tree
+                #STDERR.puts ""
+                #STDERR.puts @reversed_labels
+                #STDERR.puts ""
+                primary_tree = @primary_tree.clone
+                primary_labels = @primary_labels.clone
+                #abort
+                process_primary_tree(primary_tree, primary_labels, "#{sent_id}.0", term_ids, phrases, 0, sent_id,"",verbose)
+                secondary_tree.each_pair do |nt, towardsarray|
+                    seclabelarray = secondary_labels[nt]
+    		    
+                    towardsarray.each.with_index do |towards, towardsindex|
+                        seclabel = seclabelarray[towardsindex]
+                        @reversed_secondary_labels[towards] << seclabel
+                        if !@head_by_nt[nt].nil?
+                            towardshead = @head_by_nt[nt].clone
+                        else
+                            towardshead = @mwes_replaced[nt]
+                        end
+    		    
+                        if term_ids.include?(towards)
+                            @reversed_secondary_tree[towards] << towardshead
+                        else
+                            @reversed_secondary_tree[@head_by_nt[towards]] << towardshead
+                        end
+    		    
+                    end
+                    
+                end
+    		    
+    		    
+                #outputfile.puts "# corpus = #{filename}"
+                #outputfile.puts "# subcorpus = #{subcorpus_id}"
+                if sentnumber == 0
+                    outputfile.puts "# newdoc id = #{subcorpus_id}"
+                end
+                
+                outputfile.puts "# sent_id = #{sent_id}"
+                
+    
+                
+                text = ""
+                term_ids.sort.each do |term_id|
+                    info = words[term_id]
+                    text << info["word"]
+                    if info["connected"] != "rear"
+                        text << " "
+                    end
+                end
+                if text[-1] == " "
+                    text = text[0..-2]
+                end
+                outputfile.puts "# text = #{text}"
+    
+                term_ids.sort.each do |term_id|
+                    #STDERR.puts term_id
+                    info = words[term_id]
+                    head = nodeid_to_integer(sent_id,@reversed_tree[term_id])
+                    deprel = @reversed_labels[term_id]
+                    if @reversed_secondary_tree[term_id].length != 0
+                        secdep = "#{head}:#{deprel}"
+                        @reversed_secondary_tree[term_id].each.with_index do |from,fromindex|
+                            seclabel = @reversed_secondary_labels[term_id][fromindex]
+                            secdep << "|#{nodeid_to_integer(sent_id,from)}:#{seclabel}"
+                        end
+                        
+                        
+                    end
+                    misc = []
+                    if info["read_as"] != ""
+                        misc << "CorrectForm=#{info["read_as"]}"
+                    end
+                    if info["connected"] == "rear"
+                        misc << "SpaceAfter=No"
+                    end
+                    misc = misc.join("|")
+    
+                    outputfile.puts "#{nodeid_to_integer(sent_id,term_id)}\t#{info["word"]}\t#{info["lemma"]}\t#{info["pos"]}\t#{info["msd2"]}\t#{info["msd"]}\t#{head}\t#{deprel}\t#{secdep}\t#{misc}"
+                end
+    #STDERR.    puts @reversed_tree
+                #STDERR.puts @reversed_labels
+                #abort
+                
+                outputfile.puts ""
+            end
+        end
+    
+    
     end
-
-
 end
-

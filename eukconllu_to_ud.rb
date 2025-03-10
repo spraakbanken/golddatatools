@@ -35,8 +35,9 @@ end
 #TODO1: SFO: exclude reflexive, habitual, deponent and quasi-deponent
 #TODO2: FRL -- use to find SUBORDINATORS?
 #TODO2: PSS: can be used?
-#TODO1: Deal with msd2
-#TODO1: Add TYPO
+#TODO3: Deal with ESM in msd2
+#TODO1: Metadata
+#TODO3: Misc for MWEs?
 
 #TODO2: Arbt_Fackfientlig.7 -- ask Gerlof
 #TODO1: case: check whether it spreads somewhere it shouldn't. Do any syncretic cases disappear?
@@ -49,6 +50,9 @@ end
 #DIM (DOC, IGNORE, MANUALLY)
 # allting annat
 # EN: numeral
+# Typo should be style, too
+# AUX-VERB
+
 
 @auxlist = ["böra", "få", "komma", "kunna", "lär", "må", "måste", "skola", "torde",  "vilja", "bli", "ha", "vara"]   #from https://quest.ms.mff.cuni.cz/udvalidator/cgi-bin/unidep/langspec/specify_auxiliary.pl?lcode=sv with changes discussed in https://github.com/UniversalDependencies/docs/issues/1082
 @adverbial_heads = ["AJ","VB"] #TODO1: Are there misleading cases of "vara" as head? 
@@ -112,6 +116,7 @@ def convert(id, sentence, sent_id)
     msd2 = sentence[id]["msd2"]
     head = sentence[id]["head"]
     deprel = sentence[id]["deprel"]
+    misc = sentence[id]["misc"]
     firsttoken = sentence.keys.min
     
     #if id == "1017" 
@@ -294,6 +299,14 @@ def convert(id, sentence, sent_id)
     end    
 
 
+    if msd2.include?("FKN")
+        feats << "Abbr=Yes"
+    end
+
+    if misc.include?("CorrectForm")
+        feats << "Typo=Yes"
+    end
+
     #feats.gsub!("||","|")
     #if feats[-1] == "|"
     #    feats = feats[0..-2]
@@ -342,7 +355,7 @@ inputfile.each_line do |line|
             head = line2[6].to_i
             deprel = line2[7]
             extra1 = line2[8]
-            extra2 = line2[9]
+            misc = line2[9].to_s
             if mode == "list_pos"
                 if pos == ref_pos
                     #lemmas_per_pos[pos][lemma] = true
@@ -355,7 +368,7 @@ inputfile.each_line do |line|
             end
 
             if mode == "convert"
-                sentence[id] = {"form"=>form,"msd"=>msd,"msd2"=>msd2,"head"=>head,"deprel"=>deprel,"lemma"=>lemma, "extra1"=>extra1, "extra2"=>extra2, "pos" => pos} 
+                sentence[id] = {"form"=>form,"msd"=>msd,"msd2"=>msd2,"head"=>head,"deprel"=>deprel,"lemma"=>lemma, "extra1"=>extra1, "misc"=> misc, "pos" => pos} 
             end
             #STDERR.puts sentence[id]["head"]
 
@@ -388,7 +401,7 @@ inputfile.each_line do |line|
 
             sentence.each_pair do |id,senthash|
                 upos, feats = convert(id, sentence, sent_id)
-                line3 = [id, senthash["form"], senthash["lemma"], upos, "_", feats, senthash["head"], senthash["deprel"], senthash["extra1"], senthash["extra2"]].join("\t")
+                line3 = [id, senthash["form"], senthash["lemma"], upos, "_", feats, senthash["head"], senthash["deprel"], senthash["extra1"], senthash["misc"]].join("\t")
                 output << line3
 
                     if list_out_pos
