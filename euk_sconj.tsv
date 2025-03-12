@@ -1,0 +1,36 @@
+EUK	Talbanken		
+att	att	check heuristic	
+allteftersom	allteftersom		
+än	än	heuristic ADP	
+ävensom			
+bara			
+då	då	ok	
+där		check both	
+efter	efter		
+eftersom	eftersom		
+emedan	emedan		
+fast	fast		
+fastän	fastän		
+förrän	förrän		
+förräns			
+huruvida	huruvida		
+ifall			
+innan	innan		
+liksom	liksom		
+medan	medan		
+medans			
+om	om		
+så			
+såsom			
+såvida	såvida		
+såvitt			
+sedan	sedan		
+sen			
+som	som	check both	
+till			
+tills	tills		
+vidare		ask Gerlof	
+	den	sv-ud-train-4146	sv-ud-train-3958
+	ehuruväl		
+	när	ask Gerlof	
+		biff regeln?	

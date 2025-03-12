@@ -21,7 +21,10 @@ elsif mode == "list_pos"
 end
 
 @matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN", "SY"=>"PUNCT", "IJ"=>"INTJ", "KO" => "CCONJ", "AB" => "ADV", "NU" => "NUM", "PO" => "PRON", "SU" => "SCONJ", "UO" => "X", "VB" => "VERB"}
-#TODO1: SCONJ vs PRON vs ADV (som)
+#TODO1: SCONJ vs PRON vs ADV (som). Identify Advcl (esp. när, då, där). Deal with än and som. Check att
+#vare: VERB:konj -> cconj
+#ASK: advcl (sv-ud-train-3749, sv-ud-train-166) -- should be SCONJ. 
+
 #TODO2: coordination
 #TODO2: control by matching POSs
 
@@ -32,18 +35,17 @@ end
 
 @matchvbfeats = {"IND" => "Mood=Ind", "AKT" => "Voice=Act", "PRS" => "Tense=Pres", "PRT" => "Tense=Past", "SFO" =>"Voice=Pass", "KON" => "Mood=Sub", "IMP" => "Mood=Imp", "INF" => "VerbForm=Inf", "SPM" => "VerbForm=Sup", "SIN" => "Number=Sing", "PLU" => "Number=Plur", "SUB" => "Case=Nom", "OBJ" => "Case=Acc", "UTR" => "Gender=Com", "NEU" => "Gender=Neut", "MAS" => "Gender=Masc"}
 #TODO2: ASK: KON: exclude må?
-#TODO1: SFO: exclude reflexive, habitual, deponent and quasi-deponent
+#TODO1: SFO: exclude reflexive, habitual, deponent and quasi-deponent #extract s-forms that are not passive from Talbanken
 #TODO2: FRL -- use to find SUBORDINATORS?
 #TODO2: PSS: can be used?
 #TODO3: Deal with ESM in msd2
-#TODO1: Metadata
 #TODO3: Misc for MWEs?
+#TODO3: PL => compound:prt. Current UD inconsistent
 
 #TODO2: Arbt_Fackfientlig.7 -- ask Gerlof
-#TODO1: case: check whether it spreads somewhere it shouldn't. Do any syncretic cases disappear?
 #TODO1: proper nouns in the beginning of the sentence or (partial) abbreviations (JO-ombudsman) or numbers in the beginning
-#TODO1: check the PART vs SCONJ heuristics for "att"
-#TODO1: Arbt_Fackfientlig.2, 1003: 1008:
+
+#TODO3: Arbt_Fackfientlig.2, 1003: 1008:
 
 #TODO2: lemmatization of "andra" and possessive pronouns and många and mycket
 
@@ -55,7 +57,7 @@ end
 
 
 @auxlist = ["böra", "få", "komma", "kunna", "lär", "må", "måste", "skola", "torde",  "vilja", "bli", "ha", "vara"]   #from https://quest.ms.mff.cuni.cz/udvalidator/cgi-bin/unidep/langspec/specify_auxiliary.pl?lcode=sv with changes discussed in https://github.com/UniversalDependencies/docs/issues/1082
-@adverbial_heads = ["AJ","VB"] #TODO1: Are there misleading cases of "vara" as head? 
+@adverbial_heads = ["AJ","VB"] 
 @determiners = ["den", "en", "all", "någon", "denna", "vilken", "ingen", "varannan", "varenda"]
 @posslemmas = {"min" => "jag", "din" => "du", "vår" => "vi", "er" => "ni", "sin" => "sig"}
 @lemmacorrections = {"en viss" => "viss"}
@@ -140,7 +142,8 @@ def convert(id, sentence, sent_id)
             STDOUT.puts "#{sent_id} att at the end of a sentence"
         end
     elsif (pos == "AJ" and msd.include?("SIN") and msd.include?("IND") and msd.include?("NEU")) and (sentence[head].nil? or (@adverbial_heads.include?(sentence[head]["pos"]) and sentence[head]["lemma"] != "vara"))
-        #STDERR.puts "#{sent_id} #{form}"
+        #TODO2: check the PART vs SCONJ heuristics for "att"
+        #TODO2: Add verbal features for participles? Or exclude them from the participle function?
         upos = "ADV" 
     elsif pos == "NN"
         if form[0] == form[0].upcase and id != firsttoken and !(id == (firsttoken+1) and sentence[firsttoken]["pos"] == "SY") and !msd2.include?("FKN")

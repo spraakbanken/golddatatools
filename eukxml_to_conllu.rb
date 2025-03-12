@@ -445,6 +445,7 @@ filenames.each do |filename|
                     deprel = @reversed_labels[term_id]
                     if @reversed_secondary_tree[term_id].length != 0
                         secdep = "#{head}:#{deprel}"
+                        seclabel = ""
                         @reversed_secondary_tree[term_id].each.with_index do |from,fromindex|
                             seclabel = @reversed_secondary_labels[term_id][fromindex]
                             secdep << "|#{nodeid_to_integer(sent_id,from)}:#{seclabel}"
