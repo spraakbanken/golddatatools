@@ -1,0 +1,60 @@
+XSL-formatmallar (Extensible Stylesheet Language) är däremot betydligt mer flexibla än CSS-filer. sv_lines-ud-dev-doc1-3234
+I ett formulär eller en rapport visas aldrig egenskapen Namn när mer än en kontroll är markerad, eftersom kontrollnamn måste vara unika. sv_lines-ud-dev-doc1-3285
+Han undrade om den unge Auster hade varit bättre på det än han. sv_lines-ud-dev-doc2-3296
+Det finns en fråga som är mycket viktigare än checken, sa han. sv_lines-ud-dev-doc2-3429
+I fortsättningen kunde det inte bli annat än lösa gissningar, eftersom ingen av dem visste något mer. sv_lines-ud-dev-doc2-3447
+Den är vänligare inställd till Amin än till Rabin. sv_lines-ud-dev-doc3-3511
+Jag hoppas att den kärlek de skänker oss är av bättre kvalitet än den de får av oss, för vår egen är av en mycket lågklassig uppåtsipprande växtsaftsliknande sort som är lika kortlivad som spontan. sv_lines-ud-dev-doc3-3545
+"Times borde vara bättre på politik än på litteratur, men vem vet. sv_lines-ud-dev-doc3-3561
+De var inte fiender, de var inte brottslingar, de var ingenting längre som hörde jorden till, ingenting annat än svarta skuggor av sjukdom och svält som vilade i ett virrvarr i det gröna dunklet. sv_lines-ud-dev-doc4-3641
+Den andra delen klargör att förmåner av ett större värde än 100 ecu måste redovisas. sv_lines-ud-dev-doc5-3794
+"Nej, inte än", sa mor. sv_lines-ud-dev-doc8-4103
+"Men Jove är ju yngre än du." sv_lines-ud-dev-doc8-4132
+Hennes bröst som mina bröst, hennes mun som min mun, blev något mer än Narkissos hypnotiserad av sin egen avbild. sv_lines-ud-dev-doc8-4171
+Men de kommer att bli svåra. De är i alla fall mycket bättre än förra året. sv_lines-ud-test-doc2-4355
+På sätt och vis var Don Quijote inget annat än en stand-in för honom själv. sv_lines-ud-test-doc2-4461
+Icke desto mindre ser jag i en bok som heter "Things to Come" att två amerikaner som anser sig vara allt annat än hjälplösa och underutvecklade, Herman Kahn och B Bruce-Briggs, är föga imponerade av ryssarnas prestationer. sv_lines-ud-test-doc3-4574
+"Det är sant", skriver Yehoshua, "att eftersom vårt andliga liv i dag inte kan röra sig om något annat än dessa (politiska) frågor kan man inte reservera andliga krafter för någonting annat när man engagerat sig totalt i dem. sv_lines-ud-test-doc3-4588
+Vore inte det bättre än totalharmonisering som ju i grund och botten är en kommersiell regel som syftar till att gynna det kommersiella, inte livsmedelskvaliteten? sv_lines-ud-test-doc5-4760
+En ung svart man med solglasögon och en tjock, fjädrande matta av hår, som föreföll ha fått sin amerikanska snaggning snarare av en häckklippningsexpert än en frisör, hade banat sig fram genom trängseln, snabbt och lätt, liksom omgiven av auktoritet. sv_lines-ud-test-doc6-4869
+Han tog helt ambitiöst lektioner i suahili och talade det i varje fall bättre än jag. sv_lines-ud-test-doc6-5001
+Med ett dån blev elden smaragdgrön och flammade högre än Fred, som klev rakt in i den och ropade: "Diagongränden!" I nästa ögonblick var han försvunnen. sv_lines-ud-test-doc7-5122
+När du kopierar data till andra program än Excel och Word som inte stöder HTML-formatet som används i pivottabellvyer, kopieras informationen som oformaterad text. sv_lines-ud-train-doc1-204
+Han ägnade aldrig mer än fem eller sex månader åt varje roman och resten av året var han fri att göra vad han ville. sv_lines-ud-train-doc2-371
+Varje gång han tog en promenad kände han det som om han ginge ifrån sig själv, och genom att överlämna sig till gatornas rörelse, genom att reducera sig själv till ett iakttagande öga, kom han undan kravet att tänka, vilket mer än något annat gav honom ett slags ro, en välgörande inre tomhet. sv_lines-ud-train-doc2-378
+Förr i världen hade Quinn haft större ambitioner än så. sv_lines-ud-train-doc2-384
+Quinn var inte längre den del av honom som kunde skriva böcker, och även om Quinn fortsatte att existera på flera andra sätt så existerade han inte för någon annan än för sig själv. sv_lines-ud-train-doc2-389
+Inget mer än detta allmänna intryck – trots att han faktiskt var där och såg alltihop med egna ögon. sv_lines-ud-train-doc2-444
+Säkert inte mer än ett par minuter. sv_lines-ud-train-doc2-448
+Det såg aldrig ut att vara annat än trasiga, kasserade saker eller bitar av saker. sv_lines-ud-train-doc2-535
+Stillman tycktes inte ägna sig åt något annat än detta att plocka upp föremål från gatan. sv_lines-ud-train-doc2-541
+Och vem kan det vara annat än Sancho Panza, den trogne vapendragaren som Don Quijote valt just för detta ändamål? sv_lines-ud-train-doc2-683
+Inte nog med att han var tillbaka till startpunkten, nej, han var före startpunkten, så långt före att det var värre än någon slutpunkt han kunde tänka sig. sv_lines-ud-train-doc2-761
+"Koschermat är dyrare än andra sorter", säger jag. sv_lines-ud-train-doc3-920
+Vad jag vet är Jerusalem geologiskt sett inte äldre än andra ställen, men dolomiten och leran ser uråldrigare ut än något jag har sett i hela mitt liv. sv_lines-ud-train-doc3-972
+Vad jag vet är Jerusalem geologiskt sett inte äldre än andra ställen, men dolomiten och leran ser uråldrigare ut än något jag har sett i hela mitt liv. sv_lines-ud-train-doc3-972
+Det är lustigt, eftersom han är en författare och en tänkande människa, allt annat än en kapplöpningshaj. sv_lines-ud-train-doc3-980
+På mindre än fem timmar hade John reparerat motorerna, men hamnmyndigheterna påstod att fartyget inte var sjödugligt och krävde att kaptenen skulle ställa borgen på tjugotusen dollar för de kostnader som hans "skadade fartyg" kunde förorsaka. sv_lines-ud-train-doc3-1118
+Det var ingenting annat än tjuvnad i samband med våldsdåd, kvalificerat mord i stor skala, och de kastade sig blint in i det – vilket ju passar bra för den som ger sig på själva mörkret. sv_lines-ud-train-doc4-1275
+Att erövra världen, vilket för det mesta betyder att ta den ifrån dem som har en annan hudfärg eller litet plattare näsa än vi själva, är ingen vacker hantering om man synar den litet för noga. sv_lines-ud-train-doc4-1276
+Sen hade jag så när ramlat ner i en smal ravin, knappt mer än en skåra i bergssidan. sv_lines-ud-train-doc4-1433
+Med ett sådant perspektiv kanske utvärderingen av budgetarbetet får en dimension som omfattar mer än rena detaljer. sv_lines-ud-train-doc5-1566
+Om översättningen är riktig har jag intrycket att herr Sjöstedt personligen tror att nationella lagar är viktigare än gemenskapsrätten. sv_lines-ud-train-doc5-1607
+Den enda vara som har någon betydelse är tomatkonserver, vilka ändå inte utgör mer än sju procent av den sydafrikanska marknaden. sv_lines-ud-train-doc5-1841
+Över Kano lyste en väldig måne, och i starkare ljus än en europeisk vintereftermiddag kämpade sig passagerarna fram över plattan klockan tre på morgonen mot trycket av en middagshetta, som dröjt sig kvar hela natten liksom solen dröjer sig kvar i en sten som den värmt upp. sv_lines-ud-train-doc6-2042
+Förbaskat mycket bättre än en del av våra tjänstemän. sv_lines-ud-train-doc6-2121
+De svartas smutsiga förehavanden är inte ett spår renare än de vitas. sv_lines-ud-train-doc6-2147
+Mrs Wentz sade det med ett tonfall som tydde på att den talande inte riktade sig till någon annan än sig själv. sv_lines-ud-train-doc6-2271
+Det är märkvärdigt hur lätt han har för att tas med dom där... bättre än jag själv kan jag försäkra. sv_lines-ud-train-doc6-2274
+Eftersom det gudskelov varade mindre än två generationer – var det inte från er synpunkt värt det hela? sv_lines-ud-train-doc6-2298
+Mer än någonting han saknade från Hogwarts, till och med mer än att spela quidditch, saknade Harry sina bästa vänner, Ron Weasley och Hermione Granger. sv_lines-ud-train-doc7-2441
+Alldeles i slutet av sista terminen hade Harry stått ansikte mot ansikte med ingen mindre än Lord Voldemort själv. sv_lines-ud-train-doc7-2453
+Alla mrs Weasleys tre söner var längre än hon, men de hukade sig då hennes vrede bröt loss över dem. sv_lines-ud-train-doc7-2591
+Mannen som följde efter kunde inte vara någon annan än hans far. sv_lines-ud-train-doc7-2640
+Och han stegade i väg med långa kliv, huvudet och axlarna högre än någon annan i folkmyllret på gatan. sv_lines-ud-train-doc7-2706
+Man och hustru. Man och revben. Vad kunde vara mer normalt än det? sv_lines-ud-train-doc8-2806
+Han älskade hennes kläder, älskade att se henne uppklädd, det tillfredsställde en del av honom som låg djupare än fåfänga. sv_lines-ud-train-doc8-2815
+Min mor såg mer förströdd ut än vanligt och hade ljuset tänt hela natten. sv_lines-ud-train-doc8-2839
+Det kan inte ha varat mer än ett ögonblick; de insåg att deras byte fanns någon annanstans och försvann lika demoniskt som de hade dykt upp. sv_lines-ud-train-doc8-2851
+Det fanns ingen grund för detta annat än farmors hårdnackade vägran att installera en inomhustoalett eller att besöka någon av min mors Tupperwarekvällar. sv_lines-ud-train-doc8-2867
+Min farmor, som var fast övertygad anhängare av Guds ord, fann större nöje i denna stund än någon annan under hela veckan, inklusive torsdag eftermiddag klockan två då hon kvitterade ut sin pension. sv_lines-ud-train-doc8-3163

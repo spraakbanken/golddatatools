@@ -21,8 +21,9 @@ elsif mode == "list_pos"
 end
 
 @matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN", "SY"=>"PUNCT", "IJ"=>"INTJ", "KO" => "CCONJ", "AB" => "ADV", "NU" => "NUM", "PO" => "PRON", "SU" => "SCONJ", "UO" => "X", "VB" => "VERB"}
-#TODO1: SCONJ vs PRON vs ADV (som). Identify Advcl (esp. när, då, där). Deal with än and som. Check att
-#vare: VERB:konj -> cconj
+#TODO1: SCONJ vs PRON vs ADV (som). Identify Advcl (esp. när, då, där). Deal with än and som
+#TODO1: vare: VERB:konj -> cconj
+#vilket fall som helst: CCONJ
 #ASK: advcl (sv-ud-train-3749, sv-ud-train-166) -- should be SCONJ. 
 
 #TODO2: coordination
@@ -34,26 +35,25 @@ end
 #"UTR/NEU" => "Gender=Com,Neut", "IND/DEF" => "Definite=Ind,Def", "SIN/PLU" => "Number=Sing,Plur", "SUB/OBJ" => "Case=Acc,Nom" Decided not to add. Usually covers the full range of possible values (and thus not recommended). Exception: Gender (Masc), but it's marginal. Syncretic case in EUK applies (mostly?) to determiners, so not relevant either.
 
 @matchvbfeats = {"IND" => "Mood=Ind", "AKT" => "Voice=Act", "PRS" => "Tense=Pres", "PRT" => "Tense=Past", "SFO" =>"Voice=Pass", "KON" => "Mood=Sub", "IMP" => "Mood=Imp", "INF" => "VerbForm=Inf", "SPM" => "VerbForm=Sup", "SIN" => "Number=Sing", "PLU" => "Number=Plur", "SUB" => "Case=Nom", "OBJ" => "Case=Acc", "UTR" => "Gender=Com", "NEU" => "Gender=Neut", "MAS" => "Gender=Masc"}
-#TODO2: ASK: KON: exclude må?
-#TODO1: SFO: exclude reflexive, habitual, deponent and quasi-deponent #extract s-forms that are not passive from Talbanken
-#TODO2: FRL -- use to find SUBORDINATORS?
-#TODO2: PSS: can be used?
 #TODO3: Deal with ESM in msd2
 #TODO3: Misc for MWEs?
 #TODO3: PL => compound:prt. Current UD inconsistent
 
-#TODO2: Arbt_Fackfientlig.7 -- ask Gerlof
-#TODO1: proper nouns in the beginning of the sentence or (partial) abbreviations (JO-ombudsman) or numbers in the beginning
+#TODO3: Arbt_Fackfientlig.7 -- ask Gerlof
 
 #TODO3: Arbt_Fackfientlig.2, 1003: 1008:
 
 #TODO2: lemmatization of "andra" and possessive pronouns and många and mycket
 
-#DIM (DOC, IGNORE, MANUALLY)
+#DIM (DOC, IGNORE, MANUALLY, LATER)
 # allting annat
 # EN: numeral
 # Typo should be style, too
 # AUX-VERB
+# FRL -- use to find SUBORDINATORS?
+# PSS: can be used?
+# Underproduction of PROPN (turn back on the capitalization-based method?)
+
 
 
 @auxlist = ["böra", "få", "komma", "kunna", "lär", "må", "måste", "skola", "torde",  "vilja", "bli", "ha", "vara"]   #from https://quest.ms.mff.cuni.cz/udvalidator/cgi-bin/unidep/langspec/specify_auxiliary.pl?lcode=sv with changes discussed in https://github.com/UniversalDependencies/docs/issues/1082
@@ -70,6 +70,7 @@ end
 @partpenult = "abcdfghjklmnpqrstvwxz"
 @unvoiced_partpenult  = "cfhkpqstxz"
 @notparticiples = ["ökänd", "mången", "glad", "gedigen", "liten", "hård", "sen", "mycken", "välkommen", "öppen", "ilsken", "egen", "osund", "enskild", "blåögd", "ond", "medveten", "angelägen", "okänd", "kristen", "vuxen", "rädd", "jätte|ond", "jätte|ledsen", "lessen", "sugen", "synd", "ledsen", "mild", "obenägen", "ren", "nämnvärd", "jättesugen", "vaken", "stenhård", "naken", "nyfiken", "högljudd", "galen", "värd", "toppen", "oerhörd", "omedveten", "helhjärtad", "vild", "lyhörd", "avsevärd", "sund", "belägen", "folkvald", "blond", "trogen", "förmögen", "färgglad", "sorgsen", "överlägsen", "outvecklad", "önskvärd", "rund", "belåten", "härsken", "moloken", "grund", "blå|mild", "plikttrogen", "oönskad", "len", "säregen", "mogen", "avlägsen", "älskvärd", "medfaren", "ljummen", "först", "korrekt", "främst", "direkt", "fast", "indirekt", "gôtt", "rätt", "näst", "trist", "exakt", "sist", "glatt", "övertrött", "perfekt", "tyst", "flott", "förtjust", "platt", "nätt", "sankt", "terrest", "ogift", "rödlätt", "storväxt", "kroknäst", "kompakt", "knäppt", "smått"]
+@nonsfolemmas = ["tycka", "möta", "fordra", "känna", "tränga"] #both from Talbanken and LinES with manual filtering
 
 def finddaughters(sentence,nodeofinterest)
     #STDERR.puts "nodeofinterest: #{nodeofinterest}"
@@ -145,13 +146,13 @@ def convert(id, sentence, sent_id)
         #TODO2: check the PART vs SCONJ heuristics for "att"
         #TODO2: Add verbal features for participles? Or exclude them from the participle function?
         upos = "ADV" 
-    elsif pos == "NN"
-        if form[0] == form[0].upcase and id != firsttoken and !(id == (firsttoken+1) and sentence[firsttoken]["pos"] == "SY") and !msd2.include?("FKN")
-            upos = "PROPN"
-            #STDERR.puts "#{sent_id} #{form}"
-        else
-            upos = "NOUN"
-        end
+    #elsif pos == "NN"
+    #    if form[0] == form[0].upcase and id != firsttoken and !(id == (firsttoken+1) and sentence[firsttoken]["pos"] == "SY") and !msd2.include?("FKN")
+            #upos = "PROPN"
+            #STDOUT.puts "#{sent_id} #{form}"
+    #    else
+    #        upos = "NOUN"
+    #    end
     elsif pos == "SY"
         if msd.include?("DEL")
             upos = "PUNCT"
@@ -194,6 +195,9 @@ def convert(id, sentence, sent_id)
     upos = partresults[0]
 
     if pos == "VB"
+
+        
+
         #DIM: add "det" disambiguation
         #DIM: add "vara" disambiguation
         
@@ -301,6 +305,44 @@ def convert(id, sentence, sent_id)
        feats << "Polarity=Neg"
     end    
 
+    if pos == "VB"
+        if feats.include?("Voice=Pass") 
+            if lemma[-1] == "s" 
+                feats.delete("Voice=Pass")
+            elsif @nonsfolemmas.include?(lemma)
+                feats.delete("Voice=Pass")
+                lemma = "#{lemma}s"
+                #STDOUT.puts lemma
+            end
+        end
+            
+        if lemma == "må"
+            if feats.include?("Mood=Sub")
+                feats.delete("Mood=Sub")
+                feats << "Mood=Ind"
+            end
+        end
+            
+
+    end
+
+    if form.downcase == "vare" and sentence[id+1]["form"].downcase == "sig" and sentence[id-1]["form"].to_s.downcase != "tack"
+        lemma = "vare"
+        upos = "CCONJ"
+        feats = []
+    end
+
+    if lemma == "ju"
+        if head > id
+            upos = "CCONJ"
+            feats = []
+        end
+    end
+
+    if ["ömsom","dels"].include?(lemma)
+        upos = "CCONJ"
+        feats = []
+    end
 
     if msd2.include?("FKN")
         feats << "Abbr=Yes"
@@ -319,7 +361,7 @@ def convert(id, sentence, sent_id)
     #end
 
     #feats = feats.split("|").sort.join("|")
-    feats = feats.sort.join("|")
+    feats = feats.uniq.sort.join("|")
     if feats == ""
         feats = "_"
     end
@@ -345,7 +387,7 @@ inputfile.each_line do |line|
             end
             if line1.include?("sent_id")
                 sent_id = line1.split(" = ")[1]
-                STDERR.puts sent_id
+                #STDERR.puts sent_id
             end
         else
             line2 = line1.split("\t")
@@ -403,8 +445,8 @@ inputfile.each_line do |line|
             #STDERR.puts "#{sentence}"
 
             sentence.each_pair do |id,senthash|
-                upos, feats = convert(id, sentence, sent_id)
-                line3 = [id, senthash["form"], senthash["lemma"], upos, "_", feats, senthash["head"], senthash["deprel"], senthash["extra1"], senthash["misc"]].join("\t")
+                upos, feats, lemma = convert(id, sentence, sent_id)
+                line3 = [id, senthash["form"], lemma, upos, "_", feats, senthash["head"], senthash["deprel"], senthash["extra1"], senthash["misc"]].join("\t")
                 output << line3
 
                     if list_out_pos
