@@ -1,4 +1,4 @@
-require_relative 'paths.rb'
+#require_relative 'paths.rb'
 
 STDERR.puts "Specify the number of columns to output (if 1, only the forms will be outputted. If 2, specify which column has to be outputted (starting from 0 e.g. 4=XPOS or 5=FEATS). Usage: ruby conllu_to_tab.rb conllu_file_name number_of_columns_in_the_output [conllu_column_to_use]"
 
