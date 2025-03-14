@@ -21,8 +21,7 @@ elsif mode == "list_pos"
 end
 
 @matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN", "SY"=>"PUNCT", "IJ"=>"INTJ", "KO" => "CCONJ", "AB" => "ADV", "NU" => "NUM", "PO" => "PRON", "SU" => "SCONJ", "UO" => "X", "VB" => "VERB"}
-#TODO1: SCONJ vs PRON vs ADV (som). Identify Advcl (esp. när, då, där). Deal with än and som
-#TODO1: vare: VERB:konj -> cconj
+#TODO3: DO when syntax. SCONJ vs PRON vs ADV (som). Identify Advcl (esp. när, då, där). Deal with än and som
 #vilket fall som helst: CCONJ
 #ASK: advcl (sv-ud-train-3749, sv-ud-train-166) -- should be SCONJ. 
 
@@ -43,7 +42,8 @@ end
 
 #TODO3: Arbt_Fackfientlig.2, 1003: 1008:
 
-#TODO2: lemmatization of "andra" and possessive pronouns and många and mycket
+#TODO2: många and mycket
+#TODO2: den här
 
 #DIM (DOC, IGNORE, MANUALLY, LATER)
 # allting annat
@@ -53,12 +53,13 @@ end
 # FRL -- use to find SUBORDINATORS?
 # PSS: can be used?
 # Underproduction of PROPN (turn back on the capitalization-based method?)
-
-
+# annat fint
+# lemmatization of "andra" 
+# NumType
 
 @auxlist = ["böra", "få", "komma", "kunna", "lär", "må", "måste", "skola", "torde",  "vilja", "bli", "ha", "vara"]   #from https://quest.ms.mff.cuni.cz/udvalidator/cgi-bin/unidep/langspec/specify_auxiliary.pl?lcode=sv with changes discussed in https://github.com/UniversalDependencies/docs/issues/1082
 @adverbial_heads = ["AJ","VB"] 
-@determiners = ["den", "en", "all", "någon", "denna", "vilken", "ingen", "varannan", "varenda"]
+@determiners = ["den", "en", "all", "någon", "denna", "vilken", "ingen", "varannan", "varenda","de","varje"]
 @posslemmas = {"min" => "jag", "din" => "du", "vår" => "vi", "er" => "ni", "sin" => "sig"}
 @lemmacorrections = {"en viss" => "viss"}
 @uposcorrections = {"viss" => "ADJ"}
@@ -142,8 +143,7 @@ def convert(id, sentence, sent_id)
         else
             STDOUT.puts "#{sent_id} att at the end of a sentence"
         end
-    elsif (pos == "AJ" and msd.include?("SIN") and msd.include?("IND") and msd.include?("NEU")) and (sentence[head].nil? or (@adverbial_heads.include?(sentence[head]["pos"]) and sentence[head]["lemma"] != "vara"))
-        #TODO2: check the PART vs SCONJ heuristics for "att"
+    elsif (pos == "AJ" and msd.include?("SIN") and msd.include?("IND") and msd.include?("NEU")) and (sentence[head].nil? or (@adverbial_heads.include?(sentence[head]["pos"]) and sentence[head]["lemma"] != "vara") and deprel == "MD")
         #TODO2: Add verbal features for participles? Or exclude them from the participle function?
         upos = "ADV" 
     #elsif pos == "NN"
@@ -198,8 +198,8 @@ def convert(id, sentence, sent_id)
 
         
 
-        #DIM: add "det" disambiguation
-        #DIM: add "vara" disambiguation
+        #DIM: AUX vs VERB add "det" disambiguation
+        #DIM: AUX vs VERB add "vara" disambiguation
         
         
         if @auxlist.include?(lemma)
@@ -364,6 +364,14 @@ def convert(id, sentence, sent_id)
     feats = feats.uniq.sort.join("|")
     if feats == ""
         feats = "_"
+    end
+
+    if upos != "PUNCT" and upos != "SYM"
+        lemma.gsub!("|","")
+    end
+
+    if lemma == "_" or lemma == ""
+        lemma = form.clone
     end
 
     if upos == "" or upos.nil?
