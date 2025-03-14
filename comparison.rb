@@ -60,7 +60,8 @@ poss_euk.each_pair do |lemma, poss|
 end
 
 final_ud.each_pair do |lemma, poss|
-    if poss.include?("ADJ") and poss.include?("PRON")
+    if poss.include?("ADP") and !poss.include?("ADV")
+        
         STDOUT.puts lemma
     end
     if !final_euk[lemma].nil?

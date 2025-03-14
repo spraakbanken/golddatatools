@@ -1,5 +1,5 @@
 		lemma	pos_ud	pos_freqs_ud	pos_euk	pos_freqs_euk	lemmafreq_ud	lemmafreq_euk	total_freq
-fix		_	X	1	PUNCT;X;SYM;NUM	10441;569;152;37	1	11199	11200
+done		_	X	1	PUNCT;X;SYM;NUM	10441;569;152;37	1	11199	11200
 possible_ud_error		den	DET;PRON;ADV;SCONJ	1156;1432;1;2	PRON;DET	1694;1553	2591	3247	5838
 ignore		i	ADP;NUM	2513;1	ADP	2172	2514	2172	4686
 fix_later	sconj	en	DET;PRON;NUM	2090;24;91	DET;PRON	1991;106	2205	2097	4302
@@ -8,7 +8,7 @@ fix_later	sconj	som	PRON;ADP;SCONJ;ADV;CCONJ	1111;67;357;30;52	SCONJ;CCONJ	1608;
 possible_ud_error		för	ADP;VERB;ADV;CCONJ	1208;5;34;9	ADV;ADP;CCONJ	22;1266;57	1256	1345	2601
 ignore		ha	VERB;AUX;INTJ	592;577;2	VERB;AUX	452;730	1171	1182	2353
 fix_later	sconj	till	ADP;ADV	1003;4	ADP;ADV;SCONJ	1088;6;4	1007	1098	2105
-fix	det	de	DET;PRON;PROPN	630;601;2	PRON;PROPN	504;13	1233	517	1750
+done	det	de	DET;PRON;PROPN	630;601;2	PRON;PROPN	504;13	1233	517	1750
 ignore		jag	PRON;NOUN	125;3	PRON	1600	128	1600	1728
 possible_ud_error		om	ADP;SCONJ;ADV	427;319;7	ADP;SCONJ	588;184	753	772	1525
 ignore		vi	PRON;NOUN;PROPN	552;1;2	PRON	810	555	810	1365
@@ -16,37 +16,37 @@ possible_ud_error		man	PRON;NOUN;DET	716;186;1	PRON;NOUN	225;50	903	275	1178
 possible_ud_error		få	VERB;ADJ;AUX;PRON	386;17;122;1	ADJ;AUX;VERB	9;176;261	526	446	972
 fix_later	sconj	så	ADV;ADJ;CCONJ	318;13;2	ADV;CCONJ;SCONJ;INTJ	442;70;13;1	333	526	859
 ignore		men	CCONJ;NOUN	367;1	CCONJ	471	368	471	839
-fix	advadj	stor	ADJ	357	ADV;ADJ	4;242	357	246	603
+done		stor	ADJ	357	ADV;ADJ	4;242	357	246	603
 possible_ud_error		någon	DET;ADV;PRON;ADJ	184;19;72;1	DET;PRON	187;107	276	294	570
 possible_ud_error		all	DET;ADV;PRON	173;11;65	PRON;DET	153;166	249	319	568
 fix_later	sconj	när	SCONJ;ADV	153;53	ADV	289	206	289	495
 possible_ud_error		vid	ADP;ADV;ADJ	269;3;5	ADP;ADJ	213;3	277	216	493
-fix		under	ADP;ADV	231;25	ADP;NOUN	189;2	256	191	447
-fix	advadj	annan	ADJ;PRON	254;57	ADJ;ADV	119;4	311	123	434
+fix	adp	under	ADP;ADV	231;25	ADP;NOUN	189;2	256	191	447
+fix	DET advadj	annan	ADJ;PRON	254;57	ADJ;ADV	119;4	311	123	434
 fix_later	sconj	där	ADV	160	ADV;SCONJ	122;113	160	235	395
 ignore		måste	AUX;VERB;NOUN	207;3;1	VERB;AUX	21;128	211	149	360
 fix_later	sconj	än	ADP;SCONJ;ADV	61;142;16	SCONJ;ADV	101;22	219	123	342
-fix	advadj	liten	ADJ;ADV	122;18	ADJ	173	140	173	313
+fix	DET advadj	liten	ADJ;ADV	122;18	ADJ	173	140	173	313
 possible_ud_error		del	NOUN;VERB	175;3	NOUN	110	178	110	288
 ignore		bara	ADV	132	ADV;SCONJ	138;1	132	139	271
 fix	advadj	olik	ADJ;ADV	198;2	ADJ	70	200	70	270
 fix_later	sconj	sen	ADJ;ADV;ADP	30;46;1	ADJ;ADV;ADP;SCONJ	86;80;18;6	77	190	267
 possible_ud_error		upp	ADP;ADV	1;93	ADV	157	94	157	251
-fix	advadj	mången	ADJ;PRON	60;37	ADJ	145	97	145	242
-fix	advadj	över	ADP;ADV	63;33	ADP	140	96	140	236
+fix	det	mången	ADJ;PRON	60;37	ADJ	145	97	145	242
+fix	adp	över	ADP;ADV	63;33	ADP	140	96	140	236
 possible_ud_error		två	NUM;PRON	110;1	NUM	122	111	122	233
-fix	advadj	in	ADP;ADV	2;77	ADV	132	79	132	211
-fix	det	varje	DET	127	PRON	56	127	56	183
-fix	advadj	sådan	ADJ	110	ADJ;ADV	61;2	110	63	173
+ignore		in	ADP;ADV	2;77	ADV	132	79	132	211
+done	det	varje	DET	127	PRON	56	127	56	183
+fix	Det advadj	sådan	ADJ	110	ADJ;ADV	61;2	110	63	173
 possible_ud_error		behöva	AUX;VERB	49;68	VERB	53	117	53	170
-ignore		själv	ADJ;NOUN	92;2	ADJ	64	94	64	158
+possible_ud_error		själv	ADJ;NOUN	92;2	ADJ	64	94	64	158
 fix	advadj	viktig	ADJ	74	ADJ;ADV	80;3	74	83	157
 possible_ud_error		flera	ADJ;PRON	65;4	ADJ	64	69	64	133
 fix	advadj	social	ADJ;ADV	83;2	ADJ	39	85	39	124
 fix	adp	ur	ADP;ADV	56;7	ADP	41	63	41	104
 fix	advadj	vanlig	ADJ;ADV	72;2	ADJ	29	74	29	103
-fix	advadj	särskild	ADJ	47	ADJ;ADV	38;17	47	55	102
-fix	adp	nära	ADJ;ADV;ADP	31;31;2	ADJ;ADV	29;7	64	36	100
+possible_ud_error	advadj	särskild	ADJ	47	ADJ;ADV	38;17	47	55	102
+ignore		nära	ADJ;ADV;ADP	31;31;2	ADJ;ADV	29;7	64	36	100
 possible_ud_error		hand	NOUN;PROPN	47;1	NOUN	45	48	45	93
 fix	advadj	litet	ADV	7	ADJ;PRON;ADV	31;10;45	7	86	93
 ignore		ännu	ADV;PROPN	51;1	ADV	40	52	40	92
@@ -60,7 +60,7 @@ possible_ud_error		hjälp	NOUN;VERB	46;1	NOUN	21	47	21	68
 		fyra	NUM	23	NUM;NOUN	42;1	23	43	66
 		var	ADV;PRON;DET	10;25;14	ADV;PRON	7;9	49	16	65
 		bo	VERB;NOUN	31;6	VERB	27	37	27	64
-fix	eukbug	båda	DET;PRON	27;9	PRON;VERB	22;2	36	24	60
+ignore		båda	DET;PRON	27;9	PRON;VERB	22;2	36	24	60
 		ung	ADJ;NOUN	28;1	ADJ	29	29	29	58
 		öppen	ADJ;ADV	29;5	ADJ	21	34	21	55
 		slut	NOUN;ADJ	13;3	ADJ;NOUN;ADV	6;30;3	16	39	55
@@ -70,8 +70,8 @@ fix	eukbug	båda	DET;PRON	27;9	PRON;VERB	22;2	36	24	60
 fix	eukbug	fast	ADJ;CCONJ;SCONJ;ADV	11;4;5;8	CCONJ;ADV;ADP;ADJ;SCONJ	8;5;1;6;5	28	25	53
 		ond	ADJ	15	ADJ;ADV	28;10	15	38	53
 possible_ud_error		bestämma	VERB;ADV	31;1	VERB	17	32	17	49
-fix		typ	NOUN	26	ADV;NOUN	6;17	26	23	49
-ignore		vidare	ADJ;ADV	4;22	ADV;SCONJ;ADJ	20;1;2	26	23	49
+ignore		typ	NOUN	26	ADV;NOUN	6;17	26	23	49
+fix	eukbug	vidare	ADJ;ADV	4;22	ADV;SCONJ;ADJ	20;1;2	26	23	49
 possible_ud_error		betala	ADJ;VERB	1;32	VERB	16	33	16	49
 		främst	ADV;ADJ	29;8	ADJ	10	37	10	47
 		liksom	ADP;ADV;SCONJ	8;7;4	ADV;SCONJ	9;19	19	28	47
@@ -90,7 +90,7 @@ possible_ud_error		betala	ADJ;VERB	1;32	VERB	16	33	16	49
 		ren	ADV;VERB;ADJ	12;1;11	ADJ;ADV	6;6	24	12	36
 fix_later	cconj	respektive	ADV;ADJ	18;7	CCONJ;ADJ	6;4	25	10	35
 		lokal	ADJ;NOUN	7;7	ADJ;ADV	20;1	14	21	35
-fix	eukbug	yttre	ADJ	18	ADJ;NOUN	15;1	18	16	34
+ignore		yttre	ADJ	18	ADJ;NOUN	15;1	18	16	34
 		modern	NOUN;ADJ	2;27	ADJ	5	29	5	34
 possible_ud_error		försvinna	VERB;NOUN	13;1	VERB	20	14	20	34
 		svart	ADJ	2	ADJ;ADV	31;1	2	32	34

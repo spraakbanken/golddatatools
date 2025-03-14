@@ -21,12 +21,15 @@ elsif mode == "list_pos"
 end
 
 @matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN", "SY"=>"PUNCT", "IJ"=>"INTJ", "KO" => "CCONJ", "AB" => "ADV", "NU" => "NUM", "PO" => "PRON", "SU" => "SCONJ", "UO" => "X", "VB" => "VERB"}
+
+#TODO1: finish prepositions. Either exclude certain that are never ADVs or use sec.edges
+
 #TODO3: DO when syntax. SCONJ vs PRON vs ADV (som). Identify Advcl (esp. när, då, där). Deal with än and som
 #vilket fall som helst: CCONJ
 #ASK: advcl (sv-ud-train-3749, sv-ud-train-166) -- should be SCONJ. 
 
 #TODO2: coordination
-#TODO2: control by matching POSs
+#TODO2: Särskilt
 
 
 @matchingp = {"PE" => "PP"}
@@ -56,6 +59,8 @@ end
 # annat fint
 # lemmatization of "andra" 
 # NumType
+# ASK: verbal particles: when ADV, when ADP? Also in texts, but there the rule is clearer
+# över: if NUM?
 
 @auxlist = ["böra", "få", "komma", "kunna", "lär", "må", "måste", "skola", "torde",  "vilja", "bli", "ha", "vara"]   #from https://quest.ms.mff.cuni.cz/udvalidator/cgi-bin/unidep/langspec/specify_auxiliary.pl?lcode=sv with changes discussed in https://github.com/UniversalDependencies/docs/issues/1082
 @adverbial_heads = ["AJ","VB"] 
@@ -63,6 +68,7 @@ end
 @posslemmas = {"min" => "jag", "din" => "du", "vår" => "vi", "er" => "ni", "sin" => "sig"}
 @lemmacorrections = {"en viss" => "viss"}
 @uposcorrections = {"viss" => "ADJ"}
+@adpnotadv = ["från", "av", "i", "mot", "på", "genom", "mellan", "utan", "å", "hos", "bland", "inom", "utom", "per"]
 
 @prontypes = {"all" => "Tot", "annan" => "Ind", "denna" => "Dem", "densamma" => "Dem", "en" => "Art", "hon" => "Prs", "ingen" => "Neg", "ingenting" => "Neg", "man" => "Ind", "någon" => "Ind", "sig" => "Prs", "som" => "Rel", "var" => "Tot", "varandra" => "Rcp", "vardera" => "Tot", "varje" => "Tot", "vem" => "Int", "the" => "Art", "vars" => "Rel", "vilka" => "Rel", "du" => "Prs", "vi" => "Prs", "han" => "Prs", "jag" => "Prs", "ni" => "Prs", "vår" => "Prs", "mitt" => "Prs", "mycken" => "Ind", "någonting" => "Ind", "mången" => "Ind", "mycket" => "Ind", "sån" => "Ind", "somlig" => "Ind", "många" => "Ind", "varannan" => "Ind", "nånting" => "Ind", "flera" => "Ind", "fler" => "Ind", "få" => "Ind", "två" => "Ind", "vissa" => "Ind", "båda" => "Tot", "vilket" => "Tot", "bådadera" => "Tot", "allting" => "Tot", "envar" => "Tot", "bägge" => "Tot", "samtlig" => "Tot", "alltihop" => "Tot", "ingendera" => "Neg", "varann" => "Rcp", "vad" => "Int,Rel", "vilken" => "Int,Rel", "litet" => "Ind", "allihopa" => "Tot", "alltihopa" => "Tot", "varsin" => "Tot", "varenda" => "Tot", "allesammans" => "Tot"} #Based on Talbanken + corrections from https://github.com/UniversalDependencies/docs/issues/1083#issuecomment-2677651632
 #TODO2: #vad, vilken (+vem? det?) and other ambiguous +den här
@@ -143,7 +149,7 @@ def convert(id, sentence, sent_id)
         else
             STDOUT.puts "#{sent_id} att at the end of a sentence"
         end
-    elsif (pos == "AJ" and msd.include?("SIN") and msd.include?("IND") and msd.include?("NEU")) and (sentence[head].nil? or (@adverbial_heads.include?(sentence[head]["pos"]) and sentence[head]["lemma"] != "vara") and deprel == "MD")
+    elsif (pos == "AJ" and msd.include?("SIN") and msd.include?("IND") and msd.include?("NEU")) and (sentence[head].nil? or (@adverbial_heads.include?(sentence[head]["pos"]) and sentence[head]["lemma"] != "vara") and deprel == "MD") or (pos == "AJ" and lemma == "först")
         #TODO2: Add verbal features for participles? Or exclude them from the participle function?
         upos = "ADV" 
     #elsif pos == "NN"
@@ -159,6 +165,45 @@ def convert(id, sentence, sent_id)
         else
             upos = "SYM"
         end
+    elsif pos == "PE"
+        daughters = finddaughters(sentence,id)
+        if deprel == "PL" or @adpnotadv.include?(lemma) #1) for now, I am preserving the Euk classification of "particles", since the UD one is inconsistent 2) a rather barbaric way to avoid overproduction of ADV
+            prepflag = true
+        else
+            prepflag = false
+            daughters.each do |daughter|
+                if sentence[daughter]["deprel"] == "OO" or sentence[daughter]["deprel"] == "ME" or sentence[daughter]["deprel"] == "MD" #remove the second condition?
+                    if lemma == "över"
+                        if sentence[daughter]["pos"] == "NU"
+                            
+                            break
+                        else
+                            overflag = true
+                            granddaughters = finddaughters(sentence,daughter)
+                            granddaughters.each do |granddaughter|
+                                if sentence[daughter]["pos"] == "NU"
+                                    overflag = false
+                                    break
+                                end
+                            end
+                            if overflag
+                                prepflag = true
+                            end
+                            break
+                        end
+                    else
+                        prepflag = true
+                        break
+                    end
+                end
+            end
+        end
+        if prepflag 
+            upos = "ADP"
+        else
+            upos = "ADV"
+        end
+
     else
         upos = @matchingu[pos]
     end
