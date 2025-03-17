@@ -1,5 +1,5 @@
 #sbx_to_ud = Hash.new{|hash, key| hash[key] = Array.new}
-corpus = "Talbanken"
+corpus = "Lines"
 f1 = File.open("C:\\Sasha\\D\\DGU\\UD\\UD215langs\\Swedish-#{corpus}.conllu","r:utf-8")
 f2 = File.open("eukalyptus_all_ud.conllu","r:utf-8")
 
@@ -12,7 +12,7 @@ final_euk = {}
 freqs_ud = {}
 freqs_euk = {}
 
-o = File.open("comparison.tsv","w:utf-8")
+o = File.open("comparison_lines.tsv","w:utf-8")
 o.puts "lemma\tpos_ud\tpos_freqs_ud\tpos_euk\tpos_freqs_euk\tlemmafreq_ud\tlemmafreq_euk\ttotal_freq"
 #o1 = File.open("#{corpus}_aen_sconj.txt","w:utf-8")
 #o2 = File.open("#{corpus}_aen_adp.txt","w:utf-8")
@@ -60,7 +60,7 @@ poss_euk.each_pair do |lemma, poss|
 end
 
 final_ud.each_pair do |lemma, poss|
-    if poss.include?("ADP") and !poss.include?("ADV")
+    if poss.include?("ADJ") and poss.include?("PRON")
         
         STDOUT.puts lemma
     end
