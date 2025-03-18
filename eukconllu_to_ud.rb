@@ -133,12 +133,12 @@ def go_up(id,sentence,sent_id,method)
     deprel = sentence[id]["deprel"]
     if deprel == "KL"
         head = sentence[id]["head"]
-        if sentence[head]["pos"] == "KO" or sentence[head]["pos"] == "SY"
+        #if sentence[head]["pos"] == "KO" or sentence[head]["pos"] == "SY"
             #head = sentence[head]["head"]
-            go_up(head,sentence,sent_id,method)
-        else
+        #    go_up(head,sentence,sent_id,method)
+        #else
             flag = send(method, head,sentence,sent_id)
-        end
+        #end
     end
     return flag
 end
