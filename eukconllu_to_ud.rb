@@ -22,14 +22,9 @@ end
 
 @matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN", "SY"=>"PUNCT", "IJ"=>"INTJ", "KO" => "CCONJ", "AB" => "ADV", "NU" => "NUM", "PO" => "PRON", "SU" => "SCONJ", "UO" => "X", "VB" => "VERB"}
 
-#TODO1: finish prepositions. Either exclude certain that are never ADVs or use sec.edges
-
-#TODO3: DO when syntax. SCONJ vs PRON vs ADV (som). Identify Advcl (esp. när, då, där). Deal with än and som
-#vilket fall som helst: CCONJ
-#ASK: advcl (sv-ud-train-3749, sv-ud-train-166) -- should be SCONJ. 
-
 #TODO2: coordination
-#TODO2: Särskilt
+#TODO2: WAITING determiners
+#TODO2: WAITING Add verbal features for participles? Or exclude them from the participle function?
 
 
 @matchingp = {"PE" => "PP"}
@@ -37,16 +32,16 @@ end
 #"UTR/NEU" => "Gender=Com,Neut", "IND/DEF" => "Definite=Ind,Def", "SIN/PLU" => "Number=Sing,Plur", "SUB/OBJ" => "Case=Acc,Nom" Decided not to add. Usually covers the full range of possible values (and thus not recommended). Exception: Gender (Masc), but it's marginal. Syncretic case in EUK applies (mostly?) to determiners, so not relevant either.
 
 @matchvbfeats = {"IND" => "Mood=Ind", "AKT" => "Voice=Act", "PRS" => "Tense=Pres", "PRT" => "Tense=Past", "SFO" =>"Voice=Pass", "KON" => "Mood=Sub", "IMP" => "Mood=Imp", "INF" => "VerbForm=Inf", "SPM" => "VerbForm=Sup", "SIN" => "Number=Sing", "PLU" => "Number=Plur", "SUB" => "Case=Nom", "OBJ" => "Case=Acc", "UTR" => "Gender=Com", "NEU" => "Gender=Neut", "MAS" => "Gender=Masc"}
+#TODO3: Asyndetic coordination: KL hangs on nothing. Check cases like Romn_Lundqvist-Ingentobak.70, remove KL from ROOT
 #TODO3: Deal with ESM in msd2
 #TODO3: Misc for MWEs?
 #TODO3: PL => compound:prt. Current UD inconsistent
-
+#TODO3: DO when syntax. SCONJ vs PRON vs ADV (som). Identify Advcl (esp. när, då, där). Deal with än and som Come back to https://github.com/UniversalDependencies/docs/issues/1092
+#TODO3: vilket fall som helst: CCONJ
+#TODO3: ASK: advcl (sv-ud-train-3749, sv-ud-train-166) -- should be SCONJ. 
 #TODO3: Arbt_Fackfientlig.7 -- ask Gerlof
-
 #TODO3: Arbt_Fackfientlig.2, 1003: 1008:
-
-#TODO2: många and mycket
-#TODO2: den här
+#TODO3: den här (also change POS annotation for den)
 
 #DIM (DOC, IGNORE, MANUALLY, LATER)
 # allting annat
@@ -61,6 +56,8 @@ end
 # NumType
 # ASK: verbal particles: when ADV, when ADP? Also in texts, but there the rule is clearer
 # vad, vilken (+vem? det?) and other ambiguous
+# ASK: särskilt
+# Int,Rel
 
 @auxlist = ["böra", "få", "komma", "kunna", "lär", "må", "måste", "skola", "torde",  "vilja", "bli", "ha", "vara"]   #from https://quest.ms.mff.cuni.cz/udvalidator/cgi-bin/unidep/langspec/specify_auxiliary.pl?lcode=sv with changes discussed in https://github.com/UniversalDependencies/docs/issues/1082
 @adverbial_heads = ["AJ","VB"] 
@@ -68,10 +65,10 @@ end
 @posslemmas = {"min" => "jag", "din" => "du", "vår" => "vi", "er" => "ni", "sin" => "sig"}
 @lemmacorrections = {"en viss" => "viss"}
 @uposcorrections = {"viss" => "ADJ"}
-@adpnotadv = ["från", "av", "i", "mot", "på", "genom", "mellan", "utan", "å", "hos", "bland", "inom", "utom", "per"]
+@adpnotadv = ["från", "av", "i", "mot", "på", "mellan", "å", "hos", "bland", "inom", "utom", "per", "trots", "förutom","utöver"]
 
 @prontypes = {"all" => "Tot", "annan" => "Ind", "denna" => "Dem", "densamma" => "Dem", "en" => "Art", "hon" => "Prs", "ingen" => "Neg", "ingenting" => "Neg", "man" => "Ind", "någon" => "Ind", "sig" => "Prs", "som" => "Rel", "var" => "Tot", "varandra" => "Rcp", "vardera" => "Tot", "varje" => "Tot", "vem" => "Int", "the" => "Art", "vars" => "Rel", "vilka" => "Rel", "du" => "Prs", "vi" => "Prs", "han" => "Prs", "jag" => "Prs", "ni" => "Prs", "vår" => "Prs", "mitt" => "Prs", "mycken" => "Ind", "någonting" => "Ind", "mången" => "Ind", "mycket" => "Ind", "sån" => "Ind", "somlig" => "Ind", "många" => "Ind", "varannan" => "Ind", "nånting" => "Ind", "flera" => "Ind", "fler" => "Ind", "få" => "Ind", "två" => "Ind", "vissa" => "Ind", "båda" => "Tot", "vilket" => "Tot", "bådadera" => "Tot", "allting" => "Tot", "envar" => "Tot", "bägge" => "Tot", "samtlig" => "Tot", "alltihop" => "Tot", "ingendera" => "Neg", "varann" => "Rcp", "vad" => "Int,Rel", "vilken" => "Int,Rel", "litet" => "Ind", "allihopa" => "Tot", "alltihopa" => "Tot", "varsin" => "Tot", "varenda" => "Tot", "allesammans" => "Tot"} #Based on Talbanken + corrections from https://github.com/UniversalDependencies/docs/issues/1083#issuecomment-2677651632
-#DIM: possible overproduction of pronouns, especially "Tot"
+
 
 @partpenult = "abcdfghjklmnpqrstvwxz"
 @unvoiced_partpenult  = "cfhkpqstxz"
@@ -79,14 +76,9 @@ end
 @nonsfolemmas = ["tycka", "möta", "fordra", "känna", "tränga"] #both from Talbanken and LinES with manual filtering
 
 def finddaughters(sentence,nodeofinterest)
-    #STDERR.puts "nodeofinterest: #{nodeofinterest}"
-    #STDERR.puts "finddaughters: #{sentence}"
     daughters = []
     sentence.each_pair do |id, infohash|
-        #STDERR.puts id
-        #STDERR.puts infohash
         if infohash["head"] == nodeofinterest
-            
             daughters << id
         end
     end
@@ -115,30 +107,70 @@ def detectparticiple(pos,upos,lemma,head,deprel,sentence)
     return upos,feats
 end
 
+def adverbials(id, sentence, sent_id)
+    form,lemma,pos,msd,msd2,head,deprel,enhdep,misc = getinfofromsentence(sentence,id)
+    if ((pos == "AJ" and msd.include?("SIN") and msd.include?("IND") and msd.include?("NEU")) and check_adverbial_head(id, sentence, sent_id)) or (pos == "AJ" and lemma == "först")
+        upos = "ADV" 
+    end #***
+    return upos
+end
 
-def convert(id, sentence, sent_id)
-    #STDERR.puts "convert: #{sentence}"
-    pos = sentence[id]["pos"]
+def check_adverbial_head(id, sentence, sent_id)
+    form,lemma,pos,msd,msd2,head,deprel,enhdep,misc = getinfofromsentence(sentence,id)
+    flag = false
+    if ((sentence[head].nil? or (@adverbial_heads.include?(sentence[head]["pos"]) and sentence[head]["lemma"] != "vara") and deprel == "MD"))
+        flag = true
+    elsif go_up(id,sentence,sent_id,"check_adverbial_head")
+        flag = true
+        STDERR.puts "#{sent_id}, #{id}"
+    end
+    return flag
+end
+
+def go_up(id,sentence,sent_id,method)
+    #STDERR.puts "#{sent_id}, #{id}, #{sentence[id]["form"]}"
+    flag = false
+    deprel = sentence[id]["deprel"]
+    if deprel == "KL"
+        head = sentence[id]["head"]
+        if sentence[head]["pos"] == "KO" or sentence[head]["pos"] == "SY"
+            #head = sentence[head]["head"]
+            go_up(head,sentence,sent_id,method)
+        else
+            flag = send(method, head,sentence,sent_id)
+        end
+    end
+    return flag
+end
+
+def getinfofromsentence(sentence,id)
     form = sentence[id]["form"]
     lemma = sentence[id]["lemma"]
+    pos = sentence[id]["pos"]
     msd = sentence[id]["msd"]
     msd2 = sentence[id]["msd2"]
     head = sentence[id]["head"]
     deprel = sentence[id]["deprel"]
+    enhdep = sentence[id]["enhdep"]
     misc = sentence[id]["misc"]
-    firsttoken = sentence.keys.min
-    
-    #if id == "1017" 
-    #    STDERR.puts pos, msd, sentence[head]["pos"], sentence[head]["lemma"]
-    #end
+    return form,lemma,pos,msd,msd2,head,deprel,enhdep,misc
+end
 
+def convert(id, sentence, sent_id)
+    #STDERR.puts "convert: #{sentence}"
+    form,lemma,pos,msd,msd2,head,deprel,enhdep,misc = getinfofromsentence(sentence,id)
+    
+    firsttoken = sentence.keys.min
+        
     if !@lemmacorrections[lemma].nil? 
         lemma = @lemmacorrections[lemma]
     end
 
     if ["inte","icke","ej"].include?(form.downcase)
         upos = "PART"
-    elsif "att" == form.downcase
+    end
+
+    if "att" == form.downcase
         if !sentence[id+1].nil?
             if sentence[id+1]["pos"] == "VB" and sentence[id+1]["msd"].include?("INF")
                 upos = "PART"
@@ -148,30 +180,30 @@ def convert(id, sentence, sent_id)
         else
             STDOUT.puts "#{sent_id} att at the end of a sentence"
         end
-    elsif (pos == "AJ" and msd.include?("SIN") and msd.include?("IND") and msd.include?("NEU")) and (sentence[head].nil? or (@adverbial_heads.include?(sentence[head]["pos"]) and sentence[head]["lemma"] != "vara") and deprel == "MD") or (pos == "AJ" and lemma == "först")
-        #TODO2: Add verbal features for participles? Or exclude them from the participle function?
-        upos = "ADV" 
-    #elsif pos == "NN"
-    #    if form[0] == form[0].upcase and id != firsttoken and !(id == (firsttoken+1) and sentence[firsttoken]["pos"] == "SY") and !msd2.include?("FKN")
-            #upos = "PROPN"
-            #STDOUT.puts "#{sent_id} #{form}"
-    #    else
-    #        upos = "NOUN"
-    #    end
-    elsif pos == "SY"
+    end   
+ 
+    
+
+    if pos == "SY"
         if msd.include?("DEL")
             upos = "PUNCT"
         else
             upos = "SYM"
         end
-    elsif pos == "PE"
+    end
+
+    if upos.nil?
+        upos = adverbials(id, sentence, sent_id)
+    end
+
+    if pos == "PE"
         daughters = finddaughters(sentence,id)
         if deprel == "PL" or @adpnotadv.include?(lemma) #1) for now, I am preserving the Euk classification of "particles", since the UD one is inconsistent 2) a rather barbaric way to avoid overproduction of ADV
             prepflag = true
         else
             prepflag = false
             daughters.each do |daughter|
-                if sentence[daughter]["deprel"] == "OO" or sentence[daughter]["deprel"] == "ME" or sentence[daughter]["deprel"] == "MD" #remove the second condition?
+                if sentence[daughter]["deprel"] == "OO" or sentence[daughter]["deprel"] == "ME" or sentence[daughter]["deprel"] == "MD" #remove the ME condition?
                     if lemma == "över"
                         if sentence[daughter]["pos"] == "NU"
                             
@@ -203,13 +235,9 @@ def convert(id, sentence, sent_id)
             upos = "ADV"
         end
 
-    else
-        upos = @matchingu[pos]
     end
 
-    
 
-    
     if deprel == "DT"
         if @determiners.include?(lemma)
             upos = "DET"
@@ -224,7 +252,10 @@ def convert(id, sentence, sent_id)
         else
             upos = "PRON"
         end
+    end
 
+    if upos.nil?
+        upos = @matchingu[pos]
     end
 
     if !@uposcorrections[lemma].nil? 
@@ -239,29 +270,19 @@ def convert(id, sentence, sent_id)
     upos = partresults[0]
 
     if pos == "VB"
-
-        
-
         #DIM: AUX vs VERB add "det" disambiguation
         #DIM: AUX vs VERB add "vara" disambiguation
-        
-        
         if @auxlist.include?(lemma)
-            #STDERR.puts "AUXLIST!"
             auxflag = false
             daughters = finddaughters(sentence,id)
-            #STDERR.puts daughters
             if lemma == "bli"
-                
                 daughters.each do |daughter|
                     daughterupos,daughterfeats = detectparticiple(sentence[daughter]["pos"],"",sentence[daughter]["lemma"],sentence[daughter]["head"],sentence[daughter]["deprel"],sentence)
- 
                     if daughterfeats.include?("VerbForm=Part") and daughterfeats.include?("Tense=Past") and sentence[daughter]["deprel"] == "SP"
                         auxflag = true
                         break
                     end
                 end
-
             elsif lemma == "ha"
                 daughters.each do |daughter|
                     #STDERR.puts daughter
@@ -270,7 +291,6 @@ def convert(id, sentence, sent_id)
                         break
                     end
                 end
-
             elsif lemma == "vara"
                 daughters.each do |daughter|
                     if sentence[daughter]["deprel"] == "SP"
@@ -279,24 +299,18 @@ def convert(id, sentence, sent_id)
                     end
                 end
             else
-                #STDERR.puts "OTHER!"
                 daughters.each do |daughter|
-                    #STDERR.puts daughter
                     if ((sentence[daughter]["msd"].include?("INF") or sentence[daughter]["lemma"] == "att")) or (sentence[daughter]["msd"].include?("SPM")) and sentence[daughter]["deprel"] == "IV"
                         auxflag = true
                         break
                     end
                 end
-                
             end
             if auxflag
-                #STDERR.puts "AUX!"
                 upos = "AUX"
             end
         end
     end
-
-
 
     msd.each do |msdunit|
         if pos == "VB"
@@ -310,6 +324,7 @@ def convert(id, sentence, sent_id)
             
         end
     end
+
     if ["NOUN","PROPN","ADJ"].include?(upos)
         if msd2[1] == "GEN"
             feats << "Case=Gen"
@@ -318,7 +333,6 @@ def convert(id, sentence, sent_id)
         end
     end
 
-    
     if upos == "PRON" or upos == "DET"
         if !@posslemmas[lemma].nil?
             lemma = @posslemmas[lemma]
@@ -346,7 +360,7 @@ def convert(id, sentence, sent_id)
         feats << "Foreign=Yes"
     end
     if upos == "PART" and (lemma == "inte" or lemma == "icke" or lemma == "ej")
-       feats << "Polarity=Neg"
+        feats << "Polarity=Neg"
     end    
 
     if pos == "VB"
@@ -356,7 +370,6 @@ def convert(id, sentence, sent_id)
             elsif @nonsfolemmas.include?(lemma)
                 feats.delete("Voice=Pass")
                 lemma = "#{lemma}s"
-                #STDOUT.puts lemma
             end
         end
             
@@ -366,8 +379,6 @@ def convert(id, sentence, sent_id)
                 feats << "Mood=Ind"
             end
         end
-            
-
     end
 
     if form.downcase == "vare" and sentence[id+1]["form"].downcase == "sig" and sentence[id-1]["form"].to_s.downcase != "tack"
@@ -396,15 +407,6 @@ def convert(id, sentence, sent_id)
         feats << "Typo=Yes"
     end
 
-    #feats.gsub!("||","|")
-    #if feats[-1] == "|"
-    #    feats = feats[0..-2]
-    #end
-    #if feats[0] == "|"
-    #   feats = feats[1..-1]
-    #end
-
-    #feats = feats.split("|").sort.join("|")
     feats = feats.uniq.sort.join("|")
     if feats == ""
         feats = "_"
@@ -443,15 +445,15 @@ inputfile.each_line do |line|
             end
         else
             line2 = line1.split("\t")
-            id = line2[0].to_i
+            id = line2[0]
             form = line2[1]
             lemma = line2[2].gsub("|","")
             pos = line2[3]
             msd2 = line2[4].split(".")
             msd = line2[5].split(".")[1..-1]
-            head = line2[6].to_i
+            head = line2[6]
             deprel = line2[7]
-            extra1 = line2[8]
+            enhdep = line2[8]
             misc = line2[9].to_s
             if mode == "list_pos"
                 if pos == ref_pos
@@ -465,7 +467,7 @@ inputfile.each_line do |line|
             end
 
             if mode == "convert"
-                sentence[id] = {"form"=>form,"msd"=>msd,"msd2"=>msd2,"head"=>head,"deprel"=>deprel,"lemma"=>lemma, "extra1"=>extra1, "misc"=> misc, "pos" => pos} 
+                sentence[id] = {"form"=>form,"msd"=>msd,"msd2"=>msd2,"head"=>head,"deprel"=>deprel,"lemma"=>lemma, "enhdep"=>enhdep, "misc"=> misc, "pos" => pos} 
             end
             #STDERR.puts sentence[id]["head"]
 
@@ -498,7 +500,7 @@ inputfile.each_line do |line|
 
             sentence.each_pair do |id,senthash|
                 upos, feats, lemma = convert(id, sentence, sent_id)
-                line3 = [id, senthash["form"], lemma, upos, "_", feats, senthash["head"], senthash["deprel"], senthash["extra1"], senthash["misc"]].join("\t")
+                line3 = [id, senthash["form"], lemma, upos, "_", feats, senthash["head"], senthash["deprel"], senthash["enhdep"], senthash["misc"]].join("\t")
                 output << line3
 
                     if list_out_pos

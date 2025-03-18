@@ -1,0 +1,9 @@
+#identifying PROPNs:
+
+    #elsif pos == "NN"
+    #    if form[0] == form[0].upcase and id != firsttoken and !(id == (firsttoken+1) and sentence[firsttoken]["pos"] == "SY") and !msd2.include?("FKN")
+            #upos = "PROPN"
+            #STDOUT.puts "#{sent_id} #{form}"
+    #    else
+    #        upos = "NOUN"
+    #    end
