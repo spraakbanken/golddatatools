@@ -44,6 +44,7 @@ end
 #TODO3: den här (also change POS annotation for den)
 
 #DIM (DOC, IGNORE, MANUALLY, LATER)
+# MANUALLY: Blog_54523-8202951.11 visst to ADV
 # allting annat
 # EN: numeral
 # Typo should be style, too
@@ -111,7 +112,7 @@ def adverbials(id, sentence, sent_id)
     form,lemma,pos,msd,msd2,head,deprel,enhdep,misc = getinfofromsentence(sentence,id)
     if ((pos == "AJ" and msd.include?("SIN") and msd.include?("IND") and msd.include?("NEU")) and check_adverbial_head(id, sentence, sent_id)) or (pos == "AJ" and lemma == "först")
         upos = "ADV" 
-    end #***
+    end 
     return upos
 end
 
@@ -122,7 +123,7 @@ def check_adverbial_head(id, sentence, sent_id)
         flag = true
     elsif go_up(id,sentence,sent_id,"check_adverbial_head")
         flag = true
-        STDERR.puts "#{sent_id}, #{id}"
+        #STDERR.puts "#{sent_id}, #{id}"
     end
     return flag
 end
@@ -133,12 +134,15 @@ def go_up(id,sentence,sent_id,method)
     deprel = sentence[id]["deprel"]
     if deprel == "KL"
         head = sentence[id]["head"]
-        #if sentence[head]["pos"] == "KO" or sentence[head]["pos"] == "SY"
+        #headhead = sentence[head]["head"]
+        headdeprel = sentence[head]["deprel"]
+        if headdeprel == "KL" #sentence[headhead]["pos"] == "KO" or sentence[head]["pos"] == "SY"
             #head = sentence[head]["head"]
-        #    go_up(head,sentence,sent_id,method)
-        #else
+            #STDERR.puts "Recursion! #{sent_id}, #{id}"
+            go_up(head,sentence,sent_id,method)
+        else
             flag = send(method, head,sentence,sent_id)
-        #end
+        end
     end
     return flag
 end
