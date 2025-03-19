@@ -2,7 +2,7 @@ require 'io/console'
 
 # reverse head-dependent for content words
 # coordination
-# aux-main verb (subject predicative)
+
 
 #? Decide the systematic way to deal with coordination (## multiple heads in coordination?)
 
@@ -19,13 +19,6 @@ require 'io/console'
 #headless: treat more systematically depending on type? (NPs)
 ## other stragegies: use first, use root, go down? Maybe not needed?
 
-#conversion:
-#convert ids
-#tokenization
-#proper names: restore info
-#verbal particles
-#adjectives: adverbs? masc, fem?
-#graphical connection
 
 
 verbose = ARGV[0]
@@ -273,7 +266,8 @@ def process_primary_tree(primary_tree, primary_labels, current_id, term_ids, phr
 end
 
 
-PATH = "C:\\Sasha\\D\\DGU\\SBX_resources\\Eukalyptus-1.0.0\\Annotations\\"
+PATH = "C:\\Sasha\\D\\DGU\\Repos\\Eukalyptus-dev\\"
+#PATH = "C:\\Sasha\\D\\DGU\\SBX_resources\\Eukalyptus-1.0.0\\Annotations\\"
 #PATH = "D:\\DGU\\SBX_resources\\Eukalyptus\\Eukalyptus-1.0.0\\Annotations\\"
 
 
