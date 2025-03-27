@@ -23,7 +23,6 @@ end
 
 @matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN", "SY"=>"PUNCT", "IJ"=>"INTJ", "KO" => "CCONJ", "AB" => "ADV", "NU" => "NUM", "PO" => "PRON", "SU" => "SCONJ", "UO" => "X", "VB" => "VERB"}
 
-#TODO2: coordination
 #TODO2: WAITING determiners
 #TODO2: WAITING Add verbal features for participles? Or exclude them from the participle function?
 
