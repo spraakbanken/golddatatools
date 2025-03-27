@@ -1,10 +1,10 @@
 #sbx_to_ud = Hash.new{|hash, key| hash[key] = Array.new}
-corpus = "Lines"
-f = File.open("C:\\Sasha\\D\\DGU\\UD\\UD215langs\\Swedish-#{corpus}.conllu","r:utf-8")
+#corpus = "Lines"
+#f = File.open("C:\\Sasha\\D\\DGU\\UD\\UD215langs\\Swedish-#{corpus}.conllu","r:utf-8")
 #f = File.open("eukalyptus_all.conllu","r:utf-8")
 
-o1 = File.open("#{corpus}_aen_sconj.txt","w:utf-8")
-o2 = File.open("#{corpus}_aen_adp.txt","w:utf-8")
+o1 = File.open("euk_coords.txt","w:utf-8")
+#o2 = File.open("#{corpus}_aen_adp.txt","w:utf-8")
 sent_id = ""
 text = ""
 lemmas = []

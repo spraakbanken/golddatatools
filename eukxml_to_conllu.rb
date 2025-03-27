@@ -266,7 +266,7 @@ def process_primary_tree(primary_tree, primary_labels, current_id, term_ids, phr
 end
 
 
-PATH = "C:\\Sasha\\D\\DGU\\Repos\\Eukalyptus-dev\\"
+PATH = "C:\\Sasha\\D\\DGU\\Repos\\Eukalyptus-dev\\Annotations\\"
 #PATH = "C:\\Sasha\\D\\DGU\\SBX_resources\\Eukalyptus-1.0.0\\Annotations\\"
 #PATH = "D:\\DGU\\SBX_resources\\Eukalyptus\\Eukalyptus-1.0.0\\Annotations\\"
 

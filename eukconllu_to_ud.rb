@@ -1,4 +1,5 @@
 mode = "convert"
+mode = "convert"
 list_out_pos = false
 lemma_per_pos2 = Hash.new{|hash, key| hash[key] = Array.new}
 
@@ -22,19 +23,18 @@ end
 
 @matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN", "SY"=>"PUNCT", "IJ"=>"INTJ", "KO" => "CCONJ", "AB" => "ADV", "NU" => "NUM", "PO" => "PRON", "SU" => "SCONJ", "UO" => "X", "VB" => "VERB"}
 
-#TODO1: Poss=Yes
 #TODO2: coordination
 #TODO2: WAITING determiners
 #TODO2: WAITING Add verbal features for participles? Or exclude them from the participle function?
 
 
 @matchingp = {"PE" => "PP"}
-@matchfeats = {"-.-.-" => "_", "IND" => "Definite=Ind", "DEF" => "Definite=Def", "POS" => "Degree=Pos", "KOM" => "Degree=Cmp", "SUV"=> "Degree=Sup", "UTR" => "Gender=Com", "NEU" => "Gender=Neut", "MAS" => "Gender=Masc", "SIN" => "Number=Sing", "PLU" => "Number=Plur", "SUB" => "Case=Nom", "OBJ" => "Case=Acc"}
+@matchfeats = {"-.-.-" => "_", "IND" => "Definite=Ind", "DEF" => "Definite=Def", "POS" => "Degree=Pos", "KOM" => "Degree=Cmp", "SUV"=> "Degree=Sup", "UTR" => "Gender=Com", "NEU" => "Gender=Neut", "MAS" => "Gender=Masc", "SIN" => "Number=Sing", "PLU" => "Number=Plur", "SUB" => "Case=Nom", "OBJ" => "Case=Acc", "PSS"=>"Poss=Yes"}
 #"UTR/NEU" => "Gender=Com,Neut", "IND/DEF" => "Definite=Ind,Def", "SIN/PLU" => "Number=Sing,Plur", "SUB/OBJ" => "Case=Acc,Nom" Decided not to add. Usually covers the full range of possible values (and thus not recommended). Exception: Gender (Masc), but it's marginal. Syncretic case in EUK applies (mostly?) to determiners, so not relevant either.
 
 @matchvbfeats = {"IND" => "Mood=Ind", "AKT" => "Voice=Act", "PRS" => "Tense=Pres", "PRT" => "Tense=Past", "SFO" =>"Voice=Pass", "KON" => "Mood=Sub", "IMP" => "Mood=Imp", "INF" => "VerbForm=Inf", "SPM" => "VerbForm=Sup", "SIN" => "Number=Sing", "PLU" => "Number=Plur", "SUB" => "Case=Nom", "OBJ" => "Case=Acc", "UTR" => "Gender=Com", "NEU" => "Gender=Neut", "MAS" => "Gender=Masc"}
-#TODO3: Delete empty spaces from lemmas? Do other tokenization checks
 #TODO3: Blog_265827-14454566.3: har suttit och pluggat is not really perfect. Possible to do better?
+#TODO3: Blog_265827-14989915.2 wrong
 #TODO3: Asyndetic coordination: KL hangs on nothing. Check cases like Romn_Lundqvist-Ingentobak.70, remove KL from ROOT
 #TODO3: Deal with ESM in msd2
 #TODO3: Misc for MWEs?
@@ -53,7 +53,6 @@ end
 # Typo should be style, too
 # AUX-VERB
 # FRL -- use to find SUBORDINATORS?
-# PSS: can be used?
 # Underproduction of PROPN (turn back on the capitalization-based method?)
 # annat fint
 # lemmatization of "andra" 
@@ -101,10 +100,10 @@ def detectparticiple(pos,upos,lemma,head,deprel,sentence,sent_id)
                 elsif deprel == "KL"
                     headhead = sentence[head]["head"]
                     headdeprel = sentence[head]["deprel"]
-                    STDERR.puts "checking the headhead of a potential bli-passive #{sent_id}"
+                    #STDERR.puts "checking the headhead of a potential bli-passive #{sent_id}"
                     if !sentence[headhead].nil?
                         if sentence[headhead]["lemma"] == "bli" and headdeprel == "SP"
-                            STDERR.puts "Found the headhead! #{sent_id}"
+                            #STDERR.puts "Found the headhead! #{sent_id}"
                             upos = "VB"
                             feats << "Voice=Pass"
                         end
@@ -126,9 +125,10 @@ end
 def adverbials(id, sentence, sent_id)
     form,lemma,pos,msd,msd2,head,deprel,enhdep,misc = getinfofromsentence(sentence,id)
     if ((pos == "AJ" and msd.include?("SIN") and msd.include?("IND") and msd.include?("NEU")) and check_adverbial_head(id, sentence, sent_id)) or (pos == "AJ" and lemma == "först")
-        upos = "ADV" 
+        upos = "ADV"
+        lemma = form.clone 
     end 
-    return upos
+    return upos,lemma
 end
 
 def check_adverbial_head(id, sentence, sent_id)
@@ -181,9 +181,13 @@ def convert(id, sentence, sent_id)
     
     firsttoken = sentence.keys.min
         
-    if !@lemmacorrections[lemma].nil? 
+    if !@lemmacorrections[lemma].nil?
+        
         lemma = @lemmacorrections[lemma]
+        #STDERR.puts "#{sent_id} #{lemma}"
+        sentence[id]["lemma"] = lemma.clone
     end
+    
 
     if ["inte","icke","ej"].include?(form.downcase)
         upos = "PART"
@@ -212,7 +216,7 @@ def convert(id, sentence, sent_id)
     end
 
     if upos.nil?
-        upos = adverbials(id, sentence, sent_id)
+        upos, lemma = adverbials(id, sentence, sent_id)
     end
 
     if pos == "PE"
@@ -305,7 +309,11 @@ def convert(id, sentence, sent_id)
             elsif lemma == "ha"
                 daughters.each do |daughter|
                     #STDERR.puts daughter
-                    if sentence[daughter]["msd"].include?("SPM") and sentence[daughter]["deprel"] == "IV"
+                    #if !sentence[daughter]["msd"].include?("SPM") and sentence[daughter]["deprel"] == "IV"
+                        #STDERR.puts "#{sent_id} #{daughter}"
+                    #end
+
+                    if sentence[daughter]["deprel"] == "IV" and sentence[daughter]["form"] != "att" #cf. Wiki_VascodaGama.39
                         auxflag = true
                         break
                     end
@@ -319,7 +327,8 @@ def convert(id, sentence, sent_id)
                 end
             else
                 daughters.each do |daughter|
-                    if ((sentence[daughter]["msd"].include?("INF") or sentence[daughter]["lemma"] == "att")) or (sentence[daughter]["msd"].include?("SPM")) and sentence[daughter]["deprel"] == "IV"
+                    #if ((sentence[daughter]["msd"].include?("INF") or sentence[daughter]["lemma"] == "att")) or (sentence[daughter]["msd"].include?("SPM")) and sentence[daughter]["deprel"] == "IV"
+                    if sentence[daughter]["deprel"] == "IV"
                         auxflag = true
                         break
                     end
@@ -438,6 +447,8 @@ def convert(id, sentence, sent_id)
     if lemma == "_" or lemma == ""
         lemma = form.clone
     end
+
+    lemma.gsub(" ","_")
 
     if upos == "" or upos.nil?
         STDOUT.puts "Empty UPOS #{lemma} #{id} #{sent_id}"
