@@ -21,7 +21,9 @@ elsif mode == "list_pos"
 end
 
 @matchingu = {"PE" => "ADP","AJ" => "ADJ","NN"=>"NOUN","EN"=>"PROPN", "SY"=>"PUNCT", "IJ"=>"INTJ", "KO" => "CCONJ", "AB" => "ADV", "NU" => "NUM", "PO" => "PRON", "SU" => "SCONJ", "UO" => "X", "VB" => "VERB"}
+@ordnums = ["första", "fjortonde", "andra", "25:e", "tredje", "fjärde", "femte", "sjätte", "sjunde", "nionde", "elfte", "tolfte", "trettonde", "femtonde", "sextonde", "sjuttonde", "artonde", "nittonde", "700:e", "tionde", "åttonde", "III"] #"annan"
 
+#TODO1: more ordnum lemmas (generate? or split and analyze?)
 #TODO2: WAITING determiners
 #TODO2: WAITING Add verbal features for participles? Or exclude them from the participle function?
 
@@ -38,7 +40,7 @@ end
 #TODO3: Misc for MWEs?
 #TODO3: PL => compound:prt. Current UD inconsistent
 #TODO3: DO when syntax. SCONJ vs PRON vs ADV (som). Identify Advcl (esp. när, då, där). Deal with än and som Come back to https://github.com/UniversalDependencies/docs/issues/1092
-#TODO3: vilket fall som helst: CCONJ
+#TODO3: vilket fall som helst: CCONJ. Så: many cases of ADV should be CCONJ?
 #TODO3: ASK: advcl (sv-ud-train-3749, sv-ud-train-166) -- should be SCONJ. 
 #TODO3: Arbt_Fackfientlig.7 -- ask Gerlof
 #TODO3: Arbt_Fackfientlig.2, 1003: 1008:
@@ -59,7 +61,7 @@ end
 # vad, vilken (+vem? det?) and other ambiguous
 # ASK: särskilt
 # Int,Rel
-# ranges (1986-87, 2000-2006, 08.15-09.30) seem to be inconsinsently annotated. UD policy unknown to me.
+# ranges (1986-87, 2000-2006, 08.15-09.30) seem to be inconsinsently tokenized. UD policy unknown to me.
 # Eupa_00-01-17.301, 44: särskilt should be ADV
 
 @auxlist = ["böra", "få", "komma", "kunna", "lär", "må", "måste", "skola", "torde",  "vilja", "bli", "ha", "vara"]   #from https://quest.ms.mff.cuni.cz/udvalidator/cgi-bin/unidep/langspec/specify_auxiliary.pl?lcode=sv with changes discussed in https://github.com/UniversalDependencies/docs/issues/1082
@@ -286,12 +288,6 @@ def convert(id, sentence, sent_id)
         upos = @uposcorrections[lemma]
     end
 
-    if pos == "NU" #and form.downcase != lemma.downcase
-        lemma = form.clone
-        #STDOUT.puts "#{form}\t#{lemma}"
-    end
-
-
     feats = []
     partresults = detectparticiple(pos,upos,lemma,head,deprel,sentence,sent_id) 
     feats << partresults[1]
@@ -439,6 +435,17 @@ def convert(id, sentence, sent_id)
             feats << "Case=Gen"
         end
     end
+
+    if pos == "NU" #and form.downcase != lemma.downcase
+        lemma = form.clone
+        feats << "NumType=Card"
+        #STDOUT.puts "#{form}\t#{lemma}"
+    end
+
+    if upos == "ADJ" and @ordnums.include?(lemma.downcase)
+        feats << "NumType=Ord"
+    end
+
 
     if msd2.include?("FKN")
         feats << "Abbr=Yes"
