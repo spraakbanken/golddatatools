@@ -59,6 +59,8 @@ end
 # vad, vilken (+vem? det?) and other ambiguous
 # ASK: särskilt
 # Int,Rel
+# ranges (1986-87, 2000-2006, 08.15-09.30) seem to be inconsinsently annotated. UD policy unknown to me.
+# Eupa_00-01-17.301, 44: särskilt should be ADV
 
 @auxlist = ["böra", "få", "komma", "kunna", "lär", "må", "måste", "skola", "torde",  "vilja", "bli", "ha", "vara"]   #from https://quest.ms.mff.cuni.cz/udvalidator/cgi-bin/unidep/langspec/specify_auxiliary.pl?lcode=sv with changes discussed in https://github.com/UniversalDependencies/docs/issues/1082
 @adverbial_heads = ["AJ","VB"] 
@@ -177,6 +179,7 @@ def convert(id, sentence, sent_id)
     #STDERR.puts "convert: #{sentence}"
     form,lemma,pos,msd,msd2,head,deprel,enhdep,misc = getinfofromsentence(sentence,id)
     
+
     firsttoken = sentence.keys.min
         
     if !@lemmacorrections[lemma].nil?
@@ -281,6 +284,11 @@ def convert(id, sentence, sent_id)
 
     if !@uposcorrections[lemma].nil? 
         upos = @uposcorrections[lemma]
+    end
+
+    if pos == "NU" #and form.downcase != lemma.downcase
+        lemma = form.clone
+        #STDOUT.puts "#{form}\t#{lemma}"
     end
 
 
@@ -425,6 +433,13 @@ def convert(id, sentence, sent_id)
         feats = []
     end
 
+    if form.downcase[-1] == "s" and form.downcase == "#{lemma.downcase}s" and id > 1
+        if sentence[id-1]["lemma"] == "till"
+            feats.delete("Case=Nom")
+            feats << "Case=Gen"
+        end
+    end
+
     if msd2.include?("FKN")
         feats << "Abbr=Yes"
     end
@@ -440,13 +455,14 @@ def convert(id, sentence, sent_id)
 
     if upos != "PUNCT" and upos != "SYM"
         lemma.gsub!("|","")
+        lemma.gsub!("<","")
     end
 
     if lemma == "_" or lemma == ""
         lemma = form.clone
     end
 
-    lemma.gsub(" ","_")
+    lemma.gsub!(" ","_")
 
     if upos == "" or upos.nil?
         STDOUT.puts "Empty UPOS #{lemma} #{id} #{sent_id}"

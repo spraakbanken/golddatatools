@@ -1,0 +1,729 @@
+9	nio
+6	sex
+8,5	åtta komma fem
+11	elva
+24	tjugofyra
+24	tjugofyra
+4	fyra
+5	fem
+2007	tvåtusensju
+6	sex
+7	sju
+2006	tvåtusensex
+20:00	tjugo kolon noll noll
+22:15	tjugotvå kolon femton
+112	etthundratolv
+250	tvåhundrafemtio
+1	ett
+1	ett
+1	ett
+1965	ettusenniohundrasextiofem
+2010	tvåtusentio
+2011	tvåtusenelva
+202	tvåhundratvå
+2	två
+1999	ettusenniohundranittionio
+3.476	tre punkt fyra sju sex
+27,3	tjugosju komma tre
+384.392	trehundraåttiofyra punkt tre nio två
+2010	tvåtusentio
+2010	tvåtusentio
+2011	tvåtusenelva
+50	femtio
+320	trehundratjugo
+2007	tvåtusensju
+2	två
+25	tjugofem
+1	ett
+2	två
+2008	tvåtusenåtta
+2,5	två komma fem
+75	sjuttiofem
+11.35	elva punkt tre fem
+9	nio
+16	sexton
+21	tjugoett
+90	nittio
+300	trehundra
+2012	tvåtusentolv
+995	niohundranittiofem
+20	tjugo
+800	åttahundra
+500	femhundra
+2	två
+3	tre
+38,7	trettioåtta komma sju
+99	nittionio
+485	fyrahundraåttiofem
+1993	ettusenniohundranittiotre
+16	sexton
+18	arton
+1200	ettusentvåhundra
+1	ett
+10.10	tio punkt nio
+3	tre
+20	tjugo
+11	elva
+4	fyra
+4	fyra
+19:30	nitton kolon trettio
+21	tjugoett
+6	sex
+10	tio
+20	tjugo
+143	etthundrafyrtiotre
+6	sex
+34	trettiofyra
+1998	ettusenniohundranittioåtta
+110	etthundratio
+422	fyrahundratjugotvå
+180	etthundraåttio
+2000	tvåtusen
+2000	tvåtusen
+2000	tvåtusen
+2000	tvåtusen
+2000	tvåtusen
+164	etthundrasextiofyra
+166	etthundrasextiosex
+7	sju
+1999	ettusenniohundranittionio
+1999	ettusenniohundranittionio
+1998	ettusenniohundranittioåtta
+0106	_
+96	nittiosex
+35	trettiofem
+95	nittiofem
+35	trettiofem
+1998	ettusenniohundranittioåtta
+12.00	tolv punkt noll noll
+1999	ettusenniohundranittionio
+94	nittiofyra
+55	femtiofem
+1999	ettusenniohundranittionio
+158	etthundrafemtioåtta
+1999	ettusenniohundranittionio
+1999	ettusenniohundranittionio
+0083	_
+1997	ettusenniohundranittiosju
+94	nittiofyra
+55	femtiofem
+1999	ettusenniohundranittionio
+1999	ettusenniohundranittionio
+20	tjugo
+1997	ettusenniohundranittiosju
+2001	tvåtusenett
+20	tjugo
+40	fyrtio
+12.00	tolv punkt noll noll
+1999	ettusenniohundranittionio
+2000-2006	_
+1999	ettusenniohundranittionio
+344	trehundrafyrtiofyra
+1999	ettusenniohundranittionio
+1999	ettusenniohundranittionio
+2127	tvåtusenetthundratjugosju
+1999	ettusenniohundranittionio
+1	ett
+1997	ettusenniohundranittiosju
+1	ett
+2	två
+2000-2006	_
+5,5	fem komma fem
+16	sexton
+17	sjutton
+1	ett
+2000-2006	_
+25	tjugofem
+25	tjugofem
+1	ett
+2000-2006	_
+1989	ettusenniohundraåttionio
+1993	ettusenniohundranittiotre
+1994	ettusenniohundranittiofyra
+1999	ettusenniohundranittionio
+158.1	etthundrafemtioåtta komma ett
+2003	tvåtusentre
+2003	tvåtusentre
+2000-2006	_
+2	två
+10	tio
+2000-2006	_
+158	etthundrafemtioåtta
+2000-2006	_
+1	ett
+2	två
+3	tre
+15	femton
+20	tjugo
+15	femton
+20	tjugo
+5	fem
+1999	ettusenniohundranittionio
+1999	ettusenniohundranittionio
+10	tio
+1	ett
+2	två
+2	två
+1	ett
+2	två
+2	två
+1994-1999	_
+2000-2006	_
+12.00	tolv punkt noll noll
+1999	ettusenniohundranittionio
+99	nittionio
+0066	_
+99	nittionio
+1999	ettusenniohundranittionio
+2123	tvåtusenetthundratjugotre
+10	tio
+25	tjugofem
+24	tjugofyra
+4	fyra
+20	tjugo
+25	tjugofem
+3,6	tre komma sex
+2,5	två komma fem
+1,1	ett komma ett
+50	femtio
+2000	tvåtusen
+2006	tvåtusensex
+299.2	tvåhundranittionio punkt två
+81	åttioett
+2000	tvåtusen
+2006	tvåtusensex
+2021	tvåtusentjugoett
+1957	ettusenniohundrafemtiosju
+2012	tvåtusentolv
+6 000	sextusen
+500	femhundra
+130	etthundra trettio
+4 000	fyratusen
+100 000	etthundratusen
+500	femhundra
+2014	tvåtusenfjorton
+2015	tvåtusenfemton
+13-16	_
+8.00	åtta punkt noll noll
+9.30	nio punkt tre noll
+150	etthundrafemtio
+35	trettiofem
+43	fyrtiotre
+15	femton
+2015:18	tvåtusenfemton kolon arton
+2002	tvåtusentvå
+1997	ettusenniohundranittiosju
+2015	tvåtusenfemton
+96,7	nittiosex komma sju
+40 000	fyrtiotusen
+2010-2014	_
+55	femtiofem
+2010	tvåtusentio
+60 000	sextiotusen
+17	sjutton
+2013-2017	_
+1946	ettusenniohundrafyrtiosex
+30	trettio
+1982	ettusenniohundraåttiotvå
+1953	ettusenniohundrafemtiotre
+101	etthundraett
+101	etthundraett
+69	sextionio
+45	fyrtiofem
+260	tvåhundrasextio
+38	trettioåtta
+1995	ettusenniohundranittiofem
+49	fyrtionio
+1970	ettusenniohundrasjuttio
+1977	ettusenniohundrasjuttiosju
+2006	tvåtusensex
+1983	ettusenniohundraåttiotre
+2000	tvåtusen
+1 000	etttusen
+2001	tvåtusenett
+2005	tvåtusenfem
+21	tjugoett
+2015	tvåtusenfemton
+2014	tvåtusenfjorton
+2014	tvåtusenfjorton
+2015	tvåtusenfemton
+2015	tvåtusenfemton
+2015	tvåtusenfemton
+8.00-9.30	_
+150	etthundrafemtio
+1909	ettusenniohundranio
+136	etthundratrettiosex
+2012	tvåtusentolv
+2017	tvåtusensjutton
+3	tre
+2014	tvåtusenfjorton
+70	sjuttio
+12700	tolvtusensjuhundra
+13,1	tretton komma ett
+9	nio
+2017	tvåtusensjutton
+14.15	fjorton punkt ett fem
+15.30	femton punkt trettio
+2016	tvåtusensextion
+2015	tvåtusenfemton
+200	tvåhundra
+2015	tvåtusenfemton
+2015	tvåtusenfemton
+2015	tvåtusenfemton
+2014	tvåtusenfjorton
+2015	tvåtusenfemton
+0,3	noll komma tre
+2,6-3,1	_
+2016	tvåtusensextion
+2016	tvåtusensextion
+2016	tvåtusensextion
+2164	tvåtusenetthundrasextiofyra
+2014	tvåtusenfjorton
+320	trehundratjugo
+2014	tvåtusenfjorton
+2015	tvåtusenfemton
+2014	tvåtusenfjorton
+2014	tvåtusenfjorton
+24	tjugofyra
+2014	tvåtusenfjorton
+2014	tvåtusenfjorton
+24	tjugofyra
+24	tjugofyra
+2015	tvåtusenfemton
+2014	tvåtusenfjorton
+40	fyrtio
+2014	tvåtusenfjorton
+24	tjugofyra
+2012	tvåtusentolv
+2050	tvåtusenfemtio
+2025	tvåtusentjugofem
+2050	tvåtusenfemtio
+137	etthundratrettiosju
+800 000	åttahundratusen
+1994	ettusenniohundranittiofyra
+20	tjugo
+17	sjutton
+2014	tvåtusenfjorton
+2015	tvåtusenfemton
+2014	tvåtusenfjorton
+2015	tvåtusenfemton
+2013	tvåtusentretton
+14-18	_
+250-300	_
+2005	tvåtusenfem
+700 000	sjuhundratusen
+1,4	ett komma fyra
+23	tjugotre
+1,5	ett komma fem
+1,3	ett komma tre
+2008	tvåtusenåtta
+2012	tvåtusentolv
+144	etthundrafyrtiofyra
+14-18	_
+2016-2030	_
+2005	tvåtusenfem
+2005	tvåtusenfem
+2015	tvåtusenfemton
+90 000	nittiotusen
+2014	tvåtusenfjorton
+2013	tvåtusentretton
+13.00-16.30	tretton punkt noll noll streck sexton punkt trettio
+8.00	åtta punkt noll noll
+9.30	nio punkt tre noll
+6	sex
+3	tre
+6	sex
+9	nio
+6	sex
+7	sju
+2002	tvåtusentvå
+2002	tvåtusentvå
+2015	tvåtusenfemton
+950	niohundrafemtio
+2016	tvåtusensextion
+2011	tvåtusenelva
+1,3	ett komma tre
+65 000	sextiofemtusen
+1999	ettusenniohundranittionio
+650	sexhundrafemtio
+2003	tvåtusentre
+1996	ettusenniohundranittiosex
+2014	tvåtusenfjorton
+2011	tvåtusenelva
+1	ett
+300	trehundra
+5	fem
+10	tio
+1	ett
+300	trehundra
+4	fyra
+680	sexhundraåttio
+300	trehundra
+18	arton
+2010:566	_
+2013	tvåtusentretton
+37	trettiosju
+2003	tvåtusentre
+98	nittioåtta
+2003	tvåtusentre
+12	tolv
+2015	tvåtusenfemton
+1,5	ett komma fem
+1,7	ett komma sju
+2016-2020	_
+1,5-2	_
+1 000	etttusen
+118 000	etthundraartontusen
+50 000	femtiotusen
+6	sex
+103 000	etthundratretusen
+68	sextioåtta
+582	femhundraåttiotvå
+42	fyrtiotvå
+2014	tvåtusenfjorton
+27	tjugosju
+27	tjugosju
+33	trettiotre
+1941	ettusenniohundrafyrtioett
+1941	ettusenniohundrafyrtioett
+1906	ettusenniohundrasex
+1936	ettusenniohundratrettiosex
+tjugu	tjugo
+I	ett
+50	femtio
+10	tio
+1888	ettusenåttahundraåttioåtta
+10	tio
+500	femhundra
+II	två
+1959	etttusenniohundrafemtionio
+1926-1977	_
+1927	etttusenniohundratjugosju
+1959	ettusenniohundrafemtionio
+34	trettiofyra
+1977	ettusenniohundrasjuttiosju
+2013	tvåtusentretton
+50	femtio
+34	trettiofyra
+704	sjuhundrafyra
+99,1	nittionio komma ett
+98,8	nittioåtta komma åtta
+1,1	ett komma ett
+98	nittioåtta
+50	femtio
+63,9	sextiotre komma nio
+4	fyra
+2013	tvåtusentretton
+24	tjugofyra
+1979	ettusenniohundrasjuttionio
+25	tjugofem
+1979	ettusenniohundrasjuttionio
+25	tjugofem
+26	tjugosex
+1	ett
+8	åtta
+1970	ettusenniohundrasjuttio
+72	sjuttiotvå
+1979	ettusenniohundrasjuttionio
+80	åttio
+1979	ettusenniohundrasjuttionio
+89	åttionio
+1	ett
+25	tjugofem
+4	fyra
+6	sex
+11	elva
+28	tjugoåtta
+29	tjugonio
+1985	ettusenniohundraåttiofem
+86	åttiosex
+1	ett
+27	tjugosju
+2001	tvåtusenett
+06	noll sex
+1	ett
+33	trettiotre
+13	tretton
+1965	ettusenniohundrasextiofem
+1965	ettusenniohundrasextiofem
+42	fyrtiotvå
+1965	ettusenniohundrasextiofem
+1979	ettusenniohundrasjuttionio
+1 600	ettusensexhundra
+1989	ettusenniohundraåttionio
+30	trettio
+2007	tvåtusensju
+1	ett
+620	sexhundratjugo
+000	_
+1	ett
+1	ett
+1950	ettusenniohundrafemtio
+35	trettiofem
+1955	ettusenniohundrafemtiofem
+1	ett
+2	två
+3	tre
+1997	ettusenniohundranittiosju
+2007	tvåtusensju
+63	sextiotre
+300	trehundra
+1998	ettusenniohundranittioåtta
+18	arton
+37	trettiosju
+3/4	tre delat med fyra
+9	nio
+1994	ettusenniohundranittiofyra
+2007	tvåtusensju
+1500	ettusenfemhundra
+2001	tvåtusenett
+2008	tvåtusenåtta
+2001	tvåtusenett
+2007	tvåtusensju
+2009	tvåtusennio
+2,6	två komma sex
+17,5	sjutton komma fem
+2010	tvåtusentio
+2011	tvåtusenelva
+2007	tvåtusensju
+2002	tvåtusentvå
+2004	tvåtusenfyra
+13	tretton
+15:13	femton kolon tretton
+5:13	fem kolon trettion
+16	sexton
+13:13	tretton kolon tretton
+30	trettio
+000	_
+XII	tolv
+2	två
+2009	tvåtusennio
+2010	tvåtusentio
+2001	tvåtusenett
+2001	tvåtusenett
+3	tre
+7	sju
+9	nio
+4	fyra
+20	tjugo
+30	trettio
+1938	ettusenniohundratrettioåtta
+1946	ettusenniohundrafyrtiosex
+18	arton
+1951	ettusenniohundrafemtioett
+1963	ettusenniohundrasextiotre
+1978	ettusenniohundrasjuttioåtta
+1938	ettusenniohundratrettioåtta
+1974	ettusenniohundrasjuttiofyra
+1976	ettusenniohundrasjuttiosex
+1460	ettusenfyrahundrasextio
+1469	ettusenfyrahundrasextionio
+1524	etttusenfemhundratjugofyra
+I	ett
+1497	ettusenfyrahundranittiosju
+1498	ettusenfyrahundranittioåtta
+1499	ettusenfyrahundranittionio
+1502	ettusenfemhundratvå
+1524	etttusenfemhundratjugofyra
+1539	ettusenfemhundratrettionio
+I	ett
+1488	ettusenfyrahundraåttioåtta
+1507	ettusenfemhundrasju
+I	ett
+1497	ettusenfyrahundranittiosju
+10	tio
+I	ett
+6000	sextusen
+1498	ettusenfyrahundranittioåtta
+1498	ettusenfyrahundranittioåtta
+1499	ettusenfyrahundranittionio
+I	ett
+1502	ettusenfemhundratvå
+380	trehundraåttio
+1524	etttusenfemhundratjugofyra
+1539	ettusenfemhundratrettionio
+86	åttiosex
+1998	ettusenniohundranittioåtta
+1995	ettusenniohundranittiofem
+15	femton
+1790	ettusensjuhundranittio
+1846	ettusenåttahundrafyrtiosex
+1830	ettusenåttahundratrettio
+1773	ettusensjuhundrasjuttiotre
+1857	ettusenåttahundrafemtiosju
+1856	ettusenåttahundrafemtiosex
+1863	ettusenåttahundrasextiotre
+1872	ettusenåttahundrasjuttiotvå
+1865	ettusenåttahundrasextiofem
+6	sex
+300	trehundra
+50	femtio
+1	ett
+000	_
+6	sex
+000	_
+9	nio
+000	_
+1995	ettusenniohundranittiofem
+1,5	ett komma fem
+0,29-3	_
+3-100	_
+1013,2	ettusentretton komma två
+100	etthundra
++14	plus fjorton
+12	tolv
++24	plus tjugofyra
+22	tjugotvå
+1	ett
+1	ett
+1	ett
+1	ett
+1	ett
+10-70	_
+1274	ettusentvåhundrasjuttiofyra
+1281	ettusentvåhundraåttioett
+2005	tvåtusenfem
+±40	plusminus fyrtio
+56,7	femtiosex komma sju
+1913	ettusenniohundratretton
+57,8	femtiosju komma åtta
+1922	ettusenniohundratjugotvå
+-89,2	minus åttionio komma två
+1983	ettusenniohundraåttiotre
+1085,6	ettusenåttiofem komma sex
+2001	tvåtusenett
+870	åttahundrasjuttio
+1979	ettusenniohundrasjuttionio
+480	fyrahundraåttio
+32	trettiotvå
+1999	ettusenniohundranittionio
+24	tjugofyra
+1 870	etttusenåttahundrasjuttio
+1952	ettusenniohundrafemtiotvå
+300	trehundra
+400	fyrahundra
+1	ett
+900	niohundra
+2.500	två punkt fem noll noll
+1881	ettusenåttahundraåttioett
+1955	ettusenniohundrafemtiofem
+1928	ettusenniohundratjugoåtta
+1945	ettusenniohundrafyrtiofem
+1939	ettusenniohundratrettionio
+1906	ettusenniohundrasex
+1918	ettusenniohundraårton
+1928	ettusenniohundratjugoåtta
+1948	ettusenniohundrafyrtioåtta
+1921	ettusenniohundratjugoett
+1928	ettusenniohundratjugoåtta
+1941	ettusenniohundrafyrtioett
+1945	ettusenniohundrafyrtiofem
+1944	ettusenniohundrafyrtiofyra
+1945	ettusenniohundrafyrtiofem
+1954	ettusenniohundrafemtiofyra
+1914	ettusenniohundrafjorton
+1908	ettusenniohundraåtta
+1950	ettusenniohundrafemtio
+1954	ettusenniohundrafemtiofyra
+1953	ettusenniohundrafemtiotre
+1973	ettusenniohundrasjuttiotre
+1981	ettusenniohundraåttioett
+1984	ettusenniohundraåttiofyra
+50	femtio
+1988	ettusenniohundraåttioåtta
+2002	tvåtusentvå
+2002	tvåtusentvå
+2013	tvåtusentretton
+1981	ettusenniohundraåttioett
+1982	ettusenniohundraåttiotvå
+2014	tvåtusenfjorton
+1964	ettusenniohundrasextiofyra
+1992	ettusenniohundranittiotvå
+1993-1994	_
+1933	ettusenniohundratrettiotre
+1969	ettusenniohundrasextionio
+14	fjorton
+1923	ettusenniohundratjugotre
+2011	tvåtusenelva
+2011	tvåtusenelva
+2013	tvåtusentretton
+349	trehundrafyrtionio
+1921	ettusenniohundratjugoett
+1921	ettusenniohundratjugoett
+1909	ettusenniohundranio
+1975	ettusenniohundrasjuttiofem
+1435	ettusenfyrahundratrettiofem
+1527	etttusenfemhundratjugosju
+1544	ettusenfemhundrafyrtiofyra
+1617	ettusensexhundrasjutton
+1760-62	_
+1772	ettusensjuhundrasjuttiotvå
+1809	ettusenåttahundranio
+1809	ettusenåttahundranio
+1809	ettusenåttahundranio
+1974	ettusenniohundrasjuttiofyra
+1810	ettusenåttahundratio
+1809	ettusenåttahundranio
+1974	ettusenniohundrasjuttiofyra
+1866	ettusenåttahundrasextiosex
+1867	ettusenåttahundrasextiosju
+6	sex
+000	_
+125	etthundratjugofem
+1867	ettusenåttahundrasextiosju
+40	fyrtio
+35	trettiofem
+25	tjugofem
+1909	ettusenniohundranio
+1918	ettusenniohundraårton
+1921	ettusenniohundratjugoett
+1867	ettusenåttahundrasextiosju
+1911	ettusenniohundraelva
+5,5	fem komma fem
+21	tjugoett
+25	tjugofem
+1909	ettusenniohundranio
+9,5	nio komma fem
+19	nittion
+21	tjugoett
+24	tjugofyra
+1918	ettusenniohundraårton
+23	tjugotre
+21	tjugoett
+27	tjugosju
+23	tjugotre
+1937	ettusenniohundratrettiosju
+21	tjugoett
+1941	ettusenniohundrafyrtioett
+20	tjugo
+1965	ettusenniohundrasextiofem
+1922	ettusenniohundratjugotvå
+54	femtiofyra
+1921	ettusenniohundratjugoett
+1971	ettusenniohundrasjuttioett
+350	trehundrafemtio
+16	sexton
+1974	ettusenniohundrasjuttiofyra
+1976	ettusenniohundrasjuttiosex
+20	tjugo
+18	arton
+350	trehundrafemtio
+349	trehundrafyrtionio
+1973	ettusenniohundrasjuttiotre
+175	etthundrasjuttiofem
+1975	ettusenniohundrasjuttiofem
+1975	ettusenniohundrasjuttiofem
+1975	ettusenniohundrasjuttiofem
+1975	ettusenniohundrasjuttiofem
+1976	ettusenniohundrasjuttiosex
+1976	ettusenniohundrasjuttiosex
+1977	ettusenniohundrasjuttiosju
+349	trehundrafyrtionio
+1994	ettusenniohundranittiofyra
+2010	tvåtusentio
+12	tolv
+12	tolv
+12	tolv
+2	två
+1985-88	_
+1991	ettusenniohundranittioett

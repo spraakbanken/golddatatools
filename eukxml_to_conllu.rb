@@ -423,7 +423,7 @@ filenames.each do |filename|
                 term_ids.sort.each do |term_id|
                     info = words[term_id]
                     text << info["word"]
-                    if info["connected"] != "rear"
+                    if info["connected"] != "rear" and info["connected"] != "both"
                         text << " "
                     end
                 end
@@ -451,7 +451,7 @@ filenames.each do |filename|
                     if info["read_as"] != ""
                         misc << "CorrectForm=#{info["read_as"]}"
                     end
-                    if info["connected"] == "rear"
+                    if info["connected"] == "rear" or info["connected"] == "both"
                         misc << "SpaceAfter=No"
                     end
                     misc = misc.join("|")
