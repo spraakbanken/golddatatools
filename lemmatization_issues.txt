@@ -2,5 +2,6 @@ räkneord
 pronomen; possessiva pronomen; sin
 många osv.
 värre, sämre
-förkortningar
+förkortningar (exkl med moms)
 flerordingar
+"de"
